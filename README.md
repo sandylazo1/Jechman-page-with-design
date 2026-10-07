@@ -5,5 +5,6 @@ Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electr
 - `glassindex.html`: versión actualizada y autónoma del sitio.
 - `index.html`: página de entrada que abre la versión actualizada.
 - `glassindex-original.html`: copia intacta del archivo original recibido.
+- `instrucciones-hernan.txt`: texto de referencia entregado por Sandy con las indicaciones para el sitio.
 
 Para revisar el sitio localmente, abre `index.html` o `glassindex.html` en un navegador. Las imágenes del diseño original se mantienen como material ilustrativo; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
