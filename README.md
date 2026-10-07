@@ -1,1 +1,9 @@
-# Jechman-page-with-design
+# JECHMAN · Portal de cotizaciones
+
+Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electricidad e ingeniería, y comercializadora. La tienda funciona como catálogo de cotización: no muestra precios, stock ni compra en línea.
+
+- `glassindex.html`: versión actualizada y autónoma del sitio.
+- `index.html`: página de entrada que abre la versión actualizada.
+- `glassindex-original.html`: copia intacta del archivo original recibido.
+
+Para revisar el sitio localmente, abre `index.html` o `glassindex.html` en un navegador. Las imágenes del diseño original se mantienen como material ilustrativo; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
