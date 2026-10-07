@@ -139,44 +139,28 @@
 #destacados .feature-grid .feature-pill:hover{background:#fff!important}
 @media(prefers-reduced-motion:reduce){#destacados .feature-grid .card:hover{transform:none}}
 
-/* Historia y conversación: superficies de cristal sobre fondos con profundidad. */
-#historia{position:relative;isolation:isolate;overflow:hidden;padding:86px 0;background:radial-gradient(circle at 10% 18%,#b8eaf4 0,transparent 33%),radial-gradient(circle at 90% 80%,#dcc9f4 0,transparent 35%),linear-gradient(125deg,#e5f6fa,#f7f9ff 55%,#efe7f8)}
-#historia:before,#historia:after{content:'';position:absolute;z-index:-1;border:1px solid #ffffff9c;border-radius:50%;box-shadow:inset 0 1px 0 #fff,0 10px 35px #7b9dbb20;pointer-events:none}
-#historia:before{width:320px;height:320px;left:-130px;bottom:-170px;background:#ffffff31}
-#historia:after{width:220px;height:220px;right:-60px;top:-115px;background:#ffffff43}
-#historia .wrap{position:relative;z-index:1;gap:24px;align-items:stretch}
-#historia .wrap>div{border:1px solid #ffffffbf;border-radius:26px;box-shadow:inset 0 1px 0 #ffffffdf,0 18px 40px #274b6b1a;backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%)}
-#historia .wrap>div:first-child{display:flex;flex-direction:column;justify-content:center;padding:36px 38px;background:#ffffff7d}
-#historia .eyebrow{color:#5f438b;margin-bottom:14px}
+/* Historia y contacto: mismo fondo neutro del resto del landing. */
+#historia,.cta-band{background:#f4f8f9;color:#102d40}
+#historia{padding:72px 0 28px}
+#historia:before,#historia:after,.cta-band:before,.cta-band:after{display:none}
+#historia .wrap{gap:24px;align-items:stretch}
+#historia .wrap>div{border:1px solid #dce8ed;border-radius:22px;background:#ffffffd6;box-shadow:inset 0 1px 0 #fff,0 10px 25px #09283f0e;backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%)}
+#historia .wrap>div:first-child{display:flex;flex-direction:column;justify-content:center;padding:34px 36px;border-top:4px solid #5bbbd2}
+#historia .eyebrow{color:#577185;margin-bottom:14px}
 #historia h2{max-width:13ch;margin:0;color:#102d40}
-#historia .history{padding:34px 38px;border-left:1px solid #ffffffbf;background:#ffffff9c}
-#historia .history p{color:#29465a;line-height:1.68;margin-bottom:17px}
-#historia .history .text-link{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:47px;padding:10px 17px;margin-top:6px;border:1px solid #a789c4;border-radius:999px;background:#f5edffbd;color:#4f287d;text-decoration:none;box-shadow:inset 0 1px 0 #fff,0 7px 18px #6b329f18;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+#historia .history{padding:31px 36px;border-left:1px solid #dce8ed;border-top:4px solid #e2b638}
+#historia .history p{color:#365464;line-height:1.68;margin-bottom:17px}
+#historia .history .text-link{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:46px;padding:10px 17px;margin-top:6px;border:1px solid #9ab8c4;border-radius:999px;background:#f2f9fb;color:#173d50;text-decoration:none;box-shadow:inset 0 1px 0 #fff,0 5px 14px #09283f10;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
 #historia .history .text-link:after{content:'↗';font-size:1.1em;line-height:1}
-#historia .history .text-link:hover{transform:translateY(-2px);background:#fff;box-shadow:inset 0 1px 0 #fff,0 12px 24px #6b329f27}
-.cta-band{position:relative;isolation:isolate;overflow:hidden;padding:54px 0;background:radial-gradient(circle at 12% 0,#277394 0,transparent 36%),radial-gradient(circle at 96% 100%,#694385 0,transparent 35%),linear-gradient(125deg,#0c3147,#183d57 58%,#1d3756)}
-.cta-band:before{content:'';position:absolute;z-index:-1;width:260px;height:260px;right:18%;top:-125px;border-radius:50%;background:#ffffff16;filter:blur(8px);pointer-events:none}
-.cta-band .wrap{position:relative;gap:28px;padding:30px 36px;border:1px solid #ffffff5c;border-radius:28px;background:#ffffff18;box-shadow:inset 0 1px 0 #ffffff73,0 20px 50px #031e3280;backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
-.cta-band h2{margin-bottom:10px}
-.cta-band p{color:#e3f2f7}
-.cta-band .btn.light{flex-shrink:0;background:#ffffffd9;color:#09283f;border:1px solid #ffffffec;box-shadow:inset 0 1px 0 #fff,0 9px 23px #061e3152;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.cta-band .btn.light:hover{background:#fff;transform:translateY(-3px);box-shadow:inset 0 1px 0 #fff,0 15px 29px #061e3170}
-@media(max-width:680px){#historia{padding:58px 0}#historia .wrap>div:first-child,#historia .history{padding:27px 25px}#historia h2{max-width:none}.cta-band{padding:40px 0}.cta-band .wrap{padding:28px 24px}.cta-band .btn.light{width:100%;margin-top:22px}}
-@media(prefers-reduced-motion:reduce){#historia .history .text-link:hover,.cta-band .btn.light:hover{transform:none}}
-
-/* Continuidad azul y amarillo entre Historia y Hablemos. */
-#historia{background:radial-gradient(circle at 12% 18%,#b8eaf4 0,transparent 34%),radial-gradient(circle at 92% 75%,#fff0a6 0,transparent 35%),linear-gradient(155deg,#d9f3f9 0%,#eaf7fb 58%,#f7f5d6 100%)}
-#historia .eyebrow{color:#126989}
-#historia .history .text-link{background:#fff9d9bd;color:#173d50;border-color:#c7b94f;box-shadow:inset 0 1px 0 #fff,0 7px 18px #897d211c}
-#historia .history .text-link:hover{background:#fffdf0;box-shadow:inset 0 1px 0 #fff,0 12px 24px #897d212c}
-.cta-band{color:#102d40;background:radial-gradient(circle at 83% 18%,#ffec8d 0,transparent 31%),radial-gradient(circle at 5% 90%,#b7eaf4 0,transparent 40%),linear-gradient(155deg,#f7f5d6 0%,#e8f5f8 52%,#e9f4ed 100%)}
-.cta-band:before{width:290px;height:290px;right:10%;top:-120px;background:#ffffff7d;filter:blur(10px)}
-.cta-band:after{content:'';position:absolute;z-index:-1;width:230px;height:230px;left:-95px;bottom:-120px;border-radius:50%;background:#fff4aa91;filter:blur(9px);pointer-events:none}
-.cta-band .wrap{border:1px solid #ffffffc7;background:#ffffff72;box-shadow:inset 0 1px 0 #fff,0 18px 40px #35627420;backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%)}
-.cta-band h2{color:#102d40}
+#historia .history .text-link:hover{transform:translateY(-2px);background:#fff;box-shadow:0 10px 22px #09283f1d}
+.cta-band{padding:0 0 64px}
+.cta-band .wrap{gap:28px;padding:28px 34px;border:1px solid #dce8ed;border-radius:22px;background:#ffffffd6;box-shadow:inset 0 1px 0 #fff,0 10px 25px #09283f0e;backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%)}
+.cta-band h2{color:#102d40;margin-bottom:10px}
 .cta-band p{color:#365464}
-.cta-band .btn.light{background:#fdf302;color:#09283f;border-color:#c8c304;box-shadow:inset 0 1px 0 #fffcc7,0 8px 22px #786f1530}
-.cta-band .btn.light:hover{background:#fff34a;border-color:#a99f00;box-shadow:inset 0 1px 0 #fff,0 14px 27px #786f1547}
+.cta-band .btn.light{flex-shrink:0;background:#fdf302;color:#09283f;border:1px solid #c8c304;box-shadow:inset 0 1px 0 #fffcc7,0 7px 18px #09283f18}
+.cta-band .btn.light:hover{background:#fff34a;border-color:#a99f00;transform:translateY(-3px);box-shadow:0 12px 24px #09283f24}
+@media(max-width:680px){#historia{padding:54px 0 22px}#historia .wrap>div:first-child,#historia .history{padding:27px 25px}#historia h2{max-width:none}.cta-band{padding:0 0 46px}.cta-band .wrap{padding:27px 25px}.cta-band .btn.light{width:100%;margin-top:20px}}
+@media(prefers-reduced-motion:reduce){#historia .history .text-link:hover,.cta-band .btn.light:hover{transform:none}}
 </style>
 </head>
 <body>
