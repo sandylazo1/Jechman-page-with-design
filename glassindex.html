@@ -34,6 +34,51 @@
 .area-section .area-card:focus-visible{outline:3px solid #176b99;outline-offset:3px}
 @media(max-width:900px){.area-section .area-grid{grid-template-columns:1fr}.area-section .area-card{min-height:0}.area-section .area-card .body{min-height:0}}
 @media(prefers-reduced-motion:reduce){.area-section .area-card:hover,.area-section .area-card:hover .area-photo img{transform:none}.area-section .area-card:before{display:none}}
+
+/* Sistema de botones y controles: formas suaves, jerarquía clara y movimiento contenido. */
+.btn,.nav .nav-quote,.menu-btn,.chip,.tab,.float-wa,.dialog-close{
+ position:relative;overflow:hidden;border-radius:999px;isolation:isolate;
+ transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease,color .22s ease;
+}
+.btn,.nav .nav-quote{
+ display:inline-flex;align-items:center;justify-content:center;
+ background:#fdf302;color:#09283f;border:1px solid #c8c304;
+ box-shadow:inset 0 1px 0 #ffffffcc,0 6px 16px #09283f17;
+ min-height:48px;padding:11px 22px;gap:10px;
+}
+.btn.small{min-height:44px;padding:9px 17px}
+.btn:before,.nav .nav-quote:before,.chip:before,.tab:before,.float-wa:before{
+ content:'';position:absolute;top:-70%;left:-130%;width:65%;height:240%;z-index:0;
+ background:linear-gradient(110deg,transparent,#ffffff80,transparent);transform:rotate(15deg);
+ pointer-events:none;transition:left .6s ease;
+}
+.btn:hover,.nav .nav-quote:hover,.menu-btn:hover,.chip:hover,.tab:hover,.float-wa:hover,.dialog-close:hover{
+ transform:translateY(-3px);box-shadow:inset 0 1px 0 #fff,0 12px 25px #09283f28;filter:none;
+}
+.btn:hover:before,.nav .nav-quote:hover:before,.chip:hover:before,.tab:hover:before,.float-wa:hover:before{left:160%}
+.btn:active,.nav .nav-quote:active,.menu-btn:active,.chip:active,.tab:active,.float-wa:active,.dialog-close:active{transform:translateY(0) scale(.98)}
+.btn.light{background:#fff;color:#09283f;border-color:#e3edf1}
+.btn.outline{background:#ffffffb8;color:#09283f;border-color:#8da8b5}
+.btn.outline:hover,.btn.light:hover{background:#fff;border-color:#193345}
+.view[data-view="home"] .hero .btn{background:#fdf302;color:#09283f;border-color:#c8c304}
+.view[data-view="piscinas"] .btn:not(.outline),.view[data-view="color"] .btn:not(.outline),.view[data-view="tinajas"] .btn:not(.outline),.view[data-view="jacuzzis"] .btn:not(.outline){background:#b9eef4;color:#09283f;border-color:#76c8d7}
+.view[data-view="comercial"] .btn:not(.outline){background:#70449c;color:#fff;border-color:#70449c}
+.feature-grid .card,.catalog-grid .card,.model-grid .card,.duo .card,.trio .card{border-radius:18px;box-shadow:0 5px 18px #09283f0b}
+.feature-grid .btn{background:#ffffffd9;color:#09283f;border-color:#92adba}
+.feature-grid .btn:hover{background:#fff;border-color:#193345}
+.chip,.tab,.menu-btn{min-height:44px;background:#ffffffd9;border:1px solid #a8c0ca;color:#193345;box-shadow:inset 0 1px 0 #fff,0 3px 9px #09283f0d}
+.chip[aria-pressed="true"],.tab[aria-pressed="true"]{background:#153b50;border-color:#153b50;color:#fff;box-shadow:0 7px 18px #09283f24}
+.nav a:not(.nav-quote){border-radius:999px;padding:8px 10px;transition:background .2s ease,color .2s ease}
+.nav a:not(.nav-quote):hover,.nav a[aria-current="page"]:not(.nav-quote){background:#e7f6fa;color:#075875}
+.float-wa{border:1px solid #0d6a4d;box-shadow:inset 0 1px 0 #ffffff5c,0 8px 22px #09283f27}
+.dialog-close{width:44px;height:44px;display:grid;place-items:center;border:1px solid #c1d3da;background:#fff}
+.text-link{transition:color .2s ease,text-decoration-thickness .2s ease;text-decoration-thickness:1px}
+.text-link:hover{color:#08779a;text-decoration-thickness:3px}
+.btn:focus-visible,.nav a:focus-visible,.menu-btn:focus-visible,.chip:focus-visible,.tab:focus-visible,.float-wa:focus-visible,.dialog-close:focus-visible{outline:3px solid #176b99;outline-offset:3px}
+@media(max-width:900px){.nav{gap:4px}.nav a:not(.nav-quote){padding:7px 6px}}
+@media(max-width:800px){.menu-btn{display:block}.nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);padding:18px;box-shadow:0 14px 25px #0002;flex-direction:column;align-items:stretch}.nav.open{display:flex}.nav a:not(.nav-quote){font-size:1rem;padding:9px 12px}}
+@media(max-width:680px){.nav a:not(.nav-quote){padding:9px 12px}.btn,.nav .nav-quote{min-height:48px}.float-wa{min-height:48px}}
+@media(prefers-reduced-motion:reduce){.btn,.nav .nav-quote,.menu-btn,.chip,.tab,.float-wa,.dialog-close,.text-link{transition:none!important}.btn:hover,.nav .nav-quote:hover,.menu-btn:hover,.chip:hover,.tab:hover,.float-wa:hover,.dialog-close:hover{transform:none}.btn:before,.nav .nav-quote:before,.chip:before,.tab:before,.float-wa:before{display:none}}
 </style>
 </head>
 <body>
