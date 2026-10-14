@@ -40,3 +40,7 @@ La vista de tinajas ahora coloca una fotografía publicada por JECHMAN junto al 
 ## Ciclo 6 · Pie de página
 
 El pie ahora presenta el nombre JECHMAN como texto editorial en vez de colocar la foto del logotipo dentro de un recuadro blanco. El logotipo oficial proporcionado por Sandy permanece visible en la cabecera. Se conservaron dirección, horario, contacto y enlaces; comprobado a 390 y 1440 px.
+
+## Ciclo 7 · Quiénes son
+
+La imagen ilustrativa de «Somos JECHMAN» se sustituyó por una fotografía publicada en la galería oficial de piscinas. El texto ahora indica fabricación e instalación, ubicación y años de experiencia verificados. Se quitó una referencia a certificaciones no confirmadas. La imagen tiene dimensiones explícitas; recursos, rutas y axe sin hallazgos.
