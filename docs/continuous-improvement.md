@@ -59,3 +59,7 @@ Se ejecutó el prompt de `docs/area-images-prompt.md`. Las cabeceras de Piscinas
 ## Ciclo 10 · Tres opciones y medidas legibles
 
 Se ejecutó `docs/prompt-piscinas-publicacion.md`. Piscinas y bienestar presenta tres opciones con fotografías y enlaces: piscinas, jacuzzis y tinajas. Las dos últimas imágenes nuevas tienen procedencia y licencia documentadas. Los 15 modelos de piscina conservan color, instalación y cotización, pero ahora muestran largo, ancho y profundidad por separado, un filtro de largo y opciones plegadas. También hay imagen en las cabeceras propias de Jacuzzi y Tinajas. Las pruebas locales de Edge, rutas y accesibilidad pasaron. GitHub Pages publica ahora la rama `feature/jechman-glassmorphism-news` desde `/`, sin fusionar el PR. La compilación de Pages para `5d2364c` terminó correctamente; las cinco vistas cargaron su foto con HTTP 200 en Edge, sin desbordamiento ni errores de JavaScript.
+
+## Corrección de alcance · Solo subpáginas
+
+Por indicación de Sandy, Inicio y el pie común se restauraron a su contenido exacto de `origin/main`, junto con el comportamiento y el texto del carrusel. Se recuperaron la tipografía y las superficies originales de sus tarjetas. Los cambios de imagen, navegación por Piscinas/Jacuzzis/Tinajas y medidas quedan en las subpáginas. Los ciclos anteriores que alteraron la portada son históricos y no describen el estado publicado actual.
