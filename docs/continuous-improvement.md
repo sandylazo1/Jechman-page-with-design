@@ -4,14 +4,17 @@ Trabajo en `feature/jechman-glassmorphism-news`. La web oficial se usa solo como
 
 ## Auditoría priorizada · 2026-10-14
 
-| Prioridad | Problema observado | Cambio propuesto | Estado | Resultado |
-| --- | --- | --- | --- | --- |
-| P1 · Confianza | La home repetía las tres divisiones en dos bloques de tarjetas y dependía de fotos ilustrativas. | Sustituir el bloque repetido por una historia de instalación con foto publicada por JECHMAN. | Hecho | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
-| P1 · Claridad | El proceso de piscinas y los más de diez años de experiencia quedaban lejos de las primeras pantallas. | Explicar evaluación, preparación e instalación con alcance sujeto a cotización. | Hecho | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
-| P2 · Confianza local | El pie mostraba solo la comuna, aunque el sitio oficial publica dirección y horario. | Mostrar los datos verificados en el pie. | Hecho | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
-| P3 · Cotización | El formulario saltaba a WhatsApp sin adaptar la solicitud al área elegida. | Agregar preguntas opcionales por área y mantener el mensaje editable. | Hecho | Datos opcionales verificados en enlaces de WhatsApp; no se guardan ni envían antes del usuario |
-| P0 · Contacto | Una regla compartida cambiaba WhatsApp de posición fija a relativa; el acceso quedaba fuera de pantalla. | Restaurar la posición fija y separar el aviso de privacidad en tablet. | Hecho | WhatsApp visible, sin solapamiento en 320, 390, 768 y 1024 px |
-| P6 · Jerarquía visual | Las 18 fichas de tienda aplicaban desenfoque de fondo y serif editorial a títulos técnicos. | Dejar fichas opacas y títulos de producto en sans; conservar la serif para titulares grandes. | Hecho | 18 fichas sin backdrop-filter y títulos sans comprobados en Edge |
+| Prioridad | Problema observado | Cambio propuesto | Estado | Commit | Resultado |
+| --- | --- | --- | --- | --- | --- |
+| P0 · Contacto | Una regla compartida cambiaba WhatsApp de posición fija a relativa; el acceso quedaba fuera de pantalla. | Restaurar la posición fija y separar el aviso de privacidad en tablet. | Hecho | `12510e6` | WhatsApp visible, sin solapamiento en 320, 390, 768 y 1024 px |
+| P1 · Confianza | La home repetía las tres divisiones en dos bloques de tarjetas y dependía de fotos ilustrativas. | Sustituir el bloque repetido por una historia de instalación con foto publicada por JECHMAN. | Hecho | `7eeb52e` | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
+| P1 · Claridad | El proceso de piscinas y los más de diez años de experiencia quedaban lejos de las primeras pantallas. | Explicar evaluación, preparación e instalación con alcance sujeto a cotización. | Hecho | `7eeb52e` | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
+| P2 · Confianza local | El pie mostraba solo la comuna, aunque el sitio oficial publica dirección y horario. | Mostrar los datos verificados en el pie. | Hecho | `7eeb52e` | Dirección y horario verificados visibles en el pie |
+| P3 · Cotización | El formulario saltaba a WhatsApp sin adaptar la solicitud al área elegida. | Agregar preguntas opcionales por área y mantener el mensaje editable. | Hecho | `c37f66a` | Datos opcionales verificados en enlaces de WhatsApp; no se guardan ni envían antes del usuario |
+| P5 · Fotografía | Portada, tinajas y presentación de la empresa dependían de imágenes ilustrativas. | Usar fotos publicadas por JECHMAN, con procedencia documentada. | Hecho | `c1930c4`, `3fc4131`, `3daf3c8` | Cinco imágenes nuevas optimizadas y documentadas en `assets/image-sources.json` |
+| P5 · Catálogo | La mayoría de las fichas de producto conserva imágenes generadas o ilustrativas. | Sustituir gradualmente donde exista fotografía verificable del producto exacto. | Pendiente | — | Evitar asociar una foto real a un producto distinto |
+| P6 · Jerarquía visual | Las 18 fichas de tienda aplicaban desenfoque de fondo y serif editorial a títulos técnicos. | Dejar fichas opacas y títulos de producto en sans; conservar la serif para titulares grandes. | Hecho | `b8f4811` | 18 fichas sin backdrop-filter y títulos sans comprobados en Edge |
+| P6 · CSS | Quedan reglas antiguas para componentes ya retirados, como `#destacados .feature-grid`. | Eliminar reglas muertas de forma selectiva tras comparación visual. | Pendiente | — | Sin migración masiva |
 
 ## Fuentes verificadas
 
