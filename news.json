@@ -1,0 +1,30 @@
+[
+  {
+    "category": "Piscinas y bienestar",
+    "title": "Piscinas de fibra de vidrio",
+    "description": "JECHMAN publica modelos rectangulares y romanos y ofrece fabricación e instalación según el proyecto.",
+    "image": "assets/catalog/piscina-rectangular.jpg",
+    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-piscinas-de-fibra-de-vidrio/"
+  },
+  {
+    "category": "Bienestar",
+    "title": "Tinajas configurables",
+    "description": "La ficha oficial describe tinajas de madera recubiertas en fibra de vidrio con opciones de equipamiento.",
+    "image": "assets/catalog/tinaja.webp",
+    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/"
+  },
+  {
+    "category": "Electricidad y suministros",
+    "title": "Catálogo eléctrico",
+    "description": "La tienda oficial incluye familias de tableros, canalización, automatización e iluminación para consultar.",
+    "image": "assets/catalog/tablero-electrico.webp",
+    "source": "https://www.jechman.cl/product-category/electricidad-2/"
+  },
+  {
+    "category": "Bienestar",
+    "title": "Jacuzzis de fibra de vidrio",
+    "description": "JECHMAN describe fabricación e instalación de jacuzzis y opciones de recirculación y filtración sujetas a evaluación.",
+    "image": "assets/catalog/jacuzzi.webp",
+    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/"
+  }
+]
