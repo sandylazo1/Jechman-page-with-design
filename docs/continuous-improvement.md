@@ -11,6 +11,7 @@ Trabajo en `feature/jechman-glassmorphism-news`. La web oficial se usa solo como
 | P2 · Confianza local | El pie mostraba solo la comuna, aunque el sitio oficial publica dirección y horario. | Mostrar los datos verificados en el pie. | Hecho | Foto oficial y proceso visibles; Edge móvil/escritorio y axe sin errores |
 | P3 · Cotización | El formulario saltaba a WhatsApp sin adaptar la solicitud al área elegida. | Agregar preguntas opcionales por área y mantener el mensaje editable. | Hecho | Datos opcionales verificados en enlaces de WhatsApp; no se guardan ni envían antes del usuario |
 | P4 · Mobile | El botón de WhatsApp puede coincidir con el aviso de privacidad y controles bajos. | Medir solapamientos en tamaños móviles y ajustar posición. | Pendiente | — |
+| P6 · Jerarquía visual | Las 18 fichas de tienda aplicaban desenfoque de fondo y serif editorial a títulos técnicos. | Dejar fichas opacas y títulos de producto en sans; conservar la serif para titulares grandes. | Hecho | 18 fichas sin backdrop-filter y títulos sans comprobados en Edge |
 
 ## Fuentes verificadas
 
@@ -23,3 +24,7 @@ Las fotografías de `assets/projects/` proceden de la página pública de piscin
 ## Ciclo 2 · Piscinas y cotización
 
 Se incorporó una segunda fotografía publicada en la web oficial antes del selector de modelos. No se afirma que las dos fotografías pertenezcan al mismo proyecto. El formulario ahora muestra detalles opcionales solo para Piscinas y Bienestar o Electricidad e Ingeniería. Validado en Edge, con JavaScript sin errores, 15 modelos conservados y axe sin hallazgos.
+
+## Ciclo 3 · Fichas y tipografía
+
+Se eliminó el desenfoque de las fichas estándar y se reservó la serif para titulares principales. El catálogo conserva filtros, imágenes y acciones.
