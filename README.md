@@ -20,6 +20,8 @@ Prompts de generación: fotografía comercial horizontal, realista y de alta res
 
 La imagen de «Somos JECHMAN» procede del material ilustrativo del HTML original y no representa una obra acreditada de la empresa.
 
+El logotipo de cabecera y pie utiliza `assets/jechman-logo-official.jpeg`, proporcionado por Sandy. Se muestra con un recorte visual de los márgenes vacíos del archivo original, sin modificar la marca.
+
 ## Fuentes de Novedades
 
 Las cuatro fichas de `news.json` remiten a páginas del sitio oficial: [piscinas](https://www.jechman.cl/fabricacion-e-instalacion-de-piscinas-de-fibra-de-vidrio/), [tinajas](https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/), [catálogo eléctrico](https://www.jechman.cl/product-category/electricidad-2/) y [jacuzzis](https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/). Son páginas de producto o servicio, sin fecha reciente comprobada; el carrusel evita presentarlas como publicaciones nuevas. No se identificaron perfiles de Instagram cuya titularidad y publicaciones recientes pudieran confirmarse desde el sitio oficial, por lo que no se añadieron enlaces ni fechas de esas cuentas.
