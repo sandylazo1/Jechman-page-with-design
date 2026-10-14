@@ -36,3 +36,7 @@ La comprobación de posición reveló un fallo no detectado en las revisiones vi
 ## Ciclo 5 · Tinajas
 
 La vista de tinajas ahora coloca una fotografía publicada por JECHMAN junto al configurador, sin atribuirle una obra o ubicación concreta. Las seis capacidades y las opciones originales siguen disponibles. El mensaje de WhatsApp refleja la capacidad y opciones seleccionadas en Edge móvil y escritorio.
+
+## Ciclo 6 · Pie de página
+
+El pie ahora presenta el nombre JECHMAN como texto editorial en vez de colocar la foto del logotipo dentro de un recuadro blanco. El logotipo oficial proporcionado por Sandy permanece visible en la cabecera. Se conservaron dirección, horario, contacto y enlaces; comprobado a 390 y 1440 px.
