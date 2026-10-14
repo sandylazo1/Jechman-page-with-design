@@ -2,19 +2,28 @@
 
 Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electricidad e ingeniería, y comercializadora. La tienda funciona como catálogo de cotización: no muestra precios, stock ni compra en línea.
 
-- `glassindex.html`: versión actualizada y autónoma del sitio.
-- `index.html`: página autónoma actualizada para abrir directamente en el navegador.
+- `index.html`: entrada de GitHub Pages con las vistas completas del portal.
+- `glassindex.html`: copia de la misma experiencia para conservar el enlace histórico.
 - `glassindex-original.html`: copia intacta del archivo original recibido.
 - `instrucciones-hernan.txt`: texto de referencia entregado por Sandy con las indicaciones para el sitio.
+- `news.json`: selección editorial de soluciones verificadas, con enlace directo a la fuente.
 
-Para revisar el sitio localmente, abre `index.html` o `glassindex.html` en un navegador. Las imágenes del diseño original se mantienen como material ilustrativo; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
+Para revisar el sitio completo localmente, inicia un servidor estático en la raíz del repositorio (por ejemplo, `python -m http.server 8000`) y abre `http://localhost:8000/`. El carrusel carga `news.json` mediante HTTP. Todas las rutas de recursos son relativas para funcionar bajo `/Jechman-page-with-design/` en GitHub Pages. Las imágenes son ilustrativas; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
 
 El ícono de WhatsApp del botón flotante proviene de [Bootstrap Icons](https://icons.getbootstrap.com/icons/whatsapp/) (licencia MIT).
 
 ## Imágenes del catálogo
 
-`assets/catalog/` contiene imágenes ilustrativas de referencia para las 18 fichas de Tienda. Diez fotografías fueron generadas con IA para esta versión (piscina romana, tinaja, jacuzzi, bomba y filtro, foco de piscina, tablero eléctrico, bomba de calor, iluminación general, tuberías y fittings, herramientas). La foto de piscina rectangular proviene del material ilustrativo que ya estaba integrado en el HTML original. Estas imágenes no acreditan productos específicos ni obras realizadas por JECHMAN.
+`assets/catalog/` contiene imágenes ilustrativas de referencia para las 18 fichas de Tienda. Diez fotografías fueron generadas con IA para esta versión (piscina romana, tinaja, jacuzzi, bomba y filtro, foco de piscina, tablero eléctrico, bomba de calor, iluminación general, tuberías y fittings, herramientas). La foto de piscina rectangular proviene del material ilustrativo que ya estaba integrado en el HTML original. Estas imágenes no acreditan productos específicos ni obras realizadas por JECHMAN. Las imágenes PNG del catálogo se convirtieron a WebP para reducir el peso de carga, manteniendo el material original en el historial de Git.
 
 Prompts de generación: fotografía comercial horizontal, realista y de alta resolución para cada familia indicada; producto o solución claramente visible, luz profesional, sin personas, marcas, texto ni marcas de agua. Se generaron como referencias visuales, sujetas a confirmación con JECHMAN.
 
 La imagen de «Somos JECHMAN» procede del material ilustrativo del HTML original y no representa una obra acreditada de la empresa.
+
+## Fuentes de Novedades
+
+Las cuatro fichas de `news.json` remiten a páginas del sitio oficial: [piscinas](https://www.jechman.cl/fabricacion-e-instalacion-de-piscinas-de-fibra-de-vidrio/), [tinajas](https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/), [catálogo eléctrico](https://www.jechman.cl/product-category/electricidad-2/) y [jacuzzis](https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/). Son páginas de producto o servicio, sin fecha reciente comprobada; el carrusel evita presentarlas como publicaciones nuevas. No se identificaron perfiles de Instagram cuya titularidad y publicaciones recientes pudieran confirmarse desde el sitio oficial, por lo que no se añadieron enlaces ni fechas de esas cuentas.
+
+## Publicación
+
+El PR propone cambios a `main`, pero no los publica. Para mostrarlos en la URL de GitHub Pages indicada, revisa el PR y sus capturas, apruébalo y fusiona la rama cuando corresponda; después verifica que Pages esté configurado para servir `main` y espera a que complete la actualización. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
