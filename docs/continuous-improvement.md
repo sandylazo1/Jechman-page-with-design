@@ -51,3 +51,7 @@ La imagen ilustrativa de «Somos JECHMAN» se sustituyó por una fotografía pub
 ## Ciclo 8 · Primera impresión
 
 La primera diapositiva del hero cambió la imagen ilustrativa por una foto horizontal publicada en la galería oficial de piscinas. El titular y las acciones ahora dicen fabricación, instalación, cotización y modelos. El texto de atribución del carrusel distingue la primera foto oficial de las otras imágenes ilustrativas. Validado en Edge móvil y escritorio; carrusel y recursos sin errores.
+
+## Ciclo 9 · Imágenes con licencia libre por área
+
+Se ejecutó el prompt de `docs/area-images-prompt.md`. Las cabeceras de Piscinas, Electricidad y Comercial ahora muestran fotografías individuales de Unsplash con licencia gratuita para uso comercial, créditos visibles y fondos optimizados en WebP. Las tarjetas de las áreas y las diapositivas ilustrativas de Electricidad y Comercial usan las mismas fotos. Las fotografías se presentan como ejemplos visuales, sin atribuir los trabajos a JECHMAN. Las tres fuentes y autores están en `assets/image-sources.json`. Edge a 390 y 1440 px: sin desbordamiento; axe-core sin hallazgos en las nueve vistas; 24 recursos referenciados sin archivos faltantes.

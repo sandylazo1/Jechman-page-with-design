@@ -43,5 +43,32 @@
     "photographer": "No indicado en la fuente",
     "license": "Fotografía publicada por JECHMAN; licencia no indicada en la página",
     "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/piscinas.webp",
+    "sourcePage": "https://unsplash.com/photos/outdoor-swimming-pool-with-modern-building-in-background-kcnzbwTz8Kc",
+    "platform": "Unsplash",
+    "photographer": "Palak Pitroda",
+    "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
+    "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
+    "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/electricidad.webp",
+    "sourcePage": "https://unsplash.com/photos/electrical-panel-with-wires-and-components-q0Jo_J5YxHY",
+    "platform": "Unsplash",
+    "photographer": "Aleksandr Lyaptsev",
+    "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
+    "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
+    "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/comercial.webp",
+    "sourcePage": "https://unsplash.com/photos/a-cluttered-hardware-store-aisle-with-various-items-tE6zayejDNY",
+    "platform": "Unsplash",
+    "photographer": "KC Shum",
+    "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
+    "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
+    "addedOn": "2026-10-14"
   }
 ]
