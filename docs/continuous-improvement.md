@@ -32,3 +32,7 @@ Se eliminó el desenfoque de las fichas estándar y se reservó la serif para ti
 ## Ciclo 4 · Acceso a WhatsApp
 
 La comprobación de posición reveló un fallo no detectado en las revisiones visuales anteriores: el botón flotante se comportaba como elemento relativo y terminaba al final del documento. Se eliminó la regla que anulaba `position: fixed` y se separó el aviso de privacidad en tablet.
+
+## Ciclo 5 · Tinajas
+
+La vista de tinajas ahora coloca una fotografía publicada por JECHMAN junto al configurador, sin atribuirle una obra o ubicación concreta. Las seis capacidades y las opciones originales siguen disponibles. El mensaje de WhatsApp refleja la capacidad y opciones seleccionadas en Edge móvil y escritorio.
