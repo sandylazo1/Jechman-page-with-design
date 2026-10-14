@@ -28,4 +28,4 @@ Las cuatro fichas de `news.json` remiten a páginas del sitio oficial: [piscinas
 
 ## Publicación
 
-El PR propone cambios a `main`, pero no los publica. Para mostrarlos en la URL de GitHub Pages indicada, revisa el PR y sus capturas, apruébalo y fusiona la rama cuando corresponda; después verifica que Pages esté configurado para servir `main` y espera a que complete la actualización. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
+GitHub Pages sirve la raíz de `main` en `https://sandylazo1.github.io/Jechman-page-with-design/`. Los cambios de esta rama se muestran allí cuando se fusionan a `main` y termina la compilación de Pages. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
