@@ -55,3 +55,7 @@ La primera diapositiva del hero cambió la imagen ilustrativa por una foto horiz
 ## Ciclo 9 · Imágenes con licencia libre por área
 
 Se ejecutó el prompt de `docs/area-images-prompt.md`. Las cabeceras de Piscinas, Electricidad y Comercial ahora muestran fotografías individuales de Unsplash con licencia gratuita para uso comercial, créditos visibles y fondos optimizados en WebP. Las tarjetas de las áreas y las diapositivas ilustrativas de Electricidad y Comercial usan las mismas fotos. Las fotografías se presentan como ejemplos visuales, sin atribuir los trabajos a JECHMAN. Las tres fuentes y autores están en `assets/image-sources.json`. Edge a 390 y 1440 px: sin desbordamiento; axe-core sin hallazgos en las nueve vistas; 24 recursos referenciados sin archivos faltantes.
+
+## Ciclo 10 · Tres opciones y medidas legibles
+
+Se ejecutó `docs/prompt-piscinas-publicacion.md`. Piscinas y bienestar presenta tres opciones con fotografías y enlaces: piscinas, jacuzzis y tinajas. Las dos últimas imágenes nuevas tienen procedencia y licencia documentadas. Los 15 modelos de piscina conservan color, instalación y cotización, pero ahora muestran largo, ancho y profundidad por separado, un filtro de largo y opciones plegadas. También hay imagen en las cabeceras propias de Jacuzzi y Tinajas. Las pruebas locales de Edge, rutas y accesibilidad pasaron. La fuente de GitHub Pages se cambiará de `main` a la rama de trabajo para que el enlace público muestre estos cambios sin fusionar el PR.

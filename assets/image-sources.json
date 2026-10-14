@@ -70,5 +70,23 @@
     "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
     "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
     "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/jacuzzis.webp",
+    "sourcePage": "https://unsplash.com/photos/a-hot-tub-in-a-backyard-surrounded-by-greenery-wJ7zd8SvnpM",
+    "platform": "Unsplash",
+    "photographer": "Bradrey Nassel",
+    "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
+    "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
+    "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/tinajas.webp",
+    "sourcePage": "https://unsplash.com/photos/a-wooden-hot-tub-in-the-middle-of-a-forest-X_NJJFP_rQU",
+    "platform": "Unsplash",
+    "photographer": "Clay Banks",
+    "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
+    "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
+    "addedOn": "2026-10-14"
   }
 ]
