@@ -18,7 +18,7 @@ El ícono de WhatsApp del botón flotante proviene de [Bootstrap Icons](https://
 
 Prompts de generación: fotografía comercial horizontal, realista y de alta resolución para cada familia indicada; producto o solución claramente visible, luz profesional, sin personas, marcas, texto ni marcas de agua. Se generaron como referencias visuales, sujetas a confirmación con JECHMAN.
 
-La imagen de «Somos JECHMAN» procede del material ilustrativo del HTML original y no representa una obra acreditada de la empresa.
+Las fotografías de portada, instalación, piscinas, tinajas y «Somos JECHMAN» ahora proceden de páginas públicas del sitio oficial de JECHMAN. Sus URL de origen y notas de autoría están en `assets/image-sources.json`. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
 
 El logotipo de cabecera y pie utiliza `assets/jechman-logo-official.jpeg`, proporcionado por Sandy. Se muestra con un recorte visual de los márgenes vacíos del archivo original, sin modificar la marca.
 

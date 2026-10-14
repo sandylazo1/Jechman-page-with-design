@@ -44,3 +44,7 @@ El pie ahora presenta el nombre JECHMAN como texto editorial en vez de colocar l
 ## Ciclo 7 · Quiénes son
 
 La imagen ilustrativa de «Somos JECHMAN» se sustituyó por una fotografía publicada en la galería oficial de piscinas. El texto ahora indica fabricación e instalación, ubicación y años de experiencia verificados. Se quitó una referencia a certificaciones no confirmadas. La imagen tiene dimensiones explícitas; recursos, rutas y axe sin hallazgos.
+
+## Ciclo 8 · Primera impresión
+
+La primera diapositiva del hero cambió la imagen ilustrativa por una foto horizontal publicada en la galería oficial de piscinas. El titular y las acciones ahora dicen fabricación, instalación, cotización y modelos. El texto de atribución del carrusel distingue la primera foto oficial de las otras imágenes ilustrativas. Validado en Edge móvil y escritorio; carrusel y recursos sin errores.
