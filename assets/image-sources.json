@@ -88,5 +88,33 @@
     "license": "Unsplash License: uso gratuito, incluso comercial; https://unsplash.com/license",
     "role": "Fotografía ilustrativa; no representa un proyecto JECHMAN",
     "addedOn": "2026-10-14"
+  },
+  {
+    "file": "assets/areas/construccion-pexels.jpeg",
+    "sourcePage": "https://www.pexels.com/photo/residential-building-under-construction-5511085/",
+    "platform": "Pexels",
+    "photographer": "Mike van Schoonderwalt",
+    "license": "Pexels License: uso gratuito, incluso comercial; https://www.pexels.com/license/",
+    "role": "Foto de referencia; no es un proyecto JECHMAN",
+    "addedOn": "2026-10-17"
+  },
+  {
+    "file": "assets/catalog/zuipy-300.png",
+    "sourcePage": "https://vulcano-sa.com.ar/material-descarga/",
+    "productPage": "https://vulcano-sa.com.ar/zuipy-300/",
+    "platform": "Vulcano",
+    "photographer": "Vulcano",
+    "license": "Material oficial de producto disponible para publicar en sitio web o comercio electrónico según la página de descargas del fabricante",
+    "role": "Fotografía oficial del producto ZUIPY 300; disponibilidad con JECHMAN a confirmar",
+    "addedOn": "2026-10-17"
+  },
+  {
+    "file": "assets/areas/iluminacion-pexels.jpeg",
+    "sourcePage": "https://www.pexels.com/photo/colorful-modern-pendant-lights-in-cozy-setting-35128229/",
+    "platform": "Pexels",
+    "photographer": "Anchornhaven",
+    "license": "Pexels License: uso gratuito, incluso comercial; https://www.pexels.com/license/",
+    "role": "Foto de referencia; no es un proyecto JECHMAN",
+    "addedOn": "2026-10-17"
   }
 ]
