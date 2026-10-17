@@ -7,6 +7,7 @@ Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electr
 - `glassindex-original.html`: copia intacta del archivo original recibido.
 - `instrucciones-hernan.txt`: texto de referencia entregado por Sandy con las indicaciones para el sitio.
 - `news.json`: selección editorial de soluciones verificadas, con enlace directo a la fuente.
+- `assets/experience.js` y `assets/experience.css`: subsecciones por hash, configuradores visuales y lista de cotización compartida sin framework.
 
 Para revisar el sitio completo localmente, inicia un servidor estático en la raíz del repositorio (por ejemplo, `python -m http.server 8000`) y abre `http://localhost:8000/`. El carrusel carga `news.json` mediante HTTP. Todas las rutas de recursos son relativas para funcionar bajo `/Jechman-page-with-design/` en GitHub Pages. Las imágenes son ilustrativas; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
 
@@ -23,6 +24,10 @@ La portada y las subpáginas usan imágenes de referencia con licencia documenta
 La tipografía de la experiencia actual usa archivos locales de Inter y Manrope. Sus licencias SIL Open Font License se incluyen en `assets/fonts/`. La portada organiza las tres divisiones corporativas y el catálogo conserva la solicitud de cotización sin pagos en línea.
 
 El logotipo de cabecera y pie utiliza `assets/jechman-logo-official.jpeg`, proporcionado por Sandy. Se muestra con un recorte visual de los márgenes vacíos del archivo original, sin modificar la marca.
+
+## Experiencia interactiva
+
+Las rutas nuevas, sus estados de verificación comercial y los resultados de prueba se describen en [docs/interactive-experience-2026-10-17.md](docs/interactive-experience-2026-10-17.md). «Mi proyecto» guarda solo selecciones de productos y servicios en la sesión de la pestaña y reúne su solicitud para WhatsApp. Las opciones pendientes de validación aparecen identificadas como propuestas.
 
 ## Fuentes de Novedades
 

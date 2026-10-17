@@ -41,3 +41,9 @@ Validación de esta iteración en Microsoft Edge:
 - Auditoría local: 28 recursos referenciados presentes, cuatro novedades con fuente oficial, sin emojis en HTML activo y `index.html` idéntico a `glassindex.html`.
 
 Pendientes de medición o entorno: no se ha medido Lighthouse/LCP/CLS/INP en un dispositivo representativo; no se pudo ejecutar WebKit local por la política de Windows indicada arriba. Las rutas hash permiten la vista previa de GitHub Pages, pero limitan la indexación individual de las subpáginas.
+
+## Experiencia interactiva 2.0 · 17 de octubre de 2026
+
+Se añadieron 44 rutas de subsecciones y configuradores. La ejecución de Edge verificó todas las rutas a 390 px y ocho destinos representativos a 320, 375, 390, 430, 768, 1024, 1440 y 1920 px: cero desbordamientos horizontales y cero errores de página. Se probaron cotizaciones reactivas de piscinas y tinajas, ficha de producto, calculadora de kWh, escena conceptual de domótica, lista de proyecto, edición y persistencia durante la sesión.
+
+Las pruebas de regresión del catálogo, búsqueda, calculadora original, carruseles, configurador de bienestar y selección eléctrica pasaron. Axe-core WCAG 2.1 A/AA no detectó infracciones en las nueve vistas anteriores ni en ocho vistas nuevas representativas. La preferencia de movimiento reducido desactiva las animaciones nuevas. Los límites de Safari y métricas de rendimiento siguen indicados arriba.
