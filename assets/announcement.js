@@ -21,7 +21,7 @@
   function start() {
     stop();
     if (!paused && !reducedMotion.matches && !document.hidden) {
-      timer = setInterval(() => show(index + 1), 4500);
+      timer = setInterval(() => show(index + 1), 2000);
     }
   }
 
