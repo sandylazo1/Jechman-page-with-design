@@ -18,7 +18,9 @@ El ícono de WhatsApp del botón flotante proviene de [Bootstrap Icons](https://
 
 Prompts de generación: fotografía comercial horizontal, realista y de alta resolución para cada familia indicada; producto o solución claramente visible, luz profesional, sin personas, marcas, texto ni marcas de agua. Se generaron como referencias visuales, sujetas a confirmación con JECHMAN.
 
-La portada conserva la versión de `main`. Las subpáginas usan imágenes ilustrativas con licencia documentada y, en algunos contenidos de piscinas y tinajas, fotografías publicadas por JECHMAN. Sus URL de origen y notas de autoría están en `assets/image-sources.json`. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
+La portada y las subpáginas usan imágenes de referencia con licencia documentada y, en algunos contenidos de piscinas y tinajas, fotografías publicadas por JECHMAN. Sus URL de origen y notas de autoría están en `assets/image-sources.json`. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
+
+La tipografía de la experiencia actual usa archivos locales de Inter y Manrope. Sus licencias SIL Open Font License se incluyen en `assets/fonts/`. La portada organiza las tres divisiones corporativas y el catálogo conserva la solicitud de cotización sin pagos en línea.
 
 El logotipo de cabecera y pie utiliza `assets/jechman-logo-official.jpeg`, proporcionado por Sandy. Se muestra con un recorte visual de los márgenes vacíos del archivo original, sin modificar la marca.
 
@@ -28,4 +30,4 @@ Las cuatro fichas de `news.json` remiten a páginas del sitio oficial: [piscinas
 
 ## Publicación
 
-GitHub Pages sirve la raíz de `main` en `https://sandylazo1.github.io/Jechman-page-with-design/`. Los cambios de esta rama se muestran allí cuando se fusionan a `main` y termina la compilación de Pages. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
+GitHub Pages sirve la raíz de `feature/jechman-glassmorphism-news` en `https://sandylazo1.github.io/Jechman-page-with-design/`. La rama `main` no se fusiona ni publica mediante este flujo. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.

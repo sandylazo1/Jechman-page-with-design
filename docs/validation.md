@@ -24,3 +24,20 @@ La rama `feature/jechman-glassmorphism-news` se actualizó desde `main` y recibi
 - Auditoría de recursos: 21 referencias sin archivos faltantes; `index.html` y `glassindex.html` idénticos.
 
 La prueba directa en Safari de iPhone sigue pendiente por el bloqueo local de WebKit descrito arriba.
+
+## Renovación visual y funcional · 17 de octubre de 2026
+
+Se guardaron [capturas antes/después de Inicio en escritorio](qa/after-home-1440.png), [Inicio en móvil](qa/after-home-390.png), [divisiones en escritorio](qa/after-divisions-1440.png) y [soluciones en escritorio](qa/after-solutions-1440.png). Las referencias previas están en la misma carpeta con prefijo `before-`.
+
+Problemas verificados antes del cambio: tipografías mezcladas, seis tarjetas iniciales de igual jerarquía que repetían las divisiones, imágenes fuera de pantalla cargadas con prioridad alta, menú móvil sin cierre mediante Escape ni restitución del foco, y ficha de producto sin descubrimiento de artículos de la misma categoría. Se corrigieron con un sistema tipográfico local, tres tarjetas para las divisiones, una selección más breve de soluciones, carga diferida, control del foco y productos relacionados. El logotipo proporcionado por Sandy y `glassindex-original.html` se conservaron.
+
+Validación de esta iteración en Microsoft Edge:
+
+- 320, 375, 390, 430, 768, 1024, 1440 y 1920 px; Inicio, Piscinas, Electricidad, Comercial, Tienda y Contacto: una vista activa, sin desbordamiento horizontal ni errores JavaScript.
+- Carrusel principal, menú móvil con teclado y Escape, historial atrás, modal, productos relacionados y número de WhatsApp: correctos.
+- Búsqueda, estado vacío, cotización de producto, calculadora y controles de carrusel: correctos.
+- Configurador de piscinas/tinajas, selección de electricidad, iluminación y filtro de tienda: correctos.
+- Axe-core WCAG 2.1 A/AA: cero infracciones en Inicio, Piscinas, Tinajas, Jacuzzis, Electricidad, Comercial, Tienda, Contacto y Privacidad.
+- Auditoría local: 28 recursos referenciados presentes, cuatro novedades con fuente oficial, sin emojis en HTML activo y `index.html` idéntico a `glassindex.html`.
+
+Pendientes de medición o entorno: no se ha medido Lighthouse/LCP/CLS/INP en un dispositivo representativo; no se pudo ejecutar WebKit local por la política de Windows indicada arriba. Las rutas hash permiten la vista previa de GitHub Pages, pero limitan la indexación individual de las subpáginas.
