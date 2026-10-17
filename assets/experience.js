@@ -10,16 +10,24 @@
   const tinajaSource = 'https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/';
   const jacuzziSource = 'https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/';
   const photo = (src, alt, credit = 'Visual de referencia', source = '') => ({ src, alt, credit, source });
+  function responsiveImage(img) {
+    const src=img.getAttribute('src')||'';
+    if(!/^assets\/editorial\/[a-z-]+-(?:800|1600)\.webp$/.test(src)){img.removeAttribute('srcset');img.removeAttribute('sizes');return;}
+    const base=src.replace(/-(?:800|1600)\.webp$/,'');
+    img.srcset=`${base}-800.webp 800w, ${base}-1600.webp 1600w`;
+    img.sizes=img.closest('.xp-thumb,.xp-preview-gallery,.xp-discovery-card')?'120px':img.closest('.xp-model-card,.xp-related-card')?'(max-width: 700px) 100vw, 32vw':'(max-width: 700px) 100vw, 60vw';
+    img.decoding='async';
+  }
   const gallery = {
-    pool: [photo('assets/projects/pool-installed.webp', 'Piscina publicada por JECHMAN', 'Fotografía JECHMAN', poolSource), photo('assets/projects/pool-work.webp', 'Piscina exterior publicada por JECHMAN', 'Fotografía JECHMAN', poolSource), photo('assets/areas/piscinas.webp', 'Piscina exterior de referencia', 'Palak Pitroda / Unsplash', 'https://unsplash.com/photos/outdoor-swimming-pool-with-modern-building-in-background-kcnzbwTz8Kc')],
-    tinaja: [photo('assets/projects/tinaja-official.webp', 'Tinaja publicada por JECHMAN', 'Fotografía JECHMAN', tinajaSource), photo('assets/areas/tinajas.webp', 'Tinaja de madera de referencia', 'Clay Banks / Unsplash', 'https://unsplash.com/photos/a-wooden-hot-tub-in-the-middle-of-a-forest-X_NJJFP_rQU')],
-    jacuzzi: [photo('assets/areas/jacuzzis.webp', 'Jacuzzi exterior de referencia', 'Bradrey Nassel / Unsplash', 'https://unsplash.com/photos/a-hot-tub-in-a-backyard-surrounded-by-greenery-wJ7zd8SvnpM'), photo('assets/catalog/jacuzzi.webp', 'Jacuzzi de fibra de vidrio de referencia')],
-    electric: [photo('assets/areas/electricidad.webp', 'Tablero eléctrico de referencia', 'Aleksandr Lyaptsev / Unsplash', 'https://unsplash.com/photos/electrical-panel-with-wires-and-components-q0Jo_J5YxHY'), photo('assets/catalog/tablero-electrico.webp', 'Gabinete eléctrico de referencia')],
+    pool: [photo('assets/editorial/pool-hero-1600.webp', 'Piscina rectangular en jardín contemporáneo'), photo('assets/projects/pool-installed.webp', 'Piscina publicada por JECHMAN', 'Fotografía JECHMAN', poolSource), photo('assets/editorial/pool-roman-1600.webp', 'Piscina romana en jardín'), photo('assets/projects/pool-work.webp', 'Piscina exterior publicada por JECHMAN', 'Fotografía JECHMAN', poolSource)],
+    tinaja: [photo('assets/editorial/tinaja-1600.webp', 'Tinaja de madera en terraza natural'), photo('assets/projects/tinaja-official.webp', 'Tinaja publicada por JECHMAN', 'Fotografía JECHMAN', tinajaSource)],
+    jacuzzi: [photo('assets/editorial/jacuzzi-1600.webp', 'Jacuzzi exterior en terraza'), photo('assets/catalog/jacuzzi.webp', 'Jacuzzi de fibra de vidrio de referencia')],
+    electric: [photo('assets/editorial/electric-1600.webp', 'Instalación eléctrica profesional'), photo('assets/editorial/domotica-1600.webp', 'Control inteligente del hogar'), photo('assets/editorial/inmotica-1600.webp', 'Control técnico de edificio'), photo('assets/editorial/energy-1600.webp', 'Sistema de energía solar')],
     light: [photo('assets/areas/iluminacion-pexels.jpeg', 'Luminarias de interior de referencia', 'Anchornhaven / Pexels', 'https://www.pexels.com/photo/colorful-modern-pendant-lights-in-cozy-setting-35128229/'), photo('assets/catalog/iluminacion.webp', 'Iluminación de referencia')],
-    commercial: [photo('assets/areas/comercial.webp', 'Suministros de ferretería de referencia', 'KC Shum / Unsplash', 'https://unsplash.com/photos/a-cluttered-hardware-store-aisle-with-various-items-tE6zayejDNY'), photo('assets/catalog/herramientas.webp', 'Herramientas de referencia')],
+    commercial: [photo('assets/editorial/commercial-1600.webp', 'Suministros y herramientas de construcción'), photo('assets/catalog/herramientas.webp', 'Herramientas de referencia')],
     hydraulic: [photo('assets/catalog/hidraulica.webp', 'Conexiones hidráulicas de referencia'), photo('assets/catalog/bomba-filtro.webp', 'Bomba y filtro de referencia')],
     heating: [photo('assets/catalog/bomba-calor.webp', 'Equipo de climatización de referencia'), photo('assets/catalog/calefont.svg', 'Representación de calefont')],
-    sauna: [photo('assets/catalog/sauna.svg', 'Ilustración conceptual de sauna', 'Ilustración conceptual')]
+    sauna: [photo('assets/editorial/sauna-1600.webp', 'Sauna en espacio de bienestar')]
   };
   const entries = [
     ['piscinas/rectangulares','Piscinas rectangulares','piscinas','pool','Modelos rectangulares','Compara las medidas existentes y prepara una solicitud con el espacio y el acabado que imaginas.','modelos','confirmed'],
@@ -70,6 +78,19 @@
     ['tienda/piscinas','Piscinas y bienestar','tienda','pool','Modelos para explorar','Compara familias de piscinas antes de cotizar.','catalog','confirmed','Piscinas y bienestar']
   ];
   extensions.forEach(([route,title,parent,visual,headline,description,type,status,category])=>entries.push({route,title,parent,visual,headline,description,type,status,category,gallery:gallery[visual]}));
+  const routeVisuals = {
+    'piscinas/romanas':'pool-roman',
+    'piscinas/rectangulares':'pool-hero',
+    'piscinas/con-jacuzzi':'jacuzzi',
+    'electricidad/domotica':'domotica',
+    'electricidad/inmotica':'inmotica',
+    'electricidad/eficiencia-energetica':'energy',
+    'piscinas/sauna':'sauna'
+  };
+  entries.forEach(entry=>{
+    const asset=routeVisuals[entry.route];
+    if(asset) entry.gallery=[photo(`assets/editorial/${asset}-1600.webp`,entry.title),...entry.gallery.filter(item=>!item.src.includes(`${asset}-1600.webp`))];
+  });
   const byRoute = new Map(entries.map(item => [item.route,item]));
   const parentTitles = {piscinas:'Piscinas y bienestar',tinajas:'Tinajas',jacuzzis:'Jacuzzis',electricidad:'Electricidad e ingeniería',comercial:'Comercializadora',tienda:'Tienda'};
   const statusLabels = {confirmed:'Opciones documentadas',evaluation:'Sujeto a evaluación técnica',proposal:'Propuesta en estudio · confirmar con JECHMAN'};
@@ -136,13 +157,13 @@
   function makeGallery(entry) {
     const photos=entry.gallery; if (photos.length<2) return '';
     const buttons=photos.map((item,index)=>`<button type="button" class="xp-thumb" data-gallery-index="${index}" aria-label="Mostrar imagen ${index+1}: ${escape(item.alt)}" aria-current="${index===0}"><img src="${escape(item.src)}" alt="" loading="lazy" width="100" height="75"></button>`).join('');
-    return `<section class="xp-gallery-section"><div class="wrap"><div class="xp-section-heading"><h2>Observa los detalles</h2><p>Imágenes del sitio de JECHMAN y referencias visuales identificadas. Las opciones finales se revisan en cada proyecto.</p></div><div class="xp-gallery" tabindex="0" aria-label="Galería de ${escape(entry.title)}"><figure class="xp-gallery-main"><img src="${escape(photos[0].src)}" alt="${escape(photos[0].alt)}" loading="lazy" width="1200" height="800"><figcaption>${escape(photos[0].credit)}</figcaption></figure><div class="xp-gallery-bottom"><button type="button" class="xp-gallery-arrow" data-gallery-direction="-1" aria-label="Imagen anterior">←</button><div class="xp-gallery-thumbs" role="group" aria-label="Elegir imagen">${buttons}</div><button type="button" class="xp-gallery-arrow" data-gallery-direction="1" aria-label="Imagen siguiente">→</button></div></div></div></section>`;
+    return `<section class="xp-gallery-section"><div class="wrap"><div class="xp-section-heading"><h2>Observa los detalles</h2><p>Renders editoriales y fotografías publicadas por JECHMAN. Cada medida, acabado y solución se confirma al cotizar.</p></div><div class="xp-gallery" tabindex="0" aria-label="Galería de ${escape(entry.title)}"><figure class="xp-gallery-main"><img src="${escape(photos[0].src)}" alt="${escape(photos[0].alt)}" loading="lazy" width="1200" height="800"><figcaption>${escape(photos[0].credit)}</figcaption></figure><div class="xp-gallery-bottom"><button type="button" class="xp-gallery-arrow" data-gallery-direction="-1" aria-label="Imagen anterior">←</button><div class="xp-gallery-thumbs" role="group" aria-label="Elegir imagen">${buttons}</div><button type="button" class="xp-gallery-arrow" data-gallery-direction="1" aria-label="Imagen siguiente">→</button></div></div></div></section>`;
   }
   function bindGallery(entry) {
     const root=$('.xp-gallery',view); if (!root) return; let index=0;
     function show(next) {
       index=(next+entry.gallery.length)%entry.gallery.length; const item=entry.gallery[index], img=$('.xp-gallery-main img',root);
-      img.classList.remove('xp-image-enter');img.src=item.src;img.alt=item.alt;
+      img.classList.remove('xp-image-enter');img.src=item.src;img.alt=item.alt;responsiveImage(img);
       if (!reduced()) requestAnimationFrame(()=>img.classList.add('xp-image-enter'));
       $('.xp-gallery-main figcaption',root).textContent=item.credit;
       $$('.xp-thumb',root).forEach((button,i)=>button.setAttribute('aria-current',String(i===index)));
@@ -170,7 +191,7 @@
   function renderModelList(entry) {
     const family=entry.route.endsWith('romanas')?'Romana':entry.route.endsWith('con-jacuzzi')?'Con jacuzzi':'Rectangular';
     const selected=models.filter(item=>family==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family);
-    const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p><a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
+    const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><img class="xp-model-photo" src="assets/editorial/${family==='Romana'?'pool-roman':family==='Con jacuzzi'?'jacuzzi':'pool-hero'}-800.webp" alt="Ambiente de piscina de la familia ${escape(family)}" loading="lazy" width="800" height="500"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p>${item[4]==='por-confirmar'?'<p>Medida por confirmar con JECHMAN</p>':''}<a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
     return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>Modelos para comparar</h2><p>Medidas del listado actual de JECHMAN. Verifica el espacio disponible y la instalación antes de decidir.</p></div><div class="xp-model-grid">${rows}</div><div class="xp-comparison" hidden role="status" aria-live="polite"></div><p class="xp-note">Las imágenes muestran proyectos o ambientes de referencia; no identifican visualmente cada medida.</p>${quotePanel(entry)}</div></section>`;
   }
   function bindModelComparison(entry){
@@ -257,7 +278,7 @@
      const draft=project.find(item=>item.id===draftId&&item.route==='#/'+entry.route);
      if(draft?.config){for(const [name,saved] of Object.entries(draft.config)){if(typeof name!=='string'||name.length>40)continue;const inputs=$$('[name]',form).filter(input=>input.name===name);for(const input of inputs){if(input.type==='checkbox'||input.type==='radio')input.checked=Array.isArray(saved)?saved.includes(input.value):saved===input.value;else if(typeof saved==='string')input.value=saved.slice(0,200);}}}
      const previewButtons=$$('[data-preview-index]',root),previewImage=$('.xp-preview-image>img',root),previewLabel=$('.xp-preview-label',root);
-     function setPreview(index){const item=entry.gallery[index];if(!item)return;previewImage.src=item.src;previewImage.alt=item.alt;previewLabel.textContent=item.credit;previewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
+     function setPreview(index){const item=entry.gallery[index];if(!item)return;previewImage.src=item.src;previewImage.alt=item.alt;responsiveImage(previewImage);previewLabel.textContent=item.credit;previewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
      previewButtons.forEach(button=>button.addEventListener('click',()=>setPreview(Number(button.dataset.previewIndex))));
      $$('[data-preview-step]',root).forEach(button=>button.addEventListener('click',()=>{const current=previewButtons.findIndex(item=>item.getAttribute('aria-pressed')==='true');setPreview((current+Number(button.dataset.previewStep)+entry.gallery.length)%entry.gallery.length);}));
      const zoom=$('.xp-preview-zoom',root);
@@ -396,6 +417,7 @@
     $$('.nav [data-route]').forEach(link=>{if(link.dataset.route===navParent)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
     let content='';if(product)content=renderProduct(product);else if(entry.type==='modelos')content=renderModelList(entry);else if(entry.type==='catalog')content=renderCatalog(entry);else if(entry.type==='service')content=renderService(entry);else content=renderConfig(entry);
     view.innerHTML=hero(entry)+content+makeGallery(entry)+related(entry);
+    $$("img[src^='assets/editorial/']",view).forEach(responsiveImage);
     if(product)bindProduct(product);else if(entry.type==='modelos'){bindSimpleQuote(entry,'Familia de modelos: '+entry.title+'. Modelo y medidas por definir.');bindModelComparison(entry);}else if(entry.type==='catalog')bindSimpleQuote(entry,'Familia de productos: '+entry.title+'. Especificaciones por definir.');else if(entry.type==='service')bindService(entry);else bindConfig(entry);
     bindGallery(entry);activateMotion();document.title=entry.title+' | JECHMAN';window.scrollTo({top:0,left:0,behavior:'instant'});$('#contenido').focus({preventScroll:true});
   }

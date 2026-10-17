@@ -97,3 +97,28 @@ h3{line-height:1.28}
 @media(max-width:600px){.hero-carousel h1,.hero-carousel h2{font-size:clamp(2.28rem,9vw,3.2rem)}.xp-hero-copy h1{font-size:clamp(2.15rem,8.5vw,3.1rem)}.xp-preview-image{height:260px}.xp-preview-summary{padding:18px}.xp-project-button{bottom:max(13px,env(safe-area-inset-bottom));right:max(75px,calc(env(safe-area-inset-right) + 67px));padding:9px 10px;font-size:.73rem}.xp-project-button strong{min-width:23px;height:23px}.xp-discovery-photo{height:145px}.xp-tile-options{grid-template-columns:1fr 1fr}.xp-tile{font-size:.83rem;padding:11px}.xp-related-card>img{height:155px}}
 @media(max-width:600px){.enh-scene{height:270px}.enh-studio-visual{padding:10px}.enh-scene-caption span{font-size:.67rem}.enh-studio-summary{padding:16px 5px 4px}}
 @media(prefers-reduced-motion:reduce){.xp-tile,.xp-discovery-photo img{transition:none}.xp-tile:hover,.xp-discovery-card:hover .xp-discovery-photo img{transform:none}}
+
+/* Photographic editorial pass. Asset origin stays in docs/IMAGE_ASSETS.md. */
+.page-hero.area-visual.pool{background-image:url('editorial/pool-hero-1600.webp')}
+.page-hero.area-visual.electric{background-image:url('editorial/electric-1600.webp')}
+.page-hero.area-visual.commercial{background-image:url('editorial/commercial-1600.webp')}
+.page-hero.area-visual.tinaja-visual{background-image:url('editorial/tinaja-1600.webp')}
+.page-hero.area-visual.jacuzzi-visual{background-image:url('editorial/jacuzzi-1600.webp')}
+.page-hero.area-visual{min-height:min(760px,78svh);background-position:center 48%}
+.page-hero.area-visual::before{background:linear-gradient(90deg,rgba(8,27,37,.79),rgba(8,27,37,.4) 58%,rgba(8,27,37,.08))}
+.page-hero.area-visual h1{max-width:770px}
+.page-hero.area-visual.pool h1{font-size:clamp(2.7rem,5.8vw,5.6rem)}
+.wellness-card{overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 20px 42px #102d4012}
+.wellness-card img{height:clamp(240px,25vw,360px);object-fit:cover;transition:transform .6s ease}
+.wellness-card:hover img{transform:scale(1.045)}
+.model-card{overflow:hidden;padding:0 0 21px;border-radius:12px}
+.model-card .model-photo{width:100%;height:190px;object-fit:cover;margin:0 0 20px}
+.model-card>.tag,.model-card>h3,.model-card>.model-size,.model-card>.model-depth,.model-card>.model-pending,.model-card>p,.model-card>details{margin-left:22px;margin-right:22px}
+.model-card .model-pending{font-size:.8rem;color:#705025;font-weight:700;background:#fff4e4;padding:7px 9px;border-radius:5px}
+.xp-model-card{overflow:hidden}
+.xp-model-card .xp-model-photo{display:block;width:calc(100% + 44px);max-width:none;height:165px;object-fit:cover;margin:-22px -22px 18px}
+.area-hero-credit,.wellness-credit,.pool-story-photo figcaption,.tinaja-photo figcaption,.about-visual figcaption,.xp-hero-media>span,.xp-gallery-main figcaption,.xp-preview-label,.enh-scene-caption{display:none!important}
+.xp-gallery-main img,.xp-hero-media img,.xp-preview-image img{object-fit:cover}
+.xp-hero-media,.xp-gallery-main,.xp-preview{overflow:hidden}
+@media(max-width:680px){.page-hero.area-visual{min-height:590px;background-position:78% center}.page-hero.area-visual.pool{background-position:88% center}.page-hero.area-visual::before{background:linear-gradient(90deg,rgba(8,27,37,.84),rgba(8,27,37,.5))}.page-hero.area-visual.pool h1{font-size:clamp(2.35rem,9vw,3.3rem)}.wellness-card img{height:260px}.model-card .model-photo{height:210px}}
+@media(prefers-reduced-motion:reduce){.wellness-card img{transition:none}.wellness-card:hover img{transform:none}}

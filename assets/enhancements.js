@@ -95,11 +95,11 @@
   const featureGrid = studio.querySelector('.enh-feature-grid');
   const scene = studio.querySelector('.enh-scene');
   const studioPhotos={
-    piscina:[['assets/projects/pool-installed.webp','Piscina publicada por JECHMAN','Fotografía JECHMAN'],['assets/projects/pool-work.webp','Piscina exterior publicada por JECHMAN','Fotografía JECHMAN']],
-    jacuzzi:[['assets/areas/jacuzzis.webp','Jacuzzi exterior de referencia','Bradrey Nassel / Unsplash'],['assets/catalog/jacuzzi.webp','Jacuzzi de fibra de vidrio de referencia','Visual de referencia']],
-    tinaja:[['assets/projects/tinaja-official.webp','Tinaja publicada por JECHMAN','Fotografía JECHMAN'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
-    spa:[['assets/areas/jacuzzis.webp','Espacio de bienestar de referencia','Bradrey Nassel / Unsplash'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
-    sauna:[['assets/catalog/sauna.svg','Representación conceptual de sauna','Propuesta visual; confirmar servicio']]
+    piscina:[['assets/editorial/pool-hero-1600.webp','Piscina rectangular en jardín','Render editorial'],['assets/projects/pool-installed.webp','Piscina publicada por JECHMAN','Fotografía JECHMAN'],['assets/projects/pool-work.webp','Piscina exterior publicada por JECHMAN','Fotografía JECHMAN']],
+    jacuzzi:[['assets/editorial/jacuzzi-1600.webp','Jacuzzi exterior','Render editorial'],['assets/areas/jacuzzis.webp','Jacuzzi exterior de referencia','Bradrey Nassel / Unsplash'],['assets/catalog/jacuzzi.webp','Jacuzzi de fibra de vidrio de referencia','Visual de referencia']],
+    tinaja:[['assets/editorial/tinaja-1600.webp','Tinaja de madera exterior','Render editorial'],['assets/projects/tinaja-official.webp','Tinaja publicada por JECHMAN','Fotografía JECHMAN'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
+    spa:[['assets/editorial/jacuzzi-1600.webp','Espacio de bienestar','Render editorial'],['assets/areas/jacuzzis.webp','Espacio de bienestar de referencia','Bradrey Nassel / Unsplash'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
+    sauna:[['assets/editorial/sauna-1600.webp','Sauna en espacio de bienestar','Render editorial']]
   };
   const studioGallery=studio.querySelector('.enh-studio-gallery');
   function showStudioPhoto(index){const photos=studioPhotos[type.value],item=photos[index];if(!item)return;const image=scene.querySelector('.enh-scene-photo');image.src=item[0];image.alt=item[1];studioGallery.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
