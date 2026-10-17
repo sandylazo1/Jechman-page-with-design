@@ -9,7 +9,7 @@
 ## Cambios por fases
 
 1. **Tipografía y composición.** Libre Baskerville local bajo OFL para titulares, Manrope para lectura y controles. Escala fluida, marfil cálido, petróleo y acentos originales por división.
-2. **Configurador.** Capacidad, madera y calefacción de tinaja ahora se eligen con controles accesibles. La fotografía mantiene su procedencia y no pretende cambiar de acabado cuando se selecciona una muestra. La galería inmediata tiene miniaturas, flechas y ampliación.
+2. **Configuradores.** Capacidad, madera y calefacción de tinaja ahora se eligen con controles accesibles. La fotografía mantiene su procedencia y no pretende cambiar de acabado cuando se selecciona una muestra. La galería inmediata tiene miniaturas, flechas y ampliación. El configurador anterior de Piscinas conserva su lógica de selección y cotización, pero reemplaza la escena geométrica por fotografías de referencia según el tipo de proyecto.
 3. **Cotización.** «Mi proyecto» conserva una copia estructurada de cada configuración en la sesión. «Editar configuración» recupera las opciones, permite modificarlas y actualiza el mismo elemento. El nombre opcional del proyecto se añade al mensaje de WhatsApp. Los complementos relacionados se agregan solo al pulsar su botón.
 4. **Descubrimiento.** Las subsecciones muestran fotografía documentada en sus accesos y recomendaciones contextuales. Las propuestas sujetas a confirmación conservan esa condición explícita.
 5. **Móvil.** El configurador presenta fotografía antes de controles; «Mi proyecto» queda junto al botón flotante de WhatsApp sin cubrir el formulario.
@@ -19,6 +19,7 @@
 - `node --check assets/experience.js` y `git diff --check`: sin errores.
 - Playwright/Edge: 44 rutas en ocho anchos, sin desbordes ni errores de página.
 - Playwright/Edge: recorrido completo de tinaja (selección, guardar, editar, persistencia, cotización), galería, ampliación y recomendación en 375, 390, 768, 1024, 1440 y 1920 px. Sin fallos.
+- Playwright/Edge: configurador anterior con tinaja, caldera exterior e iluminación; resumen y WhatsApp mantienen esas tres selecciones después del cambio visual.
 - Playwright/Edge: ocho rutas nuevas verificadas con axe; ninguna infracción automática. Los recorridos previos de piscinas, electricidad y tienda se volvieron a ejecutar.
 - Capturas de esta fase: `docs/qa/editorial-tinaja-390.png`, `docs/qa/editorial-tinaja-1440.png`.
 

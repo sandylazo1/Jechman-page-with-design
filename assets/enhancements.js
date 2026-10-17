@@ -88,12 +88,22 @@
     {src:'assets/catalog/herramientas.webp',alt:'Herramientas de canalización',description:'Busca por familia y conversa sobre disponibilidad.',credit:'Visual de referencia'}
   ], 'Suministros con contexto');
 
-  const studio = section('enh-section enh-studio', `<div class="wrap"><div class="enh-head"><span class="eyebrow">IMAGINA TU PROYECTO</span><h2>Combina lo que necesitas</h2><p>Una vista ilustrativa que cambia con tus elecciones. Sirve para preparar la conversación; el diseño, la factibilidad y el equipamiento final se confirman con JECHMAN.</p></div><div class="enh-studio-layout"><div class="enh-studio-form"><label for="enh-type">1. ¿Qué te interesa?<select id="enh-type"><option value="piscina">Piscina</option><option value="jacuzzi">Jacuzzi</option><option value="tinaja">Tinaja</option><option value="spa">Spa · consultar factibilidad</option><option value="sauna">Sauna · consultar factibilidad</option></select></label><label for="enh-heat">2. Forma de calefacción<select id="enh-heat"></select></label><fieldset class="enh-studio-features"><legend>3. Complementos y servicios</legend><div class="enh-feature-grid"></div></fieldset><a class="btn" id="enh-quote" href="#">Preparar cotización</a><p class="enh-note">Sin valores publicados. El mensaje se abre en WhatsApp para que lo revises antes de enviarlo; Si quieres conservarla, agrégala a Mi proyecto.</p></div><div class="enh-studio-visual"><div class="enh-scene" data-type="piscina" role="img" aria-label="Vista ilustrativa del proyecto seleccionado"><div class="enh-scene-water"></div><div class="enh-scene-unit"></div><div class="enh-scene-caption"></div></div><div class="enh-studio-summary" role="status" aria-live="polite"><strong></strong><p></p></div></div></div></div>`);
+  const studio = section('enh-section enh-studio', `<div class="wrap"><div class="enh-head"><h2>Combina lo que necesitas</h2><p>Elige el tipo de proyecto y sus complementos. La fotografía sirve como referencia general; JECHMAN revisará el diseño y la compatibilidad de cada opción.</p></div><div class="enh-studio-layout"><div class="enh-studio-form"><label for="enh-type">1. ¿Qué te interesa?<select id="enh-type"><option value="piscina">Piscina</option><option value="jacuzzi">Jacuzzi</option><option value="tinaja">Tinaja</option><option value="spa">Spa · consultar factibilidad</option><option value="sauna">Sauna · consultar factibilidad</option></select></label><label for="enh-heat">2. Forma de calefacción<select id="enh-heat"></select></label><fieldset class="enh-studio-features"><legend>3. Complementos y servicios</legend><div class="enh-feature-grid"></div></fieldset><a class="btn" id="enh-quote" href="#">Preparar cotización</a><p class="enh-note">Sin precios publicados. Revisa el mensaje en WhatsApp antes de enviarlo. Para conservar la selección, pulsa «Agregar a mi proyecto».</p></div><div class="enh-studio-visual"><div class="enh-scene" data-type="piscina"><img class="enh-scene-photo" src="assets/projects/pool-installed.webp" alt="Piscina publicada por JECHMAN" loading="lazy" width="900" height="650"><div class="enh-scene-caption"></div></div><div class="enh-studio-gallery" role="group" aria-label="Fotografías del tipo de proyecto"></div><div class="enh-studio-summary" role="status" aria-live="polite"><strong></strong><p></p></div></div></div></div>`);
   pool.querySelector('#piscina-modelos').insertAdjacentElement('beforebegin', studio);
   const type = studio.querySelector('#enh-type');
   const heat = studio.querySelector('#enh-heat');
   const featureGrid = studio.querySelector('.enh-feature-grid');
   const scene = studio.querySelector('.enh-scene');
+  const studioPhotos={
+    piscina:[['assets/projects/pool-installed.webp','Piscina publicada por JECHMAN','Fotografía JECHMAN'],['assets/projects/pool-work.webp','Piscina exterior publicada por JECHMAN','Fotografía JECHMAN']],
+    jacuzzi:[['assets/areas/jacuzzis.webp','Jacuzzi exterior de referencia','Bradrey Nassel / Unsplash'],['assets/catalog/jacuzzi.webp','Jacuzzi de fibra de vidrio de referencia','Visual de referencia']],
+    tinaja:[['assets/projects/tinaja-official.webp','Tinaja publicada por JECHMAN','Fotografía JECHMAN'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
+    spa:[['assets/areas/jacuzzis.webp','Espacio de bienestar de referencia','Bradrey Nassel / Unsplash'],['assets/areas/tinajas.webp','Tinaja exterior de referencia','Clay Banks / Unsplash']],
+    sauna:[['assets/catalog/sauna.svg','Representación conceptual de sauna','Propuesta visual; confirmar servicio']]
+  };
+  const studioGallery=studio.querySelector('.enh-studio-gallery');
+  function showStudioPhoto(index){const photos=studioPhotos[type.value],item=photos[index];if(!item)return;const image=scene.querySelector('.enh-scene-photo');image.src=item[0];image.alt=item[1];studioGallery.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
+  function renderStudioGallery(){studioGallery.replaceChildren();studioPhotos[type.value].forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-label',`Ver fotografía ${index+1}: ${item[1]}`);button.setAttribute('aria-pressed',String(index===0));const image=document.createElement('img');image.src=item[0];image.alt='';image.loading='lazy';button.append(image);button.addEventListener('click',()=>showStudioPhoto(index));studioGallery.append(button);});showStudioPhoto(0);}
   const typeNames = {piscina:'Piscina',jacuzzi:'Jacuzzi',tinaja:'Tinaja',spa:'Spa',sauna:'Sauna'};
   const heatByType = {
     piscina:[['sin-definir','Por definir'],['bomba-calor','Bomba de calor']],
@@ -111,6 +121,7 @@
     ['pintado','Pintado o reparación','piscina']
   ];
   function renderStudioOptions() {
+    renderStudioGallery();
     heat.replaceChildren();
     heatByType[type.value].forEach(([value,label]) => { const option = new Option(label,value); heat.add(option); });
     featureGrid.replaceChildren();
@@ -128,17 +139,11 @@
     const labels = selected.map(input => input.dataset.label);
     const heatLabel = heat.selectedOptions[0]?.textContent || 'Por definir';
     scene.dataset.type = type.value;
-    scene.classList.toggle('has-heat', !['sin-definir','evaluar'].includes(heat.value));
-    scene.classList.toggle('has-wood-boiler', heat.value.startsWith('caldera-'));
-    scene.classList.toggle('has-cover', selected.some(input => input.value === 'cobertor'));
-    scene.classList.toggle('has-light', selected.some(input => input.value === 'luz'));
-    scene.classList.toggle('has-robot', selected.some(input => input.value === 'robot'));
     const chips = scene.querySelector('.enh-scene-caption'); chips.replaceChildren();
     [typeNames[type.value],heatLabel,...labels].slice(0,5).forEach(label => { const chip=document.createElement('span');chip.textContent=label;chips.append(chip); });
     const summary = `${typeNames[type.value]} · ${heatLabel}${labels.length ? ' · '+labels.join(', ') : ''}`;
-    scene.setAttribute('aria-label','Ilustración de '+summary);
     studio.querySelector('.enh-studio-summary strong').textContent = summary;
-    studio.querySelector('.enh-studio-summary p').textContent = 'Composición ilustrativa; ubicación y compatibilidad sujetas a evaluación técnica.';
+    studio.querySelector('.enh-studio-summary p').textContent = 'La fotografía muestra un ejemplo general. Acabado, calefacción y complementos se cotizan según evaluación técnica.';
     quote(studio.querySelector('#enh-quote'), `Hola JECHMAN, quisiera cotizar un proyecto de ${typeNames[type.value].toLowerCase()}. Calefacción: ${heatLabel}. Complementos o servicios: ${labels.length ? labels.join(', ') : 'por definir'}. ¿Podemos revisar factibilidad, disponibilidad, instalación y una cotización sin compromiso?`);
   }
   type.addEventListener('change', renderStudioOptions);
