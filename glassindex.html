@@ -373,6 +373,7 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing
 .view[data-view="home"] h3,.footer h3{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:-.035em}
 .view[data-view="home"] .card,.view[data-view="home"] .news-card{background:#ffffffcf;border:1px solid #ffffffde;backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:0 12px 34px #001e3219}
 </style>
+  <link rel="stylesheet" href="assets/enhancements.css">
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -505,4 +506,5 @@ q('#news-prev').addEventListener('click',()=>newsGo(newsPosition()-1));q('#news-
 fetch('news.json').then(r=>{if(!r.ok)throw Error('news');return r.json()}).then(items=>{newsItems=items;items.forEach((item,i)=>{if(!/^https:\/\/www\.jechman\.cl\//.test(item.source))return;const card=document.createElement('article');card.className='news-card';const img=document.createElement('img');img.src=item.image;img.alt='Imagen ilustrativa: '+item.title;img.loading='lazy';img.decoding='async';const inside=document.createElement('div');inside.className='inside';const tag=document.createElement('span');tag.className='tag';tag.textContent=item.category;const heading=document.createElement('h3');heading.textContent=item.title;const body=document.createElement('p');body.textContent=item.description;const link=document.createElement('a');link.className='text-link';link.href=item.source;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Conocer más en JECHMAN';inside.append(tag,heading,body,link);card.append(img,inside);newsTrack.append(card);const dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label','Ir a novedad '+(i+1));dot.addEventListener('click',()=>newsGo(i));newsDots.append(dot)});newsUpdate()}).catch(()=>{newsTrack.textContent='No se pudieron cargar las novedades. Revisa el catálogo oficial de JECHMAN.';newsDots.hidden=true;q('#news-prev').disabled=true;q('#news-next').disabled=true});
 const cookieBanner=q('#cookie-banner');try{cookieBanner.hidden=localStorage.getItem('jechman-preview-cookie-notice')==='acknowledged'}catch{cookieBanner.hidden=false}q('#cookie-dismiss').addEventListener('click',()=>{try{localStorage.setItem('jechman-preview-cookie-notice','acknowledged')}catch{}cookieBanner.hidden=true});q('#cookie-settings').addEventListener('click',()=>{cookieBanner.hidden=false;q('#cookie-dismiss').focus()});
 </script>
+<script src="assets/enhancements.js"></script>
 </body></html>
