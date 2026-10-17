@@ -21,13 +21,15 @@ Prompts de generación: fotografía comercial horizontal, realista y de alta res
 
 La portada y las subpáginas usan imágenes de referencia con licencia documentada y, en algunos contenidos de piscinas y tinajas, fotografías publicadas por JECHMAN. Sus URL de origen y notas de autoría están en `assets/image-sources.json`. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
 
-La tipografía de la experiencia actual usa archivos locales de Inter y Manrope. Sus licencias SIL Open Font License se incluyen en `assets/fonts/`. La portada organiza las tres divisiones corporativas y el catálogo conserva la solicitud de cotización sin pagos en línea.
+La tipografía usa Libre Baskerville para titulares y Manrope para texto y controles, con archivos locales y licencias SIL Open Font License en `assets/fonts/`. La portada organiza las tres divisiones corporativas y el catálogo conserva la solicitud de cotización sin pagos en línea.
 
 El logotipo de cabecera y pie utiliza `assets/jechman-logo-official.jpeg`, proporcionado por Sandy. Se muestra con un recorte visual de los márgenes vacíos del archivo original, sin modificar la marca.
 
 ## Experiencia interactiva
 
 Las rutas nuevas, sus estados de verificación comercial y los resultados de prueba se describen en [docs/interactive-experience-2026-10-17.md](docs/interactive-experience-2026-10-17.md). «Mi proyecto» guarda solo selecciones de productos y servicios en la sesión de la pestaña y reúne su solicitud para WhatsApp. Las opciones pendientes de validación aparecen identificadas como propuestas.
+
+La revisión editorial y las pruebas de edición de configuraciones se documentan en [docs/editorial-audit-2026-10-17.md](docs/editorial-audit-2026-10-17.md).
 
 ## Fuentes de Novedades
 

@@ -83,12 +83,13 @@
   projectButton.innerHTML = '<span>Mi proyecto</span><strong id="xp-project-count">0</strong>';
   document.body.append(projectButton);
   let project = readProject();
+  let projectName='';try{projectName=(sessionStorage.getItem('jechman-project-name')||'').slice(0,80);}catch{}
   let currentEntry = null;
 
   function readProject() {
     try {
       const saved = JSON.parse(sessionStorage.getItem(projectKey) || '[]');
-      return Array.isArray(saved) ? saved.filter(item => item && typeof item.title === 'string' && typeof item.details === 'string').slice(0,12).map(item=>({id:String(item.id||''),title:item.title.slice(0,90),details:item.details.slice(0,900),route:typeof item.route==='string'&&item.route.startsWith('#/')?item.route:'#/',status:['confirmed','evaluation','proposal'].includes(item.status)?item.status:'evaluation'})) : [];
+      return Array.isArray(saved) ? saved.filter(item => item && typeof item.title === 'string' && typeof item.details === 'string').slice(0,12).map(item=>({id:String(item.id||''),title:item.title.slice(0,90),details:item.details.slice(0,900),route:typeof item.route==='string'&&item.route.startsWith('#/')?item.route:'#/',status:['confirmed','evaluation','proposal'].includes(item.status)?item.status:'evaluation',config:item.config&&typeof item.config==='object'&&!Array.isArray(item.config)?item.config:null})) : [];
     } catch { return []; }
   }
   function persist() { try { sessionStorage.setItem(projectKey,JSON.stringify(project)); } catch {} $('#xp-project-count').textContent=project.length; }
@@ -97,10 +98,12 @@
     if (!node) { node=document.createElement('div'); node.id='xp-toast'; node.className='xp-toast'; node.setAttribute('role','status'); document.body.append(node); }
     node.textContent=message; node.classList.add('is-visible'); clearTimeout(announce.timer); announce.timer=setTimeout(()=>node.classList.remove('is-visible'),3200);
   }
-  function addProject(title,details,route,status='evaluation') {
+  function addProject(title,details,route,status='evaluation',config=null,draftId='') {
+    const draft=project.find(item=>item.id===draftId);
+    if(draft){Object.assign(draft,{title:String(title).slice(0,90),details:String(details).slice(0,900),route,status,config});persist();announce('Configuración actualizada en Mi proyecto.');return true;}
     if (project.length >= 12) { announce('Tu proyecto admite hasta 12 elementos. Revisa la lista antes de agregar más.'); return; }
-    project.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),title:String(title).slice(0,90),details:String(details).slice(0,900),route,status});
-    persist(); announce('Se agregó a Mi proyecto.');
+    project.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),title:String(title).slice(0,90),details:String(details).slice(0,900),route,status,config});
+    persist(); announce('Se agregó a Mi proyecto.');return true;
   }
   persist();
 
@@ -118,7 +121,7 @@
       const grid=$('.xp-discovery-grid',section);
       for (const route of routes) {
         const item=byRoute.get(route); const a=document.createElement('a');a.className='xp-discovery-card xp-spotlight';a.href='#/'+route;
-        a.innerHTML=`<span>${escape(item.title)}</span><small>${escape(item.status==='proposal'?'Propuesta por confirmar':item.type.includes('config')?'Configurar y cotizar':'Explorar opciones')}</small><b aria-hidden="true">↗</b>`;grid.append(a);
+        a.innerHTML=`<span class="xp-discovery-photo"><img src="${escape(item.gallery[0].src)}" alt="" loading="lazy" width="360" height="240"></span><span class="xp-discovery-info"><span>${escape(item.title)}</span><small>${escape(item.status==='proposal'?'Propuesta por confirmar':item.type.includes('config')?'Configurar y cotizar':'Explorar opciones')}</small><b aria-hidden="true">↗</b></span>`;grid.append(a);
       }
       const anchor=$('.enh-mast',target)||$('.page-hero',target);
       anchor.insertAdjacentElement('afterend',section);
@@ -155,7 +158,7 @@
     else if(entry.parent==='tinajas'||entry.parent==='jacuzzis')routes=['piscinas/climatizacion','piscinas/iluminacion','piscinas/filtracion'];
     else routes=['tienda/iluminacion','tienda/hidraulica','comercial/electricidad'];
     routes=routes.filter(route=>route!==entry.route).slice(0,3);
-    return `<section class="xp-related"><div class="wrap"><div class="xp-section-heading"><h2>Completa tu idea</h2><p>Opciones que puedes revisar en la misma solicitud.</p></div><div class="xp-related-grid">${routes.map(route=>{const item=byRoute.get(route);return `<a class="xp-related-card xp-spotlight" href="#/${route}"><span>${escape(item.title)}</span><small>${escape(item.description)}</small><b aria-hidden="true">↗</b></a>`}).join('')}</div></div></section>`;
+     return `<section class="xp-related"><div class="wrap"><div class="xp-section-heading"><h2>Soluciones que acompañan tu proyecto</h2><p>Consulta por separado cada complemento que te interese.</p></div><div class="xp-related-grid">${routes.map(route=>{const item=byRoute.get(route);return `<article class="xp-related-card xp-spotlight"><img src="${escape(item.gallery[0].src)}" alt="" loading="lazy" width="420" height="220"><div><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><div class="xp-related-actions"><a href="#/${route}">Explorar</a><button type="button" data-related-add="${escape(route)}">Agregar a mi proyecto</button></div></div></article>`}).join('')}</div></div></section>`;
   }
   function quotePanel(entry) {
     return `<div class="xp-quote-panel"><div><h3>¿Lo conversamos?</h3><p>Tu selección se prepara en WhatsApp. JECHMAN confirma alcance y compatibilidad antes de cotizar.</p></div><a class="btn" id="xp-simple-quote" href="#">Cotizar ${escape(entry.title.toLowerCase())}</a><button type="button" class="btn outline" id="xp-simple-add">Agregar a mi proyecto</button></div>`;
@@ -197,10 +200,10 @@
         {title:'Equipamiento',fields:[checks('equipment','Consultar complementos',['Filtración y motobomba','Iluminación de piscina','Cobertor térmico','Robot limpiafondos','Climatización a evaluar'],'La compatibilidad y el dimensionamiento se revisan técnicamente.'),textField('space','Espacio o referencia de terreno','Ej. patio, terraza, parcela')]},
         {title:'Revisar',fields:[textField('observations','Algo más que debamos saber','Acceso, plazo, dudas o inspiración')]}];
       case 'tinaja-config':return [
-        {title:'Capacidad',fields:[select('capacity','¿Para cuántas personas?',['2 personas','4 personas','6 personas','8 personas','10 personas','12 personas','Capacidad personalizada por consultar','1 persona · medida especial por consultar'],'Las capacidades estándar figuran en la ficha oficial de JECHMAN.')]},
-        {title:'Madera',fields:[select('wood','Madera',['Pino','Ciprés','Por definir'])]},
+         {title:'Capacidad',fields:[{...select('capacity','¿Para cuántas personas?',['2 personas','4 personas','6 personas','8 personas','10 personas','12 personas','Capacidad personalizada por consultar','1 persona · medida especial por consultar'],'Las capacidades estándar figuran en la ficha oficial de JECHMAN.'),type:'tiles'}]},
+         {title:'Madera',fields:[{...select('wood','Madera',['Pino','Ciprés','Por definir']),type:'tiles'}]},
         {title:'Revestimiento',fields:[select('lining','Color del revestimiento',['Por definir con JECHMAN'],'La página oficial permite elegir color, pero no publica un listado específico para tinajas.')]},
-        {title:'Calefacción',fields:[select('boiler','Caldera o alternativa',['Acero galvanizado','Acero inoxidable','Consultar otra alternativa','Consultar bomba de calor · compatibilidad por evaluar'],'La bomba de calor se plantea solo como consulta de factibilidad.')]},
+         {title:'Calefacción',fields:[{...select('boiler','Caldera o alternativa',['Acero galvanizado','Acero inoxidable','Consultar otra alternativa','Consultar bomba de calor · compatibilidad por evaluar'],'La bomba de calor se plantea solo como consulta de factibilidad.'),type:'tiles'}]},
         {title:'Complementos',fields:[checks('extras','Equipamiento adicional',['Bomba de recirculación','Filtro y carga filtrante','Hidromasaje','Iluminación LED','Tablero eléctrico'],'La ficha oficial documenta estas alternativas; JECHMAN confirma cada configuración.')]},
         {title:'Instalación',fields:[select('installation','Alcance',['Solo suministro','Solicitar instalación','Instalación y complementos','Evaluación técnica del proyecto'])]},
         {title:'Revisar',fields:[textField('observations','Detalles del lugar','Accesos, ubicación o necesidades especiales')]}];
@@ -232,6 +235,7 @@
   }
   function control(field) {
     const help=field.help?`<small>${escape(field.help)}</small>`:'';
+    if(field.type==='tiles')return `<fieldset class="xp-choice-field"><legend>${escape(field.label)}</legend><div class="xp-tile-options">${field.options.map((option,index)=>`<label class="xp-tile"><input type="radio" name="${field.id}" value="${escape(option)}" ${index===0?'checked':''}><span>${escape(option)}</span></label>`).join('')}</div>${help}</fieldset>`;
     if(field.type==='select')return `<label class="xp-field"><span>${escape(field.label)}</span><select name="${field.id}" id="xp-${field.id}">${field.options.map(option=>`<option value="${escape(option)}">${escape(option)}</option>`).join('')}</select>${help}</label>`;
     if(field.type==='text'||field.type==='number')return `<label class="xp-field"><span>${escape(field.label)}</span><input name="${field.id}" id="xp-${field.id}" type="${field.type==='number'?'number':'text'}" ${field.type==='number'?`min="${field.min}" max="${field.max}" step="any" inputmode="decimal"`:''} maxlength="200" placeholder="${escape(field.placeholder||'Por definir')}">${help}</label>`;
     if(field.type==='colors')return `<fieldset class="xp-choice-field"><legend>${escape(field.label)}</legend><div class="xp-color-options">${field.options.map(([label,color],index)=>`<label><input type="radio" name="${field.id}" value="${escape(label)}" ${index===0?'checked':''}><span class="xp-color-swatch" style="--swatch:${color}"></span><span>${escape(label)}</span></label>`).join('')}</div>${help}</fieldset>`;
@@ -241,28 +245,39 @@
     const steps=configDefinition(entry);
     const visualClass=entry.type==='domotica'?'xp-house-scene':entry.type==='inmotica'?'xp-building-scene':'';
     const concept=visualClass?`<div class="xp-concept ${visualClass}" aria-hidden="true"><div class="xp-concept-architecture"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="xp-concept-light"></div></div>`:'';
-    const finishMarkup='<div class="xp-preview-finish" hidden><span class="xp-preview-swatch"></span><strong></strong><small>Muestra conceptual; la fotografía no representa esta variante.</small></div>';
+     const finishMarkup='<div class="xp-preview-finish" hidden><span class="xp-preview-swatch"></span><strong></strong><small>Acabado solicitado; la fotografía no cambia con la selección.</small></div>';
+     const previewGallery=entry.gallery.length>1?`<div class="xp-preview-gallery" aria-label="Fotografías de referencia"><button type="button" class="xp-preview-arrow" data-preview-step="-1" aria-label="Fotografía anterior">←</button>${entry.gallery.map((item,index)=>`<button type="button" data-preview-index="${index}" aria-label="Ver fotografía ${index+1}: ${escape(item.alt)}" aria-pressed="${index===0}"><img src="${escape(item.src)}" alt="" loading="lazy" width="84" height="64"></button>`).join('')}<button type="button" class="xp-preview-arrow" data-preview-step="1" aria-label="Fotografía siguiente">→</button><button type="button" class="xp-preview-zoom" aria-label="Ampliar fotografía">Ampliar</button></div>`:'';
     const sim=entry.type==='domotica'?`<div class="xp-simulator"><h3>Prueba una escena conceptual</h3><p>Demostración visual; no hay equipos conectados ni mediciones reales.</p><div class="xp-sim-actions"><button type="button" data-scene="day" aria-pressed="true">Día</button><button type="button" data-scene="night" aria-pressed="false">Noche</button><button type="button" data-scene="away" aria-pressed="false">Ausencia</button></div></div>`:entry.type==='inmotica'?`<div class="xp-simulator"><h3>Explora zonas del edificio</h3><p>Representación conceptual de áreas a revisar por ingeniería.</p><div class="xp-sim-actions"><button type="button" data-zone="Planta baja" aria-pressed="true">Planta baja</button><button type="button" data-zone="Oficinas" aria-pressed="false">Oficinas</button><button type="button" data-zone="Servicios" aria-pressed="false">Servicios</button></div><p class="xp-zone-status" role="status">Zona: Planta baja</p></div>`:'';
     const calculation=entry.type==='energy'?'<div class="xp-energy-result" role="status">Ingresa potencia, cantidad y horas para ver un consumo diario teórico.</div>':'';
-    return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>${escape(entry.title)}</h2><p>Tu selección se actualiza mientras avanzas. Podrás revisarla antes de abrir WhatsApp.</p></div><div class="xp-config-layout"><div class="xp-preview xp-spotlight"><div class="xp-preview-image"><img src="${escape(entry.gallery[0].src)}" alt="${escape(entry.gallery[0].alt)}" loading="lazy" width="1000" height="750">${concept}${finishMarkup}<span class="xp-preview-label">${visualClass?'Simulación conceptual':escape(entry.gallery[0].credit)}</span></div>${sim}<div class="xp-preview-summary"><h3>Tu selección</h3><dl id="xp-summary" aria-live="polite"></dl>${calculation}</div></div><div class="xp-config-form"><div class="xp-progress"><span id="xp-step-count">Paso 1 de ${steps.length}</span><div class="xp-progress-track"><span id="xp-progress-fill"></span></div></div><form id="xp-form" novalidate>${steps.map((step,index)=>`<fieldset class="xp-step" data-step="${index}" ${index?'hidden':''}><legend>${escape(step.title)}</legend>${step.fields.map(control).join('')}</fieldset>`).join('')}</form><div class="xp-config-nav"><button type="button" class="btn outline" id="xp-prev" disabled>Anterior</button><button type="button" class="btn" id="xp-next">Continuar</button></div><div class="xp-config-actions"><a class="btn xp-quote" id="xp-quote" href="#">Cotizar esta configuración</a><button type="button" class="btn outline" id="xp-add">Agregar a mi proyecto</button><button type="button" class="xp-reset" id="xp-reset">Reiniciar selección</button></div><p class="xp-note">No se envía información hasta que revises el mensaje y pulses Enviar en WhatsApp. La configuración final depende de JECHMAN.</p></div></div></div></section>`;
+    return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>${escape(entry.title)}</h2><p>Tu selección se actualiza mientras avanzas. Podrás revisarla antes de abrir WhatsApp.</p></div><div class="xp-config-layout"><div class="xp-preview xp-spotlight"><div class="xp-preview-image"><img src="${escape(entry.gallery[0].src)}" alt="${escape(entry.gallery[0].alt)}" loading="lazy" width="1000" height="750">${concept}${finishMarkup}<span class="xp-preview-label">${visualClass?'Simulación conceptual':escape(entry.gallery[0].credit)}</span></div>${previewGallery}${sim}<div class="xp-preview-summary"><h3>Tu selección</h3><dl id="xp-summary" aria-live="polite"></dl>${calculation}</div></div><div class="xp-config-form"><div class="xp-progress"><span id="xp-step-count">Paso 1 de ${steps.length}</span><div class="xp-progress-track"><span id="xp-progress-fill"></span></div></div><form id="xp-form" novalidate>${steps.map((step,index)=>`<fieldset class="xp-step" data-step="${index}" ${index?'hidden':''}><legend>${escape(step.title)}</legend>${step.fields.map(control).join('')}</fieldset>`).join('')}</form><div class="xp-config-nav"><button type="button" class="btn outline" id="xp-prev" disabled>Anterior</button><button type="button" class="btn" id="xp-next">Continuar</button></div><div class="xp-config-actions"><a class="btn xp-quote" id="xp-quote" href="#">Cotizar esta configuración</a><button type="button" class="btn outline" id="xp-add">Agregar a mi proyecto</button><button type="button" class="xp-reset" id="xp-reset">Reiniciar selección</button></div><p class="xp-note">No se envía información hasta que revises el mensaje y pulses Enviar en WhatsApp. La configuración final depende de JECHMAN.</p></div></div></div></section>`;
   }
   function bindConfig(entry) {
     const root=$('#xp-config',view), form=$('#xp-form',root), steps=$$('.xp-step',form), definitions=configDefinition(entry);let step=0;
+     const draftId=new URLSearchParams((location.hash.split('?')[1]||'')).get('editar')||'';
+     const draft=project.find(item=>item.id===draftId&&item.route==='#/'+entry.route);
+     if(draft?.config){for(const [name,saved] of Object.entries(draft.config)){if(typeof name!=='string'||name.length>40)continue;const inputs=$$('[name]',form).filter(input=>input.name===name);for(const input of inputs){if(input.type==='checkbox'||input.type==='radio')input.checked=Array.isArray(saved)?saved.includes(input.value):saved===input.value;else if(typeof saved==='string')input.value=saved.slice(0,200);}}}
+     const previewButtons=$$('[data-preview-index]',root),previewImage=$('.xp-preview-image>img',root),previewLabel=$('.xp-preview-label',root);
+     function setPreview(index){const item=entry.gallery[index];if(!item)return;previewImage.src=item.src;previewImage.alt=item.alt;previewLabel.textContent=item.credit;previewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
+     previewButtons.forEach(button=>button.addEventListener('click',()=>setPreview(Number(button.dataset.previewIndex))));
+     $$('[data-preview-step]',root).forEach(button=>button.addEventListener('click',()=>{const current=previewButtons.findIndex(item=>item.getAttribute('aria-pressed')==='true');setPreview((current+Number(button.dataset.previewStep)+entry.gallery.length)%entry.gallery.length);}));
+     const zoom=$('.xp-preview-zoom',root);
+     if(zoom){const dialog=document.createElement('dialog');dialog.className='xp-lightbox';dialog.innerHTML='<button type="button" aria-label="Cerrar imagen">Cerrar ×</button><img alt=""><p></p>';root.append(dialog);zoom.addEventListener('click',()=>{const img=$('img',dialog);img.src=previewImage.src;img.alt=previewImage.alt;$('p',dialog).textContent=previewLabel.textContent;dialog.showModal();});$('button',dialog).addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});}
     const family=$('#xp-family',form), model=$('#xp-model',form);
     if(family&&model){
       const params=new URLSearchParams((location.hash.split('?')[1]||'')); const wanted=params.get('tipo');if(['Rectangular','Romana','Con jacuzzi'].includes(wanted))family.value=wanted;
-      function updateModels() {const previous=model.value;model.replaceChildren();models.filter(item=>family.value==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family.value).forEach(item=>model.add(new Option(`${item[1]} m · prof. ${item[2]} m${item[3]?' · '+item[3]:''}`,item[1])));if([...model.options].some(item=>item.value===previous))model.value=previous;const wantedModel=params.get('modelo');if([...model.options].some(item=>item.value===wantedModel))model.value=wantedModel;update();}
+       function updateModels() {const previous=model.value;model.replaceChildren();models.filter(item=>family.value==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family.value).forEach(item=>model.add(new Option(`${item[1]} m · prof. ${item[2]} m${item[3]?' · '+item[3]:''}`,item[1])));if([...model.options].some(item=>item.value===previous))model.value=previous;const wantedModel=draft?.config?.model||params.get('modelo');if([...model.options].some(item=>item.value===wantedModel))model.value=wantedModel;update();}
       family.addEventListener('change',()=>{params.delete('modelo');updateModels()});updateModels();
     }
     function selections() {
       return definitions.flatMap(group=>group.fields.map(field=>{
         const inputs=$$(`[name="${field.id}"]`,form);let value='';
         if(field.type==='checks')value=inputs.filter(input=>input.checked).map(input=>input.value).join(', ');
-        else if(field.type==='colors')value=inputs.find(input=>input.checked)?.value||'';
+         else if(field.type==='colors'||field.type==='tiles')value=inputs.find(input=>input.checked)?.value||'';
         else value=inputs[0]?.value?.trim()||'';
         return {label:field.label,value};
       })).filter(item=>item.value);
     }
+     function configSnapshot(){const snapshot={};for(const input of $$('[name]',form)){if(input.type==='checkbox'){(snapshot[input.name]??=[]);if(input.checked)snapshot[input.name].push(input.value);}else if(input.type==='radio'){if(input.checked)snapshot[input.name]=input.value;}else snapshot[input.name]=input.value.slice(0,200);}return snapshot;}
     function update() {
       const values=selections();const summary=$('#xp-summary',root);summary.replaceChildren();
       for(const {label,value} of values){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;summary.append(dt,dd);}
@@ -275,22 +290,23 @@
       const finish=$('.xp-preview-finish',root);
       if(entry.type==='pool-config'||entry.type==='jacuzzi-config'){
         const chosen=$('[name="color"]:checked',form)?.value||'Blanco puro';finish.hidden=false;$('.xp-preview-swatch',finish).style.background=colorOptions.find(item=>item[0]===chosen)?.[1]||'#f8f8f5';$('strong',finish).textContent=`Acabado: ${chosen}`;
-        if(entry.type==='pool-config'){const image=$('.xp-preview-image>img',root);const src=family.value==='Romana'?'assets/catalog/piscina-romana.webp':family.value==='Con jacuzzi'?'assets/catalog/jacuzzi.webp':'assets/projects/pool-installed.webp';if(!image.src.endsWith(src))image.src=src;image.alt=`Referencia visual para piscina ${family.value.toLowerCase()}; no identifica el modelo exacto`;}
-      }else if(entry.type==='tinaja-config'){finish.hidden=false;$('.xp-preview-swatch',finish).style.background=$('#xp-wood',form)?.value==='Ciprés'?'#9f6a42':'#c18b57';$('strong',finish).textContent=`${$('#xp-capacity',form)?.value||'Capacidad por definir'} · ${$('#xp-wood',form)?.value||'madera por definir'}`;}
+       if(entry.type==='pool-config')root.dataset.family=family.value;
+       }else if(entry.type==='tinaja-config'){const capacity=$('[name="capacity"]:checked',form)?.value||'Capacidad por definir',wood=$('[name="wood"]:checked',form)?.value||'madera por definir';finish.hidden=false;$('.xp-preview-swatch',finish).style.background=wood==='Ciprés'?'#9f6a42':'#c18b57';$('strong',finish).textContent=`${capacity} · ${wood}`;}
       return details;
     }
     function showStep(next){step=Math.max(0,Math.min(next,steps.length-1));steps.forEach((item,index)=>item.hidden=index!==step);$('#xp-step-count',root).textContent=`Paso ${step+1} de ${steps.length}`;$('#xp-progress-fill',root).style.width=`${((step+1)/steps.length)*100}%`;$('#xp-prev',root).disabled=step===0;$('#xp-next',root).textContent=step===steps.length-1?'Revisar mi proyecto':'Continuar';}
     form.addEventListener('input',update);form.addEventListener('change',update);
     $('#xp-prev',root).addEventListener('click',()=>{showStep(step-1);$('.xp-config-form',root).scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'});});
-    $('#xp-next',root).addEventListener('click',()=>{if(step<steps.length-1){showStep(step+1);$('.xp-config-form',root).scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'});}else{addProject(entry.title,update(),'#/'+entry.route,entry.status);location.hash='#/mi-proyecto';}});
-    $('#xp-add',root).addEventListener('click',()=>addProject(entry.title,update(),'#/'+entry.route,entry.status));
+     $('#xp-next',root).addEventListener('click',()=>{if(step<steps.length-1){showStep(step+1);$('.xp-config-form',root).scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'});}else if(addProject(entry.title,update(),'#/'+entry.route,entry.status,configSnapshot(),draftId)){location.hash='#/mi-proyecto';}});
+     $('#xp-add',root).addEventListener('click',()=>{if(addProject(entry.title,update(),'#/'+entry.route,entry.status,configSnapshot(),draftId)&&draftId)location.hash='#/mi-proyecto';});
     $('#xp-reset',root).addEventListener('click',()=>{form.reset();if(family&&model)family.dispatchEvent(new Event('change'));showStep(0);update();announce('Selección reiniciada.');});
     root.addEventListener('click',event=>{
       const scene=event.target.closest('[data-scene]'),zone=event.target.closest('[data-zone]');
       if(scene){$$('[data-scene]',root).forEach(button=>button.setAttribute('aria-pressed',String(button===scene)));root.dataset.scene=scene.dataset.scene;}
       if(zone){$$('[data-zone]',root).forEach(button=>button.setAttribute('aria-pressed',String(button===zone)));$('.xp-zone-status',root).textContent='Zona: '+zone.dataset.zone;root.dataset.zone=zone.dataset.zone;}
     });
-    showStep(0);update();
+     if(draft)announce('Configuración guardada recuperada. Puedes editarla y actualizar tu proyecto.');
+     showStep(0);update();
   }
   function updateEnergy(form,root){
     const watts=Number($('#xp-watts',form).value),quantity=Number($('#xp-quantity',form).value),hours=Number($('#xp-hours',form).value),output=$('.xp-energy-result',root);
@@ -323,7 +339,8 @@
     return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>Explora productos</h2><p>Abre una ficha para indicar uso, cantidad y necesidades de instalación. La disponibilidad se confirma al cotizar.</p></div><div class="xp-catalog-grid">${selected.map(item=>`<article class="xp-catalog-card xp-spotlight"><img src="${escape(item.image)}" alt="${escape(item.name)}" loading="lazy" width="700" height="500"><div><h3>${escape(item.name)}</h3><p>${escape(item.description)}</p><a href="${productRoute(item)}">Explorar ficha <span aria-hidden="true">↗</span></a></div></article>`).join('')}</div>${quotePanel(entry)}</div></section>`;
   }
   function renderProject(){
-    view.innerHTML=`<section class="xp-project-hero"><div class="wrap"><nav class="xp-breadcrumb" aria-label="Ruta de navegación"><a href="#/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Mi proyecto</span></nav><h1>Revisa tu proyecto</h1><p>Reúne soluciones y productos en una sola solicitud. Puedes quitar elementos o volver a configurarlos antes de enviarla.</p></div></section><section class="xp-project-content"><div class="wrap"><div id="xp-project-items" class="xp-project-items"></div><div class="xp-project-final"><p>JECHMAN confirma disponibilidad, compatibilidad y alcance técnico. Tu lista no incluye precios ni envía datos automáticamente.</p><a class="btn" id="xp-project-send" href="#">Enviar solicitud de cotización</a><a class="xp-text-link" href="#/">Seguir explorando</a></div></div></section>`;
+     view.innerHTML=`<section class="xp-project-hero"><div class="wrap"><nav class="xp-breadcrumb" aria-label="Ruta de navegación"><a href="#/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Mi proyecto</span></nav><h1>Revisa tu proyecto</h1><p>Reúne soluciones y productos en una sola solicitud. Puedes quitar elementos o volver a configurarlos antes de enviarla.</p></div></section><section class="xp-project-content"><div class="wrap"><label class="xp-project-name">Nombre de tu proyecto <input id="xp-project-name" maxlength="80" placeholder="Ej. Piscina y terraza en casa" value="${escape(projectName)}"><small>Opcional. Solo se añade al mensaje cuando solicites cotización.</small></label><div id="xp-project-items" class="xp-project-items"></div><div class="xp-project-final"><p>JECHMAN confirma disponibilidad, compatibilidad y alcance técnico. Tu lista no incluye precios ni envía datos automáticamente.</p><a class="btn" id="xp-project-send" href="#">Enviar solicitud de cotización</a><a class="xp-text-link" href="#/">Seguir explorando</a></div></div></section>`;
+     $('#xp-project-name',view).addEventListener('input',event=>{projectName=event.target.value.trim().slice(0,80);try{sessionStorage.setItem('jechman-project-name',projectName);}catch{}updateProjectLink();});
     const container=$('#xp-project-items',view);if(!project.length)container.innerHTML='<div class="xp-project-empty"><h2>Aún no hay elementos en tu proyecto</h2><p>Explora una sección, configura tu idea y agrégala aquí.</p><a class="btn" href="#/piscinas">Explorar soluciones</a></div>';
     else project.forEach((item,index)=>{
       const card=document.createElement('article');card.className='xp-project-item';
@@ -333,13 +350,14 @@
       const label=document.createElement('label');label.textContent='Detalles de la solicitud';const area=document.createElement('textarea');area.value=item.details;area.maxLength=900;area.rows=5;label.append(area);
       const save=document.createElement('button');save.type='button';save.textContent='Guardar cambios';save.addEventListener('click',()=>{item.details=area.value.trim().slice(0,900)||item.details;persist();renderProject();announce('Solicitud actualizada.');});
       const cancel=document.createElement('button');cancel.type='button';cancel.textContent='Cancelar';cancel.addEventListener('click',()=>{editor.hidden=true;});editor.append(label,save,cancel);text.append(title,status,p,editor);
-      const actions=document.createElement('div');const edit=document.createElement('a');edit.href=item.route;edit.textContent='Volver a configurar';
+       const actions=document.createElement('div');const edit=document.createElement('a');edit.href=item.config?`${item.route}?editar=${encodeURIComponent(item.id)}`:item.route;edit.textContent=item.config?'Editar configuración':'Volver a configurar';
       const modify=document.createElement('button');modify.type='button';modify.textContent='Editar detalles';modify.addEventListener('click',()=>{editor.hidden=false;area.focus();});
       const remove=document.createElement('button');remove.type='button';remove.textContent='Quitar';remove.addEventListener('click',()=>{project=project.filter(candidate=>candidate.id!==item.id);persist();renderProject();});
       actions.append(modify,edit,remove);card.append(text,actions);container.append(card);
     });
-    const send=$('#xp-project-send',view);if(!project.length){send.setAttribute('aria-disabled','true');send.removeAttribute('href');}else{const message='Hola JECHMAN. Quisiera solicitar una cotización conjunta para mi proyecto.\n\n'+project.map((item,index)=>`${index+1}. ${item.title}\n${item.details}${item.status==='proposal'?'\nPropuesta sujeta a confirmación comercial y técnica.':''}`).join('\n\n')+'\n\n¿Podemos revisar factibilidad, disponibilidad e instalación?';send.href=wa(message);send.target='_blank';send.rel='noopener noreferrer';}
+     updateProjectLink();
   }
+   function updateProjectLink(){const send=$('#xp-project-send',view);if(!send)return;if(!project.length){send.setAttribute('aria-disabled','true');send.removeAttribute('href');return;}const message=`Hola JECHMAN. Quisiera solicitar una cotización conjunta para mi proyecto${projectName?' «'+projectName+'»':''}.\n\n`+project.map((item,index)=>`${index+1}. ${item.title}\n${item.details}${item.status==='proposal'?'\nPropuesta sujeta a confirmación comercial y técnica.':''}`).join('\n\n')+'\n\n¿Podemos revisar factibilidad, disponibilidad e instalación?';send.href=wa(message);send.target='_blank';send.rel='noopener noreferrer';}
   function decorateCatalog(){
     const grid=$('#catalog-grid');if(!grid)return;
     function refresh(){for(const card of $$('.catalog-card',grid)){if(card.dataset.xpEnhanced)return;const title=$('h3',card)?.textContent;const product=products.find(item=>item.name===title);if(!product)continue;card.dataset.xpEnhanced='true';const link=document.createElement('a');link.className='xp-catalog-page-link';link.href=productRoute(product);link.textContent='Página del producto ↗';$('.actions',card)?.append(link);const add=document.createElement('button');add.type='button';add.className='xp-card-add';add.textContent='Agregar a mi proyecto';add.addEventListener('click',()=>addProject(product.name,`Producto: ${product.name}. Categoría: ${product.category}. Especificaciones y cantidad por definir.`,productRoute(product),'confirmed'));$('.actions',card)?.append(add);}}
@@ -382,7 +400,7 @@
     bindGallery(entry);activateMotion();document.title=entry.title+' | JECHMAN';window.scrollTo({top:0,left:0,behavior:'instant'});$('#contenido').focus({preventScroll:true});
   }
   window.addEventListener('hashchange',handleRoute);handleRoute();
-  view.addEventListener('click',event=>{if(event.target.closest('[data-xp-scroll]'))$('#xp-config',view)?.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'});});
+   view.addEventListener('click',event=>{if(event.target.closest('[data-xp-scroll]'))$('#xp-config',view)?.scrollIntoView({behavior:reduced()?'instant':'smooth',block:'start'});const button=event.target.closest('[data-related-add]');if(button){const item=byRoute.get(button.dataset.relatedAdd);if(item)addProject(item.title,`Complemento solicitado para ${currentEntry?.title||'mi proyecto'}. Detalles y compatibilidad por evaluar.`, '#/'+item.route,item.status);}const quote=event.target.closest('a[href^="https://wa.me/"]');if(quote)announce('Mensaje preparado para WhatsApp. Revísalo antes de enviarlo.');});
   window.JechmanExperience={addProject,productRoute,entries};
 })();
 
