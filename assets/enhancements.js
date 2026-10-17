@@ -57,7 +57,7 @@
     image.addEventListener('load', () => media.classList.remove('is-loading'));
     image.addEventListener('error', () => { media.classList.remove('is-loading'); credit.textContent = 'Imagen no disponible'; });
     const stop = () => clearInterval(timer);
-    function start() { stop(); if (!view.hidden && !prefersReducedMotion() && !document.hidden) timer = setInterval(() => show(index + 1), 7000); }
+    function start() { stop(); if (!view.hidden && !prefersReducedMotion() && !document.hidden) timer = setInterval(() => show(index + 1), 4500); }
     panel.querySelector('.enh-prev').addEventListener('click', () => { show(index - 1); start(); });
     panel.querySelector('.enh-next').addEventListener('click', () => { show(index + 1); start(); });
     panel.addEventListener('mouseenter', stop);

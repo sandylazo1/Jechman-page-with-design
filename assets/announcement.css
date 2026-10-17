@@ -12,11 +12,11 @@
 .announcement-message{font-size:.89rem;font-weight:750;line-height:1.3}
 .announcement-slide a{color:var(--announcement-accent);font-size:.85rem;font-weight:850;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;white-space:nowrap}
 .announcement-slide a:hover{text-decoration-thickness:2px}
-.announcement-controls{display:flex;align-items:center;gap:5px;white-space:nowrap}
-.announcement-controls button{display:grid;place-items:center;min-width:30px;height:30px;padding:0 5px;border:1px solid #768b97;border-radius:50%;background:#ffffffad;color:#173647;cursor:pointer;transition:transform .18s ease,background .18s ease}
+.announcement-controls{display:flex;align-items:center}
+.announcement-controls button{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid #768b97;border-radius:50%;background:#ffffffad;color:#173647;cursor:pointer;transition:transform .18s ease,background .18s ease}
 .announcement-controls button:hover{transform:translateY(-2px);background:#fff}
-.announcement-controls #announcement-pause{min-width:62px;padding:0 8px;border-radius:999px;font-size:.72rem;font-weight:800}
-#announcement-count{min-width:47px;text-align:center;color:#425b69;font-size:.69rem;font-weight:800;font-variant-numeric:tabular-nums}
+.announcement-motion-icon{display:block;width:12px;height:13px;border-left:3px solid currentColor;border-right:3px solid currentColor}
+.announcement-controls button[aria-pressed="true"] .announcement-motion-icon{width:0;height:0;margin-left:3px;border:7px solid transparent;border-left-color:currentColor;border-right:0}
 @keyframes announcement-enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 
 body{--area-glow:#b9e8ef}
@@ -53,7 +53,7 @@ body[data-area="comercial"],body[data-area="tienda"]{--area-glow:#dec8f3}
 .quick-shop-copy>span{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;color:#34576b;font-size:.86rem;font-weight:700}
 .quick-shop-copy b{color:#165d79;font-size:1.25rem}
 .quick-shop-hint{display:none}
-@media(max-width:800px){.announcement-inner{grid-template-columns:1fr auto;gap:5px;min-height:85px}.announcement-slide{display:grid;grid-template-columns:1fr;gap:3px;padding:7px 0}.announcement-tag{justify-self:start;font-size:.57rem;padding:3px 6px}.announcement-message{font-size:.76rem}.announcement-slide a{font-size:.73rem}.announcement-controls{gap:3px}.announcement-controls button{min-width:29px;height:29px}.announcement-controls #announcement-pause{min-width:51px;font-size:.65rem;padding:0 4px}#announcement-count{min-width:40px;font-size:.62rem}}
+@media(max-width:800px){.announcement-inner{grid-template-columns:1fr auto;gap:5px;min-height:85px}.announcement-slide{display:grid;grid-template-columns:1fr;gap:3px;padding:7px 0}.announcement-tag{justify-self:start;font-size:.57rem;padding:3px 6px}.announcement-message{font-size:.76rem}.announcement-slide a{font-size:.73rem}.announcement-controls button{width:29px;height:29px}}
 @media(max-width:800px){.quick-shop-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(215px,64%);grid-template-columns:none;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding:3px 3px 15px}.quick-shop-card{scroll-snap-align:start}.quick-shop-art{height:165px}.quick-shop-hint{display:block;margin:8px 0 0;color:#506878;font-size:.78rem}}
-@media(max-width:390px){.announcement-inner{gap:2px}.announcement-slide a{white-space:normal}.announcement-controls #announcement-pause{min-width:43px;font-size:.6rem}#announcement-count{min-width:35px}}
+@media(max-width:390px){.announcement-inner{gap:2px}.announcement-slide a{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.announcement-slide{animation:none}.announcement-controls button,.site-header .nav-quote,.btn,.float-wa,.home-solution strong span,.quick-shop-card,.quick-shop-art img{transition:none}.announcement-controls button:hover,.site-header .nav-quote:hover,.btn:hover,.float-wa:hover,.home-solution:hover strong span,.quick-shop-card:hover,.quick-shop-card:hover .quick-shop-art img{transform:none}}

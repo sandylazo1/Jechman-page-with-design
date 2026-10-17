@@ -5,7 +5,6 @@
   const allSlides = [...bar.querySelectorAll('[data-announcement]')];
   const october = new Date().getMonth() === 9;
   const slides = allSlides.filter(slide => slide.dataset.season !== 'october' || october);
-  const counter = document.getElementById('announcement-count');
   const pauseButton = document.getElementById('announcement-pause');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let index = 0;
@@ -16,24 +15,20 @@
     index = (next + slides.length) % slides.length;
     allSlides.forEach(slide => { slide.hidden = slide !== slides[index]; });
     bar.dataset.tone = slides[index].dataset.tone;
-    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
   }
 
   function stop() { clearInterval(timer); }
   function start() {
     stop();
     if (!paused && !reducedMotion.matches && !document.hidden) {
-      timer = setInterval(() => show(index + 1), 6500);
+      timer = setInterval(() => show(index + 1), 4500);
     }
   }
 
-  document.getElementById('announcement-prev').addEventListener('click', () => { show(index - 1); start(); });
-  document.getElementById('announcement-next').addEventListener('click', () => { show(index + 1); start(); });
   pauseButton.addEventListener('click', () => {
     paused = !paused;
     pauseButton.setAttribute('aria-pressed', String(paused));
-    pauseButton.setAttribute('aria-label', paused ? 'Reanudar mensajes' : 'Pausar mensajes');
-    pauseButton.textContent = paused ? 'Reanudar' : 'Pausar';
+    pauseButton.setAttribute('aria-label', paused ? 'Reanudar rotación de mensajes' : 'Detener rotación de mensajes');
     start();
   });
   bar.addEventListener('mouseenter', stop);
