@@ -1,0 +1,55 @@
+<div class="jx-commerce" id="jx-commerce">
+  <section class="jx-section jx-thermal" aria-labelledby="jx-thermal-title">
+    <div class="wrap jx-thermal-layout">
+      <div class="jx-thermal-intro">
+        <p class="jx-kicker">Climatización con criterio técnico</p>
+        <h2 id="jx-thermal-title">Descubre qué necesita tu piscina.</h2>
+        <p>Ingresa las medidas y compara escenarios antes de hablar con un especialista. El cálculo es una orientación inicial; el equipo, la instalación eléctrica y el rendimiento se confirman en terreno.</p>
+        <div class="jx-thermal-visual" aria-hidden="true"><span class="jx-wave jx-wave-one"></span><span class="jx-wave jx-wave-two"></span><span class="jx-wave jx-wave-three"></span><span class="jx-visual-label">AGUA + ENERGÍA</span></div>
+      </div>
+      <div class="jx-thermal-workspace">
+        <div class="jx-thermal-controls">
+          <h3>Tu piscina</h3>
+          <div class="jx-slider-grid">
+            <label for="jx-length">Largo <strong><output id="jx-length-value" for="jx-length">6 m</output></strong><input id="jx-length" type="range" min="2" max="15" step="0.1" value="6"></label>
+            <label for="jx-width">Ancho <strong><output id="jx-width-value" for="jx-width">3 m</output></strong><input id="jx-width" type="range" min="1.5" max="6" step="0.1" value="3"></label>
+            <label for="jx-depth">Profundidad media <strong><output id="jx-depth-value" for="jx-depth">1,4 m</output></strong><input id="jx-depth" type="range" min="0.7" max="2.2" step="0.1" value="1.4"></label>
+          </div>
+          <div class="jx-control-grid">
+            <label for="jx-zone">Ubicación<select id="jx-zone"><option>Santiago</option><option>Zona Central</option><option>Costa</option></select></label>
+            <label for="jx-hours">Tiempo de calentamiento<select id="jx-hours"><option value="24">24 horas</option><option value="48" selected>48 horas</option><option value="72">72 horas</option></select></label>
+            <label for="jx-current-temp">Temperatura actual<select id="jx-current-temp"><option value="18">18 °C</option><option value="20" selected>20 °C</option><option value="22">22 °C</option><option value="24">24 °C</option></select></label>
+            <label for="jx-target-temp">Temperatura deseada<select id="jx-target-temp"><option value="26">26 °C</option><option value="28" selected>28 °C</option><option value="30">30 °C</option><option value="32">32 °C</option></select></label>
+          </div>
+          <label class="jx-switch" for="jx-cover"><input id="jx-cover" type="checkbox"><span class="jx-switch-track" aria-hidden="true"></span><span>Ya tengo manta térmica</span></label>
+        </div>
+        <div class="jx-thermal-result" aria-live="polite" aria-atomic="true">
+          <div class="jx-result-head"><span>Orientación de tu proyecto</span><strong id="jx-volume">—</strong></div>
+          <div class="jx-result-main"><span>Potencia térmica teórica</span><strong id="jx-power">—</strong><small id="jx-power-detail"></small></div>
+          <div class="jx-result-grid"><div><span>Rango de equipo a revisar</span><strong id="jx-capacity">—</strong></div><div><span>Manta a medida</span><strong id="jx-cover-size">—</strong></div></div>
+          <div class="jx-energy-compare"><span>Consumo teórico para el primer calentamiento</span><div><p><strong id="jx-electric-energy">—</strong><small>electricidad · COP supuesto 4</small></p><p><strong id="jx-gas-energy">—</strong><small>gas · eficiencia supuesta 85%</small></p></div></div>
+          <p class="jx-loss" id="jx-loss"></p>
+          <details class="jx-assumptions"><summary>Cómo calculamos esta orientación</summary><p>Potencia térmica = volumen × diferencia de temperatura × 1,16 ÷ horas. El factor 1,16 representa aproximadamente kWh por m³ y °C. La potencia nominal y el tiempo reales varían por clima, viento, pérdidas, cobertura y rendimiento del equipo. La ubicación se envía al asesor; no cambia automáticamente la fórmula.</p><p>El consumo compara energía de entrada teórica usando COP 4 y eficiencia de gas 85% como supuestos editables por un especialista. No predice gasto, ahorro ni consumo mensual.</p><p>El escenario sin manta usa un 45% adicional solo como <strong>supuesto comparativo solicitado</strong>, no como pérdida nocturna medida. Una cubierta puede reducir pérdidas por evaporación, pero el resultado depende del uso y del lugar.</p></details>
+          <a id="jx-pack-quote" class="jx-button jx-button-amber" target="_blank" rel="noopener noreferrer" href="#">Solicitar pack y evaluar instalación eléctrica <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jx-section jx-solutions" aria-labelledby="jx-solutions-title">
+    <div class="wrap">
+      <div class="jx-section-heading"><div><p class="jx-kicker">Equipo + instalación + conversación técnica</p><h2 id="jx-solutions-title">Arma una solución que tenga sentido para tu espacio.</h2></div><p>Selecciona una opción para preparar una consulta precisa. Cada variante representa lo que quieres evaluar; modelos, especificaciones y disponibilidad se confirman con JECHMAN.</p></div>
+      <div class="jx-tabs" id="jx-tabs" role="group" aria-label="Filtrar soluciones técnicas"></div>
+      <p class="jx-filter-status" id="jx-filter-status" role="status"></p>
+      <div class="jx-product-grid" id="jx-product-grid"></div>
+      <p class="jx-catalog-link">¿Buscas otro producto? <button type="button" id="jx-catalog-scroll">Explora el catálogo completo</button> o <a href="#/contacto?area=Tienda">cuéntanos tu proyecto</a>.</p>
+    </div>
+  </section>
+
+  <section class="jx-section jx-trust" aria-labelledby="jx-trust-title">
+    <div class="wrap jx-trust-layout">
+      <div class="jx-trust-copy"><p class="jx-kicker">Más que elegir un equipo</p><h2 id="jx-trust-title">La instalación también importa.</h2><p>Una compra aislada no define por sí sola el dimensionamiento ni las conexiones. Estas son las conversaciones técnicas que conviene tener antes de instalar.</p><a id="jx-trust-quote" class="jx-button jx-button-dark" target="_blank" rel="noopener noreferrer" href="#">Revisar mi proyecto con JECHMAN <span aria-hidden="true">↗</span></a></div>
+      <div class="jx-trust-card"><div class="jx-trust-tabs" role="group" aria-label="Aspectos a revisar"><button type="button" class="is-active" data-jx-trust="conductores" aria-pressed="true">Conductores</button><button type="button" data-jx-trust="protecciones" aria-pressed="false">Protecciones</button><button type="button" data-jx-trust="seguimiento" aria-pressed="false">Seguimiento</button></div><div class="jx-trust-detail" id="jx-trust-detail" aria-live="polite"></div></div>
+    </div>
+  </section>
+</div>

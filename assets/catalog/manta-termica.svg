@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Cubierta térmica para piscina</title>
+  <desc id="desc">Representación esquemática de una manta térmica sobre una piscina rectangular.</desc>
+  <rect width="800" height="500" fill="#d9e8e9"/>
+  <rect x="76" y="57" width="648" height="386" rx="30" fill="#f7faf9" stroke="#a7bbbd" stroke-width="18"/>
+  <rect x="104" y="85" width="592" height="330" rx="18" fill="#1a93b6"/>
+  <path d="M105 85h460q31 0 31 31v299H122q-17 0-17-17Z" fill="#b2e3e9" stroke="#5db5c5" stroke-width="5"/>
+  <path d="M124 119h442M124 153h442M124 187h442M124 221h442M124 255h442M124 289h442M124 323h442M124 357h442M124 391h442" stroke="#67b7c7" stroke-width="7" opacity=".7"/>
+  <path d="M565 85q31 0 31 31v299q-34-25-62-60V140q0-33 31-55Z" fill="#def5f5" stroke="#77bfcb" stroke-width="5"/>
+  <circle cx="625" cy="149" r="9" fill="#c9f2f6" opacity=".8"/><circle cx="651" cy="188" r="7" fill="#c9f2f6" opacity=".8"/><circle cx="622" cy="255" r="11" fill="#c9f2f6" opacity=".8"/><circle cx="656" cy="315" r="8" fill="#c9f2f6" opacity=".8"/>
+</svg>
