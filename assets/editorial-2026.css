@@ -139,3 +139,54 @@ h3{line-height:1.28}
 @media(max-width:680px){.hero-ui{bottom:112px;padding-right:64px}.hero-pager{padding:0 8px;gap:5px}.hero-arrows button:not(.motion-access){width:42px;height:42px}.cookie-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:11px 12px;bottom:76px}.cookie-banner p{font-size:.75rem;line-height:1.35}.cookie-banner button{margin:0;padding:9px 11px;font-size:.78rem}}
 @media(max-width:390px){.hero-slide-overview .hero-kicker{display:none}.hero-slide-overview .hero-slide-inner{padding-top:42px;padding-bottom:104px}.hero-slide-overview h1{font-size:clamp(2.15rem,9vw,2.45rem)}.hero-slide-overview p{font-size:1rem;line-height:1.48}.hero-slide-overview .hero-action{margin-top:25px}.hero-ui{bottom:68px}}
 @media(prefers-reduced-motion:reduce){.hero-arrows button:not(.motion-access){transition:none}.hero-arrows button:not(.motion-access):hover{transform:none}}
+
+/* Interactive landing and category previews. */
+.landing-contact{scroll-margin-top:110px;background:radial-gradient(circle at 10% 0%,#d8f6f6 0,transparent 45%),linear-gradient(145deg,#eef9fa,#f9fbfc 72%);border-top:1px solid #d5e8eb}
+.landing-contact .contact-layout{align-items:start;gap:clamp(26px,5vw,74px)}
+.landing-contact h2{max-width:10ch}
+.landing-contact form{background:#ffffffdb;border:1px solid #d8e7eb;border-radius:22px;padding:clamp(20px,3vw,36px);box-shadow:0 22px 52px #0c3a4b16;backdrop-filter:blur(16px)}
+.landing-contact .form-actions{gap:16px}
+.landing-contact .form-actions .btn{background:#bceef3;border-color:#80cbd5;color:#143848}
+.home-social-band{padding:36px 0;background:linear-gradient(110deg,#102e40,#17485a);color:#fff}
+.home-social-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.home-social-band h2{font-size:clamp(1.5rem,2.5vw,2.3rem);margin:0 0 5px}
+.home-social-band p{color:#d4e7eb;margin:0}
+.home-social-links{display:flex;flex-wrap:wrap;gap:9px}
+.home-social-links a{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 15px;border:1px solid #ffffff8a;border-radius:999px;background:#ffffff16;color:#fff;text-decoration:none;font-weight:700;backdrop-filter:blur(9px);transition:background .2s,transform .2s}
+.home-social-links a:hover{background:#ffffff30;transform:translateY(-2px)}
+.news-card .news-status{align-self:flex-start;display:inline-flex;margin:5px 0 4px;padding:4px 10px;border-radius:999px;background:#e7f4f4;color:#1b5c68;font-size:.73rem;font-weight:750}
+.news-card:has(.news-status) .tag{font-size:.73rem}
+.news-dots{max-width:100%;overflow-x:auto;padding:7px 4px;scrollbar-width:thin}
+.news-dots button{flex:none}
+.enh-visual-features{display:flex;flex-wrap:wrap;gap:8px;padding:15px 3px 10px}
+.enh-visual-features span{display:inline-flex;align-items:center;min-height:32px;padding:6px 11px;border:1px solid #b4e2e8;border-radius:999px;background:#ecfbfc;color:#174d5a;font-size:.78rem;font-weight:750}
+.enh-visual-features span:first-child{background:#c8f4f7;color:#143f4d}
+.enh-scene.has-light::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 55px 12px #b9faffaa}
+.enh-scene.has-cover::before{content:"Cobertor térmico";position:absolute;right:12px;top:12px;z-index:2;padding:6px 10px;border-radius:999px;background:#e1f8fbeb;color:#173f4e;font-size:.72rem;font-weight:700}
+.enh-scene.has-heat .enh-scene-photo{filter:saturate(1.1) brightness(1.05)}
+.enh-scene.has-wood-boiler .enh-scene-photo{filter:sepia(.12) saturate(1.15)}
+.enh-scene.has-robot::after{content:"Robot limpiador";position:absolute;left:12px;top:12px;width:auto;height:auto;border:0;border-radius:999px;background:#e1f8fbeb;color:#173f4e;padding:6px 10px;transform:none;font-size:.72rem;font-weight:700}
+.enh-electric-showcase{background:linear-gradient(145deg,#fffdf3,#f7f8f8 65%)}
+.enh-electric-layout{display:grid;grid-template-columns:minmax(200px,.4fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.enh-electric-options{display:grid;gap:10px;align-content:start}
+.enh-electric-options button{display:grid;gap:3px;min-height:74px;text-align:left;padding:15px 18px;border:1px solid #e0d7b5;border-radius:14px;background:#ffffffbc;color:#253947;cursor:pointer;transition:transform .22s,border-color .22s,background .22s,box-shadow .22s}
+.enh-electric-options button:hover{transform:translateX(4px);border-color:#c5a526}
+.enh-electric-options button[aria-pressed="true"]{border-color:#d2ad28;background:#fff6ca;box-shadow:0 12px 24px #806a141e}
+.enh-electric-options button span{font-size:.72rem;color:#5f6370}
+.enh-electric-options button strong{font-size:1.03rem}
+.enh-electric-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.85fr);overflow:hidden;border:1px solid #e9e1c4;border-radius:18px;background:#fff;box-shadow:0 22px 46px #564c2b16}
+.enh-electric-image{min-height:390px;background:#263c48}
+.enh-electric-image img{width:100%;height:100%;object-fit:cover}
+.enh-electric-copy{display:flex;flex-direction:column;align-items:start;padding:clamp(22px,3vw,38px)}
+.enh-electric-status{padding:5px 10px;border-radius:999px;background:#fff3c1;color:#695009;font-size:.75rem;font-weight:750}
+.enh-electric-copy h3{font-family:var(--font-heading);font-size:clamp(1.8rem,2.6vw,2.7rem);margin:19px 0 8px}
+.enh-electric-copy p{color:#425765}
+.enh-electric-copy ul{padding-left:18px;color:#344d5c}
+.enh-electric-copy li{margin:6px 0}
+.enh-electric-copy .btn{margin-top:auto;background:#f4d562;border-color:#e4c242;color:#183644}
+.footer-bottom{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media(max-width:850px){.enh-electric-layout{grid-template-columns:1fr}.enh-electric-options{grid-template-columns:repeat(2,minmax(0,1fr))}.enh-electric-feature{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.enh-electric-feature{grid-template-columns:1fr}.enh-electric-image{min-height:220px;height:240px}.enh-electric-options button{min-height:68px;padding:11px}.landing-contact h2{max-width:none}}
+@media(max-width:740px){.home-social-inner{align-items:start;flex-direction:column}.home-social-links{width:100%}.home-social-links a{flex:1;justify-content:space-between}}
+@media(max-width:380px){.enh-electric-options{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.enh-electric-options button,.home-social-links a{transition:none}.enh-electric-options button:hover,.home-social-links a:hover{transform:none}}

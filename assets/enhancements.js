@@ -25,6 +25,7 @@
     const dots = panel.querySelector('.enh-mast-dots');
     let index = Math.floor(Math.random() * slides.length);
     let timer;
+    let keyboardFocus = false;
     slides.forEach((slide, i) => {
       const dot = document.createElement('button');
       dot.type = 'button';
@@ -57,13 +58,12 @@
     image.addEventListener('load', () => media.classList.remove('is-loading'));
     image.addEventListener('error', () => { media.classList.remove('is-loading'); credit.textContent = 'Imagen no disponible'; });
     const stop = () => clearInterval(timer);
-    function start() { stop(); if (!view.hidden && !prefersReducedMotion() && !document.hidden) timer = setInterval(() => show(index + 1), 3500); }
+    function start() { stop(); if (!view.hidden && !keyboardFocus && !prefersReducedMotion() && !document.hidden) timer = setInterval(() => show(index + 1), 3500); }
     panel.querySelector('.enh-prev').addEventListener('click', () => { show(index - 1); start(); });
     panel.querySelector('.enh-next').addEventListener('click', () => { show(index + 1); start(); });
-    panel.addEventListener('mouseenter', stop);
-    panel.addEventListener('mouseleave', start);
-    panel.addEventListener('focusin', stop);
-    panel.addEventListener('focusout', event => { if (!panel.contains(event.relatedTarget)) start(); });
+    panel.addEventListener('focusin', event => { if (event.target.matches(':focus-visible')) { keyboardFocus = true; stop(); } });
+    panel.addEventListener('focusout', event => { if (!panel.contains(event.relatedTarget)) { keyboardFocus = false; start(); } });
+    panel.addEventListener('pointerup', () => { keyboardFocus = false; start(); });
     document.addEventListener('visibilitychange', start);
     window.addEventListener('hashchange', () => {
       if (view.hidden) stop();
@@ -102,6 +102,11 @@
     sauna:[['assets/editorial/sauna-1600.webp','Sauna en espacio de bienestar','Render editorial']]
   };
   const studioGallery=studio.querySelector('.enh-studio-gallery');
+  const visualFeatures=document.createElement('div');
+  visualFeatures.className='enh-visual-features';
+  visualFeatures.setAttribute('role','status');
+  visualFeatures.setAttribute('aria-live','polite');
+  scene.insertAdjacentElement('afterend',visualFeatures);
   function showStudioPhoto(index){const photos=studioPhotos[type.value],item=photos[index];if(!item)return;const image=scene.querySelector('.enh-scene-photo');image.src=item[0];image.alt=item[1];studioGallery.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
   function renderStudioGallery(){studioGallery.replaceChildren();studioPhotos[type.value].forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-label',`Ver fotografía ${index+1}: ${item[1]}`);button.setAttribute('aria-pressed',String(index===0));const image=document.createElement('img');image.src=item[0];image.alt='';image.loading='lazy';button.append(image);button.addEventListener('click',()=>showStudioPhoto(index));studioGallery.append(button);});showStudioPhoto(0);}
   const typeNames = {piscina:'Piscina',jacuzzi:'Jacuzzi',tinaja:'Tinaja',spa:'Spa',sauna:'Sauna'};
@@ -139,11 +144,18 @@
     const labels = selected.map(input => input.dataset.label);
     const heatLabel = heat.selectedOptions[0]?.textContent || 'Por definir';
     scene.dataset.type = type.value;
+    scene.classList.toggle('has-light',selected.some(input=>input.value==='luz'));
+    scene.classList.toggle('has-cover',selected.some(input=>input.value==='cobertor'));
+    scene.classList.toggle('has-heat',heat.value==='bomba-calor'||heat.value==='calefont');
+    scene.classList.toggle('has-wood-boiler',heat.value.startsWith('caldera'));
+    scene.classList.toggle('has-robot',selected.some(input=>input.value==='robot'));
+    visualFeatures.replaceChildren();
+    [typeNames[type.value],heatLabel,...labels].forEach(label=>{const chip=document.createElement('span');chip.textContent=label;visualFeatures.append(chip)});
     const chips = scene.querySelector('.enh-scene-caption'); chips.replaceChildren();
     [typeNames[type.value],heatLabel,...labels].slice(0,5).forEach(label => { const chip=document.createElement('span');chip.textContent=label;chips.append(chip); });
     const summary = `${typeNames[type.value]} · ${heatLabel}${labels.length ? ' · '+labels.join(', ') : ''}`;
     studio.querySelector('.enh-studio-summary strong').textContent = summary;
-    studio.querySelector('.enh-studio-summary p').textContent = 'La fotografía muestra un ejemplo general. Acabado, calefacción y complementos se cotizan según evaluación técnica.';
+    studio.querySelector('.enh-studio-summary p').textContent = 'Vista conceptual: las opciones seleccionadas se señalan sobre la foto y en las etiquetas. La compatibilidad se confirma al cotizar.';
     quote(studio.querySelector('#enh-quote'), `Hola JECHMAN, quisiera cotizar un proyecto de ${typeNames[type.value].toLowerCase()}. Calefacción: ${heatLabel}. Complementos o servicios: ${labels.length ? labels.join(', ') : 'por definir'}. ¿Podemos revisar factibilidad, disponibilidad, instalación y una cotización sin compromiso?`);
   }
   type.addEventListener('change', renderStudioOptions);
@@ -172,8 +184,31 @@
   tinaja.querySelectorAll('#tinaja-config select').forEach(select => select.addEventListener('change', updateTinajaQuote));
   updateTinajaQuote();
 
-  const electricValue = section('enh-section', `<div class="wrap"><div class="enh-head"><span class="eyebrow">PROPUESTA DE VALOR</span><h2>Del plano a un sistema que funcione</h2><p>Reúne tu necesidad eléctrica en una sola conversación: diseño, instalación, tablero, control y materiales. JECHMAN confirma alcance y profesionales habilitados antes de cotizar trabajos que los requieran.</p></div><div class="enh-grid"><article class="enh-card"><div class="enh-card-body"><h3>Planificar</h3><p>Entender cargas, espacio, seguridad y crecimiento posible antes de elegir componentes.</p></div></article><article class="enh-card"><div class="enh-card-body"><h3>Implementar</h3><p>Coordinar instalaciones, montaje y tableros según los requerimientos del proyecto.</p></div></article><article class="enh-card"><div class="enh-card-body"><h3>Conectar</h3><p>Explorar automatización, domótica e inmótica para viviendas y edificios.</p></div></article></div></div>`);
+  const electricValue = section('enh-section', `<div class="wrap"><div class="enh-head"><h2>Del plano a un sistema que funcione</h2><p>Reúne tu necesidad eléctrica en una sola conversación: diseño, instalación, tablero, control y materiales. JECHMAN confirma alcance y profesionales habilitados antes de cotizar trabajos que los requieran.</p></div><div class="enh-grid"><article class="enh-card"><div class="enh-card-body"><h3>Planificar</h3><p>Entender cargas, espacio, seguridad y crecimiento posible antes de elegir componentes.</p></div></article><article class="enh-card"><div class="enh-card-body"><h3>Implementar</h3><p>Coordinar instalaciones, montaje y tableros según los requerimientos del proyecto.</p></div></article><article class="enh-card"><div class="enh-card-body"><h3>Conectar</h3><p>Explorar automatización, domótica e inmótica para viviendas y edificios.</p></div></article></div></div>`);
   electric.querySelector('.enh-mast').insertAdjacentElement('afterend', electricValue);
+  const electricShowcase = section('enh-section enh-electric-showcase', `<div class="wrap"><div class="enh-head"><h2>La electricidad que imaginas, en detalle</h2><p>Elige un tema para ver sus posibilidades y preparar una consulta. Cada instalación requiere revisar el lugar, los equipos y la factibilidad técnica.</p></div><div class="enh-electric-layout"><div class="enh-electric-options" role="group" aria-label="Explorar soluciones eléctricas"></div><div class="enh-electric-feature"><div class="enh-electric-image"><img alt="" loading="lazy" decoding="async" width="800" height="500"></div><div class="enh-electric-copy"><span class="enh-electric-status"></span><h3></h3><p></p><ul></ul><a class="btn" href="#">Explorar solución</a></div></div></div></div>`);
+  electricValue.insertAdjacentElement('afterend', electricShowcase);
+  const showcaseItems = [
+    {title:'Domótica',label:'Hogar conectado',image:'domotica',status:'Propuesta a evaluar',text:'Escenas de luz, sensores y control coordinado para una vivienda más cómoda.',points:['Iluminación y escenas','Control desde dispositivos','Integración sujeta a compatibilidad'],route:'#/electricidad/domotica'},
+    {title:'Inmótica',label:'Edificios inteligentes',image:'inmotica',status:'Propuesta a evaluar',text:'Explora una gestión conectada de zonas compartidas, iluminación y monitoreo.',points:['Control por zonas','Monitoreo de sistemas','Alcance según evaluación'],route:'#/electricidad/inmotica'},
+    {title:'Tableros eléctricos',label:'Protección y distribución',image:'electric',status:'Catálogo JECHMAN',text:'Componentes para distribuir, proteger y organizar circuitos de acuerdo con el proyecto.',points:['Tableros y componentes','Montaje a consultar','Revisión técnica de cargas'],route:'#/electricidad/tableros'},
+    {title:'Paneles solares',label:'Energía para estudiar',image:'energy',status:'Propuesta a evaluar',text:'Conversemos sobre consumo, cubierta disponible y una eventual solución fotovoltaica.',points:['Evaluación del lugar','Revisión de consumo','Instalación sujeta a factibilidad'],route:'#/electricidad/paneles-solares'}
+  ];
+  const showcaseOptions=electricShowcase.querySelector('.enh-electric-options');
+  const showcaseFeature=electricShowcase.querySelector('.enh-electric-feature');
+  function selectShowcase(index){
+    const item=showcaseItems[index];
+    showcaseOptions.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+    const image=showcaseFeature.querySelector('img');image.src=`assets/editorial/${item.image}-800.webp`;image.alt=`Vista conceptual de ${item.title.toLowerCase()}`;
+    showcaseFeature.querySelector('.enh-electric-status').textContent=item.status;
+    showcaseFeature.querySelector('h3').textContent=item.title;
+    showcaseFeature.querySelector('p').textContent=item.text;
+    const list=showcaseFeature.querySelector('ul');list.replaceChildren();item.points.forEach(point=>{const li=document.createElement('li');li.textContent=point;list.append(li)});
+    showcaseFeature.querySelector('a').href=item.route;
+    showcaseFeature.querySelector('a').textContent=`Explorar ${item.title.toLowerCase()}`;
+  }
+  showcaseItems.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.innerHTML=`<span>${item.label}</span><strong>${item.title}</strong>`;button.addEventListener('click',()=>selectShowcase(index));showcaseOptions.append(button)});
+  selectShowcase(0);
   const serviceGroups = [
     ['Diseño y montaje',['Proyectos eléctricos','Instalaciones domiciliarias e industriales','Montaje eléctrico industrial','Fabricación y armado de tableros','Planos eléctricos','Puesta a tierra']],
     ['Control y energía',['Automatización y control','Domótica para viviendas','Inmótica para edificios','Sistemas inteligentes','Iluminación','Paneles solares / fotovoltaica','Sistemas eólicos']],
@@ -181,7 +216,7 @@
     ['Materiales',['Comercialización de materiales eléctricos']]
   ];
   const servicePicker = section('enh-section', `<div class="wrap"><div class="enh-head"><span class="eyebrow">TRABAJOS A CONSULTAR</span><h2>Selecciona lo que necesitas</h2><p>Marca uno o varios temas. La disponibilidad, el alcance y los trámites se confirman caso a caso.</p></div><div class="enh-service-picker"><div class="enh-service-groups"></div><p class="enh-service-status" role="status"></p><a class="btn" id="enh-electric-quote" href="#">Preparar consulta eléctrica</a><p class="enh-note">El mensaje queda editable en WhatsApp y solo se envía si tú presionas Enviar.</p></div></div>`);
-  electricValue.insertAdjacentElement('afterend', servicePicker);
+  electricShowcase.insertAdjacentElement('afterend', servicePicker);
   const groupRoot = servicePicker.querySelector('.enh-service-groups');
   serviceGroups.forEach(([heading,items]) => {
     const group = document.createElement('div');

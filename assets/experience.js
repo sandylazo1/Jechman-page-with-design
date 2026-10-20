@@ -48,6 +48,7 @@
     ['electricidad/domotica','Diseña tu hogar inteligente','electricidad','light','Imagina una casa que responde a ti','Explora ambientes y automatizaciones en una demostración conceptual.','domotica','proposal'],
     ['electricidad/inmotica','Configura tu edificio inteligente','electricidad','electric','Coordina espacios, energía y control','Selecciona zonas y sistemas para preparar una consulta técnica preliminar.','inmotica','proposal'],
     ['electricidad/eficiencia-energetica','Eficiencia energética','electricidad','light','Comprende cómo usas la energía','Calcula un consumo teórico cuando conoces potencia, cantidad y horas de funcionamiento.','energy','proposal'],
+    ['electricidad/paneles-solares','Paneles solares','electricidad','electric','Estudia una instalación solar para tu proyecto','Comparte consumo, espacio disponible y objetivos para consultar la factibilidad de una instalación fotovoltaica.','technical','proposal'],
     ['electricidad/iluminacion','Iluminación técnica','electricidad','light','La luz también cumple una función','Describe el espacio, el uso y la instalación para revisar luminarias apropiadas.','technical','evaluation'],
     ['electricidad/bombeo','Control de bombas','electricidad','hydraulic','Control para sistemas de agua','Consulta automatización de bombas y tableros sujetos a ingeniería.','technical','proposal'],
     ['comercial/herramientas','Herramientas','comercial','commercial','Herramientas para avanzar','Encuentra familias de herramientas y consulta la especificación necesaria.','catalog','confirmed'],
@@ -85,6 +86,7 @@
     'electricidad/domotica':'domotica',
     'electricidad/inmotica':'inmotica',
     'electricidad/eficiencia-energetica':'energy',
+    'electricidad/paneles-solares':'energy',
     'piscinas/sauna':'sauna'
   };
   entries.forEach(entry=>{
@@ -131,7 +133,7 @@
   function insertDiscovery() {
     const groups = {
       piscinas:['piscinas/rectangulares','piscinas/romanas','piscinas/con-jacuzzi','piscinas/configurar','piscinas/filtracion','piscinas/climatizacion','piscinas/iluminacion','piscinas/mantencion','piscinas/accesorios','piscinas/spa','piscinas/sauna'],
-      electricidad:['electricidad/instalaciones','electricidad/tableros','electricidad/proyectos','electricidad/automatizacion','electricidad/domotica','electricidad/inmotica','electricidad/eficiencia-energetica','electricidad/iluminacion','electricidad/bombeo','electricidad/control-accesos','electricidad/monitoreo','electricidad/viviendas','electricidad/empresas'],
+      electricidad:['electricidad/instalaciones','electricidad/tableros','electricidad/proyectos','electricidad/automatizacion','electricidad/domotica','electricidad/inmotica','electricidad/paneles-solares','electricidad/eficiencia-energetica','electricidad/iluminacion','electricidad/bombeo','electricidad/control-accesos','electricidad/monitoreo','electricidad/viviendas','electricidad/empresas'],
       comercial:['comercial/herramientas','comercial/hidraulica','comercial/electricidad','comercial/iluminacion','comercial/ferreteria','comercial/tuberias','comercial/fittings','comercial/bombas','comercial/construccion','comercial/automatizacion','comercial/bienestar'],
       tinajas:['tinajas/configurar'],jacuzzis:['jacuzzis/configurar'],tienda:['tienda/iluminacion','tienda/hidraulica','tienda/accesorios-piscina','tienda/climatizacion','tienda/electricidad','tienda/piscinas']
     };

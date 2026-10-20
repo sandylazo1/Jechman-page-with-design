@@ -9,6 +9,7 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let index = 0;
   let paused = false;
+  let keyboardFocus = false;
   let timer;
 
   function show(next) {
@@ -20,7 +21,7 @@
   function stop() { clearInterval(timer); }
   function start() {
     stop();
-    if (!paused && !reducedMotion.matches && !document.hidden) {
+    if (!paused && !keyboardFocus && !reducedMotion.matches && !document.hidden) {
       timer = setInterval(() => show(index + 1), 2000);
     }
   }
@@ -31,10 +32,9 @@
     pauseButton.setAttribute('aria-label', paused ? 'Reanudar rotación de mensajes' : 'Detener rotación de mensajes');
     start();
   });
-  bar.addEventListener('mouseenter', stop);
-  bar.addEventListener('mouseleave', start);
-  bar.addEventListener('focusin', stop);
-  bar.addEventListener('focusout', event => { if (!bar.contains(event.relatedTarget)) start(); });
+  bar.addEventListener('focusin', event => { if (event.target.matches(':focus-visible')) { keyboardFocus = true; stop(); } });
+  bar.addEventListener('focusout', event => { if (!bar.contains(event.relatedTarget)) { keyboardFocus = false; start(); } });
+  bar.addEventListener('pointerup', () => { keyboardFocus = false; start(); });
   bar.addEventListener('keydown', event => {
     if (event.target.tagName === 'INPUT') return;
     if (event.key === 'ArrowLeft') { event.preventDefault(); show(index - 1); start(); }
