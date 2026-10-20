@@ -15,8 +15,6 @@
 .announcement-controls{display:flex;align-items:center}
 .announcement-controls button{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid #768b97;border-radius:50%;background:#ffffffad;color:#173647;cursor:pointer;transition:transform .18s ease,background .18s ease}
 .announcement-controls button:hover{transform:translateY(-2px);background:#fff}
-.announcement-motion-icon{display:block;width:12px;height:13px;border-left:3px solid currentColor;border-right:3px solid currentColor}
-.announcement-controls button[aria-pressed="true"] .announcement-motion-icon{width:0;height:0;margin-left:3px;border:7px solid transparent;border-left-color:currentColor;border-right:0}
 @keyframes announcement-enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 
 body{--area-glow:#b9e8ef}

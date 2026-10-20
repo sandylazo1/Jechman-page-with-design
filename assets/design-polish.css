@@ -7,10 +7,6 @@
 .announcement-message{font-size:.87rem;font-weight:760;letter-spacing:.005em}
 .announcement-slide a{font-size:.82rem;text-decoration:none;border-bottom:1px solid currentColor}
 .announcement-controls button{width:32px;height:32px;border-color:#9cabb0;background:#ffffffa8}
-#hero-count{display:none}
-.hero-arrows #hero-pause{font-size:0;width:42px;min-width:42px;padding:0}
-.hero-arrows #hero-pause:after{content:"";display:block;width:10px;height:12px;margin:auto;border-left:3px solid currentColor;border-right:3px solid currentColor}
-.hero-arrows #hero-pause[aria-pressed="true"]:after{width:0;height:0;margin-left:16px;border:7px solid transparent;border-left-color:currentColor;border-right:0}
 .site-header{background:#ffffffed;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .site-header .nav-quote{background:#17394b;color:#fff;border-color:#17394b;box-shadow:none}
 .site-header .nav-quote:hover{background:#254e60;color:#fff}

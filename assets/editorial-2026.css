@@ -122,3 +122,20 @@ h3{line-height:1.28}
 .xp-hero-media,.xp-gallery-main,.xp-preview{overflow:hidden}
 @media(max-width:680px){.page-hero.area-visual{min-height:590px;background-position:78% center}.page-hero.area-visual.pool{background-position:88% center}.page-hero.area-visual::before{background:linear-gradient(90deg,rgba(8,27,37,.84),rgba(8,27,37,.5))}.page-hero.area-visual.pool h1{font-size:clamp(2.35rem,9vw,3.3rem)}.wellness-card img{height:260px}.model-card .model-photo{height:210px}}
 @media(prefers-reduced-motion:reduce){.wellness-card img{transition:none}.wellness-card:hover img{transform:none}}
+
+/* Keep motion controls available to keyboard users without displaying pause UI. */
+.announcement-inner{grid-template-columns:minmax(0,1fr)}
+.announcement-controls{position:absolute;right:0;top:50%;transform:translateY(-50%)}
+.hero-arrows{position:relative}
+.hero-ui{bottom:80px}
+.announcement-controls #announcement-pause,.hero-arrows #hero-pause{position:absolute!important;width:1px!important;min-width:0!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+.hero-arrows #hero-pause::after{content:none}
+.announcement-controls #announcement-pause:focus-visible,.hero-arrows #hero-pause:focus-visible{width:auto!important;min-width:140px!important;height:42px!important;padding:0 14px!important;margin:0!important;overflow:visible!important;clip-path:none!important;white-space:nowrap!important;border:2px solid #176b99!important;border-radius:999px;background:#fff;color:#12394b;font-size:.78rem!important;font-weight:750;box-shadow:0 8px 24px #001c2b33;z-index:60}
+.announcement-controls #announcement-pause:focus-visible{right:0;top:50%;transform:translateY(-50%)}
+.hero-arrows #hero-pause:focus-visible{right:0;bottom:51px}
+.hero-pager{gap:8px;padding:1px 12px;border:1px solid #ffffff4a;border-radius:999px;background:#0b2a3a66;backdrop-filter:blur(12px)}
+.hero-arrows button:not(.motion-access){box-shadow:0 6px 20px #001b2a36;transition:background .2s ease,transform .2s ease}
+.hero-arrows button:not(.motion-access):hover{transform:translateY(-2px)}
+@media(max-width:680px){.hero-ui{bottom:112px;padding-right:64px}.hero-pager{padding:0 8px;gap:5px}.hero-arrows button:not(.motion-access){width:42px;height:42px}.cookie-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:11px 12px;bottom:76px}.cookie-banner p{font-size:.75rem;line-height:1.35}.cookie-banner button{margin:0;padding:9px 11px;font-size:.78rem}}
+@media(max-width:390px){.hero-slide-overview .hero-kicker{display:none}.hero-slide-overview .hero-slide-inner{padding-top:42px;padding-bottom:104px}.hero-slide-overview h1{font-size:clamp(2.15rem,9vw,2.45rem)}.hero-slide-overview p{font-size:1rem;line-height:1.48}.hero-slide-overview .hero-action{margin-top:25px}.hero-ui{bottom:68px}}
+@media(prefers-reduced-motion:reduce){.hero-arrows button:not(.motion-access){transition:none}.hero-arrows button:not(.motion-access):hover{transform:none}}
