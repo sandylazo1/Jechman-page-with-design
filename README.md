@@ -9,7 +9,7 @@ Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electr
 - `news.json`: selección editorial de soluciones verificadas, con enlace directo a la fuente.
 - `assets/experience.js` y `assets/experience.css`: subsecciones por hash, configuradores visuales y lista de cotización compartida sin framework.
 
-Para revisar el sitio completo localmente, inicia un servidor estático en la raíz del repositorio (por ejemplo, `python -m http.server 8000`) y abre `http://localhost:8000/`. El carrusel carga `news.json` mediante HTTP. Todas las rutas de recursos son relativas para funcionar bajo `/Jechman-page-with-design/` en GitHub Pages. Las imágenes son ilustrativas; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
+Para revisar el sitio completo localmente, inicia un servidor estático en la raíz del repositorio (por ejemplo, `python -m http.server 8000`) y abre `http://localhost:8000/`. El carrusel carga `news.json` mediante HTTP. Todas las rutas de recursos son relativas para funcionar bajo `/Jechman-page-with-design/` en GitHub Pages. El sitio combina fotografías proporcionadas por Sandy y JECHMAN con imágenes editoriales de referencia; las consultas se preparan para WhatsApp y requieren que el visitante presione Enviar allí.
 
 El ícono de WhatsApp del botón flotante proviene de [Bootstrap Icons](https://icons.getbootstrap.com/icons/whatsapp/) (licencia MIT).
 
@@ -19,7 +19,7 @@ El ícono de WhatsApp del botón flotante proviene de [Bootstrap Icons](https://
 
 Prompts de generación: fotografía comercial horizontal, realista y de alta resolución para cada familia indicada; producto o solución claramente visible, luz profesional, sin personas, marcas, texto ni marcas de agua. Se generaron como referencias visuales, sujetas a confirmación con JECHMAN.
 
-La portada y las subpáginas usan imágenes de referencia con licencia documentada y, en algunos contenidos de piscinas y tinajas, fotografías publicadas por JECHMAN. Sus URL de origen y notas de autoría están en `assets/image-sources.json`. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
+La portada y las subpáginas usan imágenes de referencia con licencia documentada y, en contenidos de piscinas y tinajas, fotografías publicadas por JECHMAN o entregadas por Sandy. Sus orígenes y notas de autoría están en `assets/image-sources.json`. En las fichas de piscinas, la foto se muestra sin el panel de medidas del JPEG original y las dimensiones figuran como texto accesible. No se presentan imágenes de distintas páginas como una secuencia de antes y después del mismo proyecto. Las imágenes restantes del catálogo siguen siendo ilustrativas.
 
 La tipografía usa Libre Baskerville para titulares y Manrope para texto y controles, con archivos locales y licencias SIL Open Font License en `assets/fonts/`. La portada organiza las tres divisiones corporativas y el catálogo conserva la solicitud de cotización sin pagos en línea.
 
@@ -39,4 +39,4 @@ Las fichas de `news.json` son una selección de productos, servicios e ideas par
 
 GitHub Pages sirve la raíz de `main` en `https://sandylazo1.github.io/Jechman-page-with-design/`. `index.html` es la única entrada activa; los estilos y comportamientos viven en `assets/` y las subsecciones usan rutas hash (`#/piscinas`, `#/electricidad`, etc.). `glassindex.html` conserva el enlace anterior mediante redirección. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
 
-Las entregas se identifican con etiquetas Git: `v1.0.0` es la primera versión unificada en `main`; cambios posteriores podrán publicarse como `v1.1.0`, `v1.2.0`, etc. El historial está en [CHANGELOG.md](CHANGELOG.md).
+Las entregas se identifican con etiquetas Git: `v1.0.0` es la primera versión unificada en `main`; `v1.1.0` añade fotografías y amplía Sofía. El historial está en [CHANGELOG.md](CHANGELOG.md).

@@ -420,7 +420,13 @@
     let content='';if(product)content=renderProduct(product);else if(entry.type==='modelos')content=renderModelList(entry);else if(entry.type==='catalog')content=renderCatalog(entry);else if(entry.type==='service')content=renderService(entry);else content=renderConfig(entry);
     view.innerHTML=hero(entry)+content+makeGallery(entry)+related(entry);
     $$("img[src^='assets/editorial/']",view).forEach(responsiveImage);
-    if(product)bindProduct(product);else if(entry.type==='modelos'){bindSimpleQuote(entry,'Familia de modelos: '+entry.title+'. Modelo y medidas por definir.');bindModelComparison(entry);}else if(entry.type==='catalog')bindSimpleQuote(entry,'Familia de productos: '+entry.title+'. Especificaciones por definir.');else if(entry.type==='service')bindService(entry);else bindConfig(entry);
+    if(product)bindProduct(product);else if(entry.type==='modelos'){
+      bindSimpleQuote(entry,'Familia de modelos: '+entry.title+'. Modelo y medidas por definir.');
+      bindModelComparison(entry);
+      const family=entry.route.endsWith('romanas')?'Romana':entry.route.endsWith('con-jacuzzi')?'Con jacuzzi':'Rectangular';
+      const listed=models.filter(item=>family==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family);
+      $$('.xp-model-card',view).forEach((card,index)=>window.showPoolPhoto?.(card,listed[index]));
+    }else if(entry.type==='catalog')bindSimpleQuote(entry,'Familia de productos: '+entry.title+'. Especificaciones por definir.');else if(entry.type==='service')bindService(entry);else bindConfig(entry);
     bindGallery(entry);activateMotion();document.title=entry.title+' | JECHMAN';window.scrollTo({top:0,left:0,behavior:'instant'});$('#contenido').focus({preventScroll:true});
   }
   window.addEventListener('hashchange',handleRoute);handleRoute();

@@ -5,20 +5,39 @@
 
   const PHONE = '56962306924';
   const areas = {
-    'Piscinas y bienestar': ['Piscina o instalación','Bomba de calor o climatización','Manta térmica o cobertor','Bombas, filtros y mantención','Jacuzzi, tinaja o spa','Otro de bienestar'],
-    'Electricidad e ingeniería': ['Instalación eléctrica','Tableros y protecciones','Iluminación','Domótica o inmótica','Automatización y control','Paneles solares','Otro proyecto eléctrico'],
-    'Comercializadora y suministros': ['Ferretería y herramientas','Tuberías y fittings','Hidráulica','Material eléctrico','Lista de materiales','Otro suministro']
+    'Piscinas y bienestar': ['Piscinas de fibra de vidrio','Jacuzzis','Tinajas','Sauna o spa','Bombas de calor y climatización','Mantas térmicas y cobertores','Bombas y filtración','Mantención, reparación o pintado','Robot limpiafondos y accesorios','Otro proyecto de bienestar'],
+    'Electricidad e ingeniería': ['Proyectos y planos eléctricos','Instalaciones domiciliarias e industriales','Tableros y protecciones','Mantención eléctrica','Iluminación','Automatización y control','Domótica e inmótica','Paneles solares','Sistemas eólicos','Puesta a tierra y regularización','Otro proyecto eléctrico'],
+    'Comercializadora y suministros': ['Ferretería y herramientas','Tuberías y fittings','Hidráulica y bombeo','Material eléctrico','Iluminación y luminarias','Lista de materiales','Otros suministros']
+  };
+  const areaDescriptions = {
+    'Piscinas y bienestar':'Piscinas, jacuzzis, tinajas, climatización y cuidado del agua',
+    'Electricidad e ingeniería':'Instalaciones, tableros, iluminación y sistemas inteligentes',
+    'Comercializadora y suministros':'Ferretería, hidráulica y materiales para tu proyecto'
+  };
+  const quickAnswers = {
+    'Piscinas y bienestar': {
+      '¿Qué opciones tienen?':'Puedes consultar piscinas, jacuzzis, tinajas, sauna o spa, climatización, bombas, cobertores y mantención. Revisamos alcance y disponibilidad al cotizar.',
+      '¿Qué medidas necesitan?':'Ayudan el largo, ancho y profundidad, además del espacio disponible y la comuna. Si aún no tienes medidas, igual podemos orientarte.'
+    },
+    'Electricidad e ingeniería': {
+      '¿Qué trabajos realizan?':'Puedes consultar proyectos, instalaciones, tableros, iluminación, mantención, automatización, domótica, solar y puesta a tierra. El alcance se evalúa.',
+      '¿Qué datos necesitan?':'Cuéntanos el tipo de inmueble, el trabajo que buscas y tu comuna. Si tienes planos o antecedentes, el equipo podrá revisarlos.'
+    },
+    'Comercializadora y suministros': {
+      '¿Qué productos puedo consultar?':'Ferretería, herramientas, tuberías, fittings, hidráulica, material eléctrico y luminarias. La disponibilidad se confirma en la cotización.',
+      '¿Puedo enviar una lista?':'Sí. Indica productos, medidas y cantidades aproximadas. El equipo revisará alternativas y disponibilidad contigo.'
+    }
   };
   const state = {step:'area',area:'',interest:'',name:'',phone:'',city:''};
   root.innerHTML = `
     <button class="sofia-launcher" id="sofia-launcher" type="button" aria-label="Abrir asistente Sofía" aria-expanded="false" aria-controls="sofia-panel">
       <span class="sofia-orb" aria-hidden="true"><span class="sofia-orb-core">S</span></span>
-      <span>Consulta con Sofía</span>
+      <span>¿En qué te ayudamos?</span>
     </button>
     <section class="sofia-panel" id="sofia-panel" role="dialog" aria-modal="false" aria-labelledby="sofia-title" hidden>
       <div class="sofia-head">
         <span class="sofia-head-orb" aria-hidden="true">S</span>
-        <div><h2 id="sofia-title">Sofía</h2><p>Orientación para cotizar con JECHMAN</p></div>
+        <div><h2 id="sofia-title">Sofía · JECHMAN</h2><p>Explora servicios y prepara tu consulta</p></div>
         <button class="sofia-close" id="sofia-close" type="button" aria-label="Cerrar asistente">×</button>
       </div>
       <div class="sofia-progress" id="sofia-progress" role="group" aria-label="Paso 1 de 3"><span></span><span></span><span></span></div>
@@ -85,15 +104,20 @@
     log.append(item);
     scrollEnd();
   }
-  function choices(labels){
+  function choices(labels,areaChoice=false){
     const group=document.createElement('div');
-    group.className='sofia-choices';
+    group.className='sofia-choices'+(areaChoice?' sofia-area-choices':'');
     group.setAttribute('role','group');
     group.setAttribute('aria-label','Opciones de consulta');
     labels.forEach(label=>{
       const button=document.createElement('button');
       button.type='button';
-      button.textContent=label;
+      if(areaChoice){
+        button.setAttribute('aria-label',label);
+        const title=document.createElement('strong');title.textContent=label;
+        const detail=document.createElement('small');detail.textContent=areaDescriptions[label];
+        button.append(title,detail);
+      }else button.textContent=label;
       button.addEventListener('click',()=>{group.remove();answer(label)});
       group.append(button);
     });
@@ -102,6 +126,7 @@
   }
   function setStep(step){
     state.step=step;
+    root.classList.toggle('sofia-area-step',step==='area');
     const index=step==='area'?1:step==='requirement'?2:3;
     progress.setAttribute('aria-label',`Paso ${index} de 3`);
     [...progress.children].forEach((bar,i)=>bar.classList.toggle('is-active',i<index));
@@ -115,7 +140,7 @@
   function greet(){
     setStep('area');
     bubble('Hola, soy Sofía. ¿En cuál de estas tres áreas te puedo orientar?');
-    choices(Object.keys(areas));
+    choices(Object.keys(areas),true);
     const direct=document.createElement('a');
     direct.className='sofia-direct';
     direct.href=`https://wa.me/${PHONE}?text=${encodeURIComponent('Hola JECHMAN, quisiera consultar por un producto o proyecto.')}`;
@@ -141,6 +166,17 @@
     if(/piscina|jacuzzi|tinaja/.test(topic))return 'Para orientar el proyecto, ayudan las medidas del espacio y el tipo de uso que imaginas. Cada instalación se evalúa.';
     return 'Cuéntanos el contexto y el equipo revisará opciones y factibilidad antes de cotizar.';
   }
+  function showQuickAnswers(){
+    const group=document.createElement('div');group.className='sofia-quick-answers';
+    group.setAttribute('role','group');group.setAttribute('aria-label','Preguntas rápidas');
+    const label=document.createElement('p');label.textContent='Antes de cotizar, también puedes preguntar:';group.append(label);
+    Object.entries(quickAnswers[state.area]).forEach(([question,reply])=>{
+      const button=document.createElement('button');button.type='button';button.textContent=question;
+      button.addEventListener('click',()=>{bubble(question,'user');bubble(reply);scrollEnd()});
+      group.append(button);
+    });
+    log.append(group);scrollEnd();
+  }
   function answer(value){
     if(state.step==='done')return;
     const text=value.trim().replace(/\s+/g,' ').slice(0,state.step==='requirement'?180:80);
@@ -149,11 +185,12 @@
     bubble(text,'user');
     input.value='';
     if(state.step==='area'){
-      state.area=text;setStep('requirement');bubble('¿Qué necesitas dentro de esta área?');choices(areas[text]);
+      state.area=text;setStep('requirement');bubble('Estas son algunas de las soluciones que puedes consultar. ¿Cuál te interesa?');choices(areas[text]);
       const change=document.createElement('button');change.type='button';change.className='sofia-change-area';change.textContent='Cambiar de área';change.addEventListener('click',restart);log.append(change);
     }else if(state.step==='requirement'){
-      state.interest=text;setStep('name');bubble(guidance(text));bubble('Gracias. ¿Cuál es tu nombre?');
+      state.interest=text;setStep('name');bubble(guidance(text));bubble('Si quieres cotizar, dime tu nombre. Puedes resolver una duda rápida primero.');showQuickAnswers();
     }else if(state.step==='name'){
+      log.querySelector('.sofia-quick-answers')?.remove();
       state.name=text;setStep('phone');bubble(`${text}, ¿qué número de teléfono o WhatsApp podemos incluir en la consulta?`);
     }else if(state.step==='phone'){
       state.phone=text;setStep('city');bubble('¿En qué comuna o ciudad será el proyecto?');
