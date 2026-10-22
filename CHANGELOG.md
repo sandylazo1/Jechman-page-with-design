@@ -1,5 +1,12 @@
 # Versiones de JECHMAN
 
+## v1.2.0 — 22 de octubre de 2026
+
+- Portada con jerarquía editorial más directa: un titular breve, CTA de cotización y tres accesos inmediatos a las áreas de JECHMAN.
+- Cabecera y franja superior unificadas con la nueva dirección navy; acentos cian, amarillo y morado preservan la identidad de cada área.
+- Carrusel y rutas existentes conservados; contenido de la portada actualizado sin precios ni promesas comerciales no verificadas.
+- Dirección visual y criterios de revisión documentados en `docs/PROMPT_JECHMAN_V1_2.md`.
+
 ## v1.1.0 — 22 de octubre de 2026
 
 - Sofía presenta tres áreas con contexto, muestra más servicios y responde preguntas frecuentes predeterminadas antes de preparar una cotización.
