@@ -3,7 +3,7 @@
 Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electricidad e ingeniería, y comercializadora. La tienda funciona como catálogo de cotización: no muestra precios, stock ni compra en línea.
 
 - `index.html`: entrada de GitHub Pages con las vistas completas del portal.
-- `glassindex.html`: copia de la misma experiencia para conservar el enlace histórico.
+- `glassindex.html`: redirige el enlace histórico a la única entrada activa, conservando la subsección solicitada.
 - `glassindex-original.html`: copia intacta del archivo original recibido.
 - `instrucciones-hernan.txt`: texto de referencia entregado por Sandy con las indicaciones para el sitio.
 - `news.json`: selección editorial de soluciones verificadas, con enlace directo a la fuente.
@@ -33,8 +33,10 @@ La revisión editorial y las pruebas de edición de configuraciones se documenta
 
 ## Fuentes de Novedades
 
-Las cuatro fichas de `news.json` remiten a páginas del sitio oficial: [piscinas](https://www.jechman.cl/fabricacion-e-instalacion-de-piscinas-de-fibra-de-vidrio/), [tinajas](https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/), [catálogo eléctrico](https://www.jechman.cl/product-category/electricidad-2/) y [jacuzzis](https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/). Son páginas de producto o servicio, sin fecha reciente comprobada; el carrusel evita presentarlas como publicaciones nuevas. No se identificaron perfiles de Instagram cuya titularidad y publicaciones recientes pudieran confirmarse desde el sitio oficial, por lo que no se añadieron enlaces ni fechas de esas cuentas.
+Las fichas de `news.json` son una selección de productos, servicios e ideas para consultar. Cada ficha indica su estado editorial y lleva a una ruta del portal; no se presentan como noticias recientes verificadas. Las imágenes y sus fuentes se documentan en `assets/image-sources.json` y `docs/IMAGE_ASSETS.md`.
 
 ## Publicación
 
-GitHub Pages sirve la raíz de `feature/jechman-glassmorphism-news` en `https://sandylazo1.github.io/Jechman-page-with-design/`. La rama `main` no se fusiona ni publica mediante este flujo. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
+GitHub Pages sirve la raíz de `main` en `https://sandylazo1.github.io/Jechman-page-with-design/`. `index.html` es la única entrada activa; los estilos y comportamientos viven en `assets/` y las subsecciones usan rutas hash (`#/piscinas`, `#/electricidad`, etc.). `glassindex.html` conserva el enlace anterior mediante redirección. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
+
+Las entregas se identifican con etiquetas Git: `v1.0.0` es la primera versión unificada en `main`; cambios posteriores podrán publicarse como `v1.1.0`, `v1.2.0`, etc. El historial está en [CHANGELOG.md](CHANGELOG.md).
