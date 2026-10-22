@@ -39,4 +39,4 @@ Las fichas de `news.json` son una selección de productos, servicios e ideas par
 
 GitHub Pages sirve la raíz de `main` en `https://sandylazo1.github.io/Jechman-page-with-design/`. `index.html` es la única entrada activa; los estilos y comportamientos viven en `assets/` y las subsecciones usan rutas hash (`#/piscinas`, `#/electricidad`, etc.). `glassindex.html` conserva el enlace anterior mediante redirección. El sitio oficial `www.jechman.cl` es únicamente una fuente de consulta.
 
-Las entregas se identifican con etiquetas Git: `v1.0.0` es la primera versión unificada en `main`; `v1.1.0` añade fotografías y amplía Sofía; `v1.2.0` refina la portada y la navegación comercial. El historial está en [CHANGELOG.md](CHANGELOG.md).
+Las entregas se identifican con etiquetas Git: `v1.0.0` es la primera versión unificada en `main`; `v1.1.0` añade fotografías y amplía Sofía. El historial está en [CHANGELOG.md](CHANGELOG.md).
