@@ -4,16 +4,12 @@
   if (!root) return;
 
   const PHONE = '56962306924';
-  const topics = [
-    'Manta térmica o cobertor',
-    'Bomba de calor o climatización',
-    'Bombas, filtros e hidráulica',
-    'Tableros y electricidad',
-    'Piscina, jacuzzi o tinaja',
-    'Domótica o automatización',
-    'Otro proyecto'
-  ];
-  const state = {step:'requirement',interest:'',name:'',phone:'',city:''};
+  const areas = {
+    'Piscinas y bienestar': ['Piscina o instalación','Bomba de calor o climatización','Manta térmica o cobertor','Bombas, filtros y mantención','Jacuzzi, tinaja o spa','Otro de bienestar'],
+    'Electricidad e ingeniería': ['Instalación eléctrica','Tableros y protecciones','Iluminación','Domótica o inmótica','Automatización y control','Paneles solares','Otro proyecto eléctrico'],
+    'Comercializadora y suministros': ['Ferretería y herramientas','Tuberías y fittings','Hidráulica','Material eléctrico','Lista de materiales','Otro suministro']
+  };
+  const state = {step:'area',area:'',interest:'',name:'',phone:'',city:''};
   root.innerHTML = `
     <button class="sofia-launcher" id="sofia-launcher" type="button" aria-label="Abrir asistente Sofía" aria-expanded="false" aria-controls="sofia-panel">
       <span class="sofia-orb" aria-hidden="true"><span class="sofia-orb-core">S</span></span>
@@ -22,7 +18,7 @@
     <section class="sofia-panel" id="sofia-panel" role="dialog" aria-modal="false" aria-labelledby="sofia-title" hidden>
       <div class="sofia-head">
         <span class="sofia-head-orb" aria-hidden="true">S</span>
-        <div><h2 id="sofia-title">Sofía</h2><p>Asistente de cotización JECHMAN</p></div>
+        <div><h2 id="sofia-title">Sofía</h2><p>Orientación para cotizar con JECHMAN</p></div>
         <button class="sofia-close" id="sofia-close" type="button" aria-label="Cerrar asistente">×</button>
       </div>
       <div class="sofia-progress" id="sofia-progress" role="group" aria-label="Paso 1 de 3"><span></span><span></span><span></span></div>
@@ -69,7 +65,7 @@
     launcher.setAttribute('aria-expanded','true');
     root.classList.add('sofia-open');
     if (!log.children.length) greet();
-    input.focus();
+    if (form.hidden) log.querySelector('.sofia-choices button')?.focus(); else input.focus();
   }
   function hide() {
     panel.hidden = true;
@@ -106,9 +102,10 @@
   }
   function setStep(step){
     state.step=step;
-    const index=step==='requirement'?1:step==='name'?2:3;
+    const index=step==='area'?1:step==='requirement'?2:3;
     progress.setAttribute('aria-label',`Paso ${index} de 3`);
     [...progress.children].forEach((bar,i)=>bar.classList.toggle('is-active',i<index));
+    form.hidden=step==='area'||step==='done';
     input.type=step==='phone'?'tel':'text';
     input.inputMode=step==='phone'?'tel':'text';
     input.maxLength=step==='requirement'?180:80;
@@ -116,9 +113,9 @@
     input.placeholder=step==='requirement'?'Producto o proyecto':step==='name'?'Tu nombre':step==='phone'?'+56 9 ...':'Comuna o ciudad';
   }
   function greet(){
-    setStep('requirement');
-    bubble('¡Hola! Soy Sofía, la guía de JECHMAN. ¿Qué buscas para tu proyecto?');
-    choices(topics);
+    setStep('area');
+    bubble('Hola, soy Sofía. ¿En cuál de estas tres áreas te puedo orientar?');
+    choices(Object.keys(areas));
     const direct=document.createElement('a');
     direct.className='sofia-direct';
     direct.href=`https://wa.me/${PHONE}?text=${encodeURIComponent('Hola JECHMAN, quisiera consultar por un producto o proyecto.')}`;
@@ -127,6 +124,7 @@
     log.append(direct);
   }
   function valid(value){
+    if(state.step==='area')return areas[value]?'':'Elige una de las tres áreas para continuar.';
     if(state.step==='requirement')return value.length>=3?'':'Cuéntame brevemente qué producto o proyecto buscas.';
     if(state.step==='name')return value.length>=2?'':'Indica tu nombre para preparar la consulta.';
     if(state.step==='phone'){const digits=value.replace(/\D/g,'');return digits.length>=8&&digits.length<=15?'':'Revisa el número: debe tener entre 8 y 15 dígitos.';}
@@ -150,7 +148,10 @@
     if(error){bubble(error);input.focus();return;}
     bubble(text,'user');
     input.value='';
-    if(state.step==='requirement'){
+    if(state.step==='area'){
+      state.area=text;setStep('requirement');bubble('¿Qué necesitas dentro de esta área?');choices(areas[text]);
+      const change=document.createElement('button');change.type='button';change.className='sofia-change-area';change.textContent='Cambiar de área';change.addEventListener('click',restart);log.append(change);
+    }else if(state.step==='requirement'){
       state.interest=text;setStep('name');bubble(guidance(text));bubble('Gracias. ¿Cuál es tu nombre?');
     }else if(state.step==='name'){
       state.name=text;setStep('phone');bubble(`${text}, ¿qué número de teléfono o WhatsApp podemos incluir en la consulta?`);
@@ -159,14 +160,16 @@
     }else if(state.step==='city'){
       state.city=text;setStep('done');finish();
     }
-    if(state.step!=='done')input.focus();
+    if(state.step==='requirement'&&state.area&&!state.interest)log.querySelector('.sofia-choices button')?.focus();
+    else if(state.step!=='done')input.focus();
   }
+  function restart(){Object.assign(state,{step:'area',area:'',interest:'',name:'',phone:'',city:''});log.replaceChildren();greet();log.querySelector('.sofia-choices button')?.focus()}
   function finish(){
     bubble(`${state.name}, tu mensaje está listo. Puedes revisarlo en WhatsApp antes de enviarlo al equipo de JECHMAN.`);
-    const message=`Hola JECHMAN, soy ${state.name}. Quisiera consultar por: ${state.interest}. Mi teléfono o WhatsApp es ${state.phone} y el proyecto será en ${state.city}. ¿Podemos revisar factibilidad, opciones y cotización?`;
+    const message=`Hola JECHMAN, soy ${state.name}. Área: ${state.area}. Necesito: ${state.interest}. Mi teléfono o WhatsApp es ${state.phone} y el proyecto será en ${state.city}. ¿Podemos revisar factibilidad, opciones y cotización?`;
     const actions=document.createElement('div');actions.className='sofia-finish';
     const send=document.createElement('a');send.className='sofia-whatsapp';send.href=`https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;send.target='_blank';send.rel='noopener noreferrer';send.textContent='Revisar y enviar por WhatsApp ↗';
-    const reset=document.createElement('button');reset.type='button';reset.textContent='Nueva consulta';reset.addEventListener('click',()=>{Object.assign(state,{step:'requirement',interest:'',name:'',phone:'',city:''});log.replaceChildren();form.hidden=false;greet();input.focus()});
+    const reset=document.createElement('button');reset.type='button';reset.textContent='Nueva consulta';reset.addEventListener('click',restart);
     actions.append(send,reset);log.append(actions);form.hidden=true;scrollEnd();
   }
   form.addEventListener('submit',event=>{event.preventDefault();answer(input.value)});
