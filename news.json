@@ -1,30 +1,74 @@
 [
   {
     "category": "Piscinas y bienestar",
+    "status": "Catálogo JECHMAN",
     "title": "Piscinas de fibra de vidrio",
-    "description": "JECHMAN publica modelos rectangulares y romanos y ofrece fabricación e instalación según el proyecto.",
-    "image": "assets/catalog/piscina-rectangular.jpg",
-    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-piscinas-de-fibra-de-vidrio/"
+    "description": "Explora modelos y consulta fabricación e instalación según tu espacio.",
+    "image": "assets/editorial/pool-hero-800.webp",
+    "link": "#/piscinas"
   },
   {
     "category": "Piscinas y bienestar",
-    "title": "Tinajas configurables",
-    "description": "La ficha oficial describe tinajas de madera recubiertas en fibra de vidrio con opciones de equipamiento.",
-    "image": "assets/catalog/tinaja.webp",
-    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-tinajas-de-madera-recubiertas-en-fibra-de-vidrio/"
-  },
-  {
-    "category": "Electricidad y suministros",
-    "title": "Catálogo eléctrico",
-    "description": "La tienda oficial incluye familias de tableros, canalización, automatización e iluminación para consultar.",
-    "image": "assets/catalog/tablero-electrico.webp",
-    "source": "https://www.jechman.cl/product-category/electricidad-2/"
+    "status": "Catálogo JECHMAN",
+    "title": "Jacuzzis y tinajas",
+    "description": "Formas de disfrutar el agua con opciones de equipamiento a revisar en tu proyecto.",
+    "image": "assets/editorial/jacuzzi-800.webp",
+    "link": "#/jacuzzis"
   },
   {
     "category": "Piscinas y bienestar",
-    "title": "Jacuzzis de fibra de vidrio",
-    "description": "JECHMAN describe fabricación e instalación de jacuzzis y opciones de recirculación y filtración sujetas a evaluación.",
-    "image": "assets/catalog/jacuzzi.webp",
-    "source": "https://www.jechman.cl/fabricacion-e-instalacion-de-jacuzzi-de-fibra-de-vidrio/"
+    "status": "Consulta técnica",
+    "title": "Mantención de piscinas",
+    "description": "Conversemos sobre limpieza, filtración, reparación y cuidado de tu piscina.",
+    "image": "assets/editorial/pool-hero-800.webp",
+    "link": "#/piscinas"
+  },
+  {
+    "category": "Electricidad",
+    "status": "Catálogo JECHMAN",
+    "title": "Tableros y materiales eléctricos",
+    "description": "Reúne componentes, canalización y tableros para preparar tu lista de materiales.",
+    "image": "assets/editorial/electric-800.webp",
+    "link": "#/electricidad/tableros"
+  },
+  {
+    "category": "Electricidad",
+    "status": "Catálogo JECHMAN",
+    "title": "Automatización y control",
+    "description": "Explora sistemas de control y plantea los requerimientos de tu instalación.",
+    "image": "assets/editorial/domotica-800.webp",
+    "link": "#/electricidad/automatizacion"
+  },
+  {
+    "category": "Electricidad",
+    "status": "Propuesta a evaluar",
+    "title": "Domótica para el hogar",
+    "description": "Imagina iluminación, escenas y dispositivos coordinados; revisemos la factibilidad de instalación.",
+    "image": "assets/editorial/domotica-800.webp",
+    "link": "#/electricidad/domotica"
+  },
+  {
+    "category": "Electricidad",
+    "status": "Propuesta a evaluar",
+    "title": "Inmótica para edificios",
+    "description": "Consulta cómo integrar iluminación, control y monitoreo de espacios compartidos.",
+    "image": "assets/editorial/inmotica-800.webp",
+    "link": "#/electricidad/inmotica"
+  },
+  {
+    "category": "Energía",
+    "status": "Propuesta a evaluar",
+    "title": "Paneles solares y energía",
+    "description": "Cuéntanos tu consumo y el lugar de instalación para estudiar una solución fotovoltaica.",
+    "image": "assets/editorial/energy-800.webp",
+    "link": "#/electricidad/paneles-solares"
+  },
+  {
+    "category": "Electricidad",
+    "status": "Consulta técnica",
+    "title": "Iluminación para tus espacios",
+    "description": "Elige el ambiente que quieres crear y consulta materiales, montaje y control.",
+    "image": "assets/editorial/electric-800.webp",
+    "link": "#/electricidad/iluminacion"
   }
 ]

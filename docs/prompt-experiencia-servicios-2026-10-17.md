@@ -1,0 +1,11 @@
+# Prompt ejecutado · Experiencia de servicios JECHMAN
+
+Mejora únicamente las subpáginas de la web JECHMAN existente. Conserva Inicio como en `main`, la identidad, el logotipo, los colores por área, las rutas, WhatsApp y la privacidad. Aplica una jerarquía clara: primero elegir área o necesidad; después configurar; finalmente cotizar. No muestres precios ni valores referenciales, aunque los materiales de origen los incluyan.
+
+En Piscinas y bienestar, presenta piscinas, jacuzzis, tinajas, spa y sauna con alcance sujeto a confirmación. Añade un configurador visual que responda al tipo elegido y a bomba de calor, calefont, caldera a leña integrada o exterior, iluminación, cobertor térmico, filtros, motobomba, robot limpiador y servicios de mantención o pintado cuando correspondan. La imagen dinámica debe declararse ilustrativa y la solicitud debe abrir un mensaje editable en WhatsApp sin guardar datos. Completa Tinajas con tipo de calefacción.
+
+En Electricidad, explica una propuesta de valor y organiza la lista proporcionada por Sandy: proyectos, instalaciones domiciliarias e industriales, montaje industrial, tableros, mantención, automatización, iluminación, fotovoltaica, eólica, planos, puesta a tierra, regularización, TE1, aumento de capacidad y materiales. Añade domótica, inmótica y sistemas inteligentes como temas para evaluación, sin afirmar certificaciones o habilitaciones no comprobadas. Haz seleccionables los trabajos para preparar una consulta.
+
+En Tienda, distingue productos y servicios, mejora la especificidad visual y descriptiva de bomba de calor, robot, filtro, motobomba, cobertor, iluminación y opciones de bienestar. Incorpora carruseles con imágenes locales en las subpáginas y carga progresiva real mediante skeletons. Incluye proyectos publicados por JECHMAN sin inventar nombres de clientes ni atribuir fotografías ilustrativas a obras propias.
+
+Usa archivos CSS y JavaScript separados para estas mejoras. Respeta movimiento reducido, navegación con teclado, contraste, estados de carga, móvil y privacidad. Prueba flujos, recursos, accesibilidad y GitHub Pages. Haz commit y push a `feature/jechman-glassmorphism-news`, mantén abierto el PR y verifica el enlace público sin fusionar `main`.
