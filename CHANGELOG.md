@@ -1,5 +1,11 @@
 # Versiones de JECHMAN
 
+## v1.2.1 — 22 de octubre de 2026
+
+- Se restaura la composición visual de `v1.1.0` tras descartar el rediseño de `v1.2.0`.
+- El primer panel y la sección sobre JECHMAN explican de forma más concreta la fabricación e instalación de piscinas, jacuzzis y tinajas, los accesorios y las otras áreas del proyecto.
+- Se conserva la cotización sin precios, el carrusel y el resto de la experiencia publicada.
+
 ## v1.1.0 — 22 de octubre de 2026
 
 - Sofía presenta tres áreas con contexto, muestra más servicios y responde preguntas frecuentes predeterminadas antes de preparar una cotización.
@@ -14,4 +20,4 @@
 - Sofía guía por área y subsección antes de preparar un mensaje para WhatsApp.
 - Recursos visuales, créditos y estados editoriales documentados en `assets/image-sources.json` y `docs/IMAGE_ASSETS.md`.
 
-Las siguientes mejoras incrementales se etiquetarán `v1.2.0`, `v1.3.0` y sucesivas. Correcciones puntuales usarán `v1.1.1`, `v1.1.2`, etc.
+Las siguientes mejoras incrementales usarán nuevas versiones etiquetadas. Cada etiqueta publicada conserva un punto de retorno en el historial.
