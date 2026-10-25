@@ -2,6 +2,8 @@
 
 Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electricidad e ingeniería, y comercializadora. La tienda funciona como catálogo de cotización: no muestra precios, stock ni compra en línea.
 
+La edición del 25 de octubre de 2026 integra contenido público del sitio oficial en proyectos integrales y amplía electricidad y el catálogo. Presenta primero proyectos de mayor alcance técnico, sin afirmar un orden de precios. La ruta `#/legal` explica privacidad, condiciones del catálogo y derechos del consumidor conforme a las normas chilenas vigentes en octubre de 2026; la Ley 21.719 comienza a regir el 1 de diciembre de 2026. El alcance y el precio final se confirman en cada cotización.
+
 - `index.html`: entrada de GitHub Pages con las vistas completas del portal.
 - `glassindex.html`: redirige el enlace histórico a la única entrada activa, conservando la subsección solicitada.
 - `glassindex-original.html`: copia intacta del archivo original recibido.
