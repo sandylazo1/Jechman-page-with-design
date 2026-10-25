@@ -1,0 +1,49 @@
+/* Clear commercial hierarchy, with a quiet blue-to-violet signature for the shop. */
+.view[data-view="tienda"]{background:#f7f7fc}
+.view[data-view="tienda"] .market-catalog{padding:clamp(24px,3vw,42px) 0 68px;background:radial-gradient(circle at 85% -10%,#d9d8ff 0,transparent 32%),radial-gradient(circle at 0 38%,#e4f2ff 0,transparent 30%),#f7f7fc;scroll-margin-top:100px}
+.market-catalog-header{margin-bottom:28px}
+.market-kicker{margin:0 0 12px;color:#5853a2;font-size:.79rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.market-catalog-title{display:flex;justify-content:space-between;align-items:end;gap:30px}
+.market-catalog-title h1{max-width:850px;margin:0 0 8px;color:#151f42;font-size:clamp(2.25rem,4vw,3.8rem);line-height:1.05;letter-spacing:-.045em;text-wrap:balance}
+.market-catalog-title p{max-width:670px;margin:0;color:#4c5b79;font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.55}
+.market-header-cta{display:inline-flex;flex:none;gap:18px;align-items:center;min-height:52px;padding:0 22px;border-radius:12px;color:#fff;background:linear-gradient(110deg,#1d3e86,#6550b9);font-weight:750;text-decoration:none;box-shadow:0 13px 28px #403b8529;transition:transform .2s ease,box-shadow .2s ease}
+.market-header-cta:hover,.market-header-cta:focus-visible{transform:translateY(-2px);box-shadow:0 17px 32px #403b853e}
+.market-shipping{display:flex;align-items:center;gap:10px;width:fit-content;margin:18px 0 0;padding:10px 15px;border:1px solid #bdc7f4;border-radius:999px;background:#fff;color:#2e457c;font-size:.9rem;font-weight:650}
+.market-shipping span{color:#7d60d4}
+.view[data-view="tienda"] .catalog-controls{padding:16px;border:1px solid #d9dff1;border-radius:17px;background:#ffffffed;box-shadow:0 13px 35px #2933670b}
+.view[data-view="tienda"] .catalog-controls .chips{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:4px 0 8px;scrollbar-width:thin;scrollbar-color:#aaa6df transparent}
+.view[data-view="tienda"] .catalog-controls .chip{flex:none;white-space:nowrap}
+.view[data-view="tienda"] .catalog-grid{gap:20px}
+.view[data-view="tienda"] .catalog-card{border-color:#dce3f2;box-shadow:0 10px 28px #2027550c;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.view[data-view="tienda"] .catalog-card:hover,.view[data-view="tienda"] .catalog-card:focus-within{transform:translateY(-4px);border-color:#a99fea;box-shadow:0 20px 42px #463a8b24}
+.view[data-view="tienda"] .catalog-media{background:#f4f6fb}
+.view[data-view="tienda"] .catalog-card .btn:not(.outline){background:#5148a8;border-color:#5148a8;color:#fff}
+.view[data-view="tienda"] .catalog-card .btn:not(.outline):hover{background:#37358c;border-color:#37358c}
+.view[data-view="tienda"] .chip[aria-pressed="true"]{background:#5148a8;border-color:#5148a8;color:#fff}
+.view[data-view="tienda"] .enh-shop-journey{background:#fff}
+.view[data-view="tienda"] .jx-thermal{background:#0e1532}
+.view[data-view="tienda"] .jx-thermal-visual{background:linear-gradient(#09143338,#0914336b),url('photography/villa-pool-31817157.jpg') center/cover no-repeat;border:1px solid #ffffff3b}
+.view[data-view="tienda"] .jx-thermal-visual .jx-wave,.view[data-view="tienda"] .jx-thermal-visual .jx-visual-label{display:none}
+.area-hero-credit,.wellness-credit,.enh-mast-credit,.enh-project-grid figcaption,.xp-hero-media>span,.xp-gallery-main figcaption,.xp-preview-label,.pool-story-photo figcaption,.tinaja-photo figcaption,.about-visual figcaption{display:none!important}
+.model-card{position:relative;padding-top:27px!important;background:linear-gradient(135deg,#fff,#f7fbfc)!important}
+.model-card::before,.xp-model-card::before{content:"";display:block;width:36px;height:3px;margin-bottom:15px;border-radius:4px;background:linear-gradient(90deg,#1599c2,#4b62b6)}
+.xp-model-card{background:linear-gradient(135deg,#fff,#f7fbfc)}
+.xp-gallery-thumbs .xp-thumb{display:grid;place-items:center;width:48px;height:42px;border:1px solid #b9d5dc;border-radius:9px;background:#fff;color:#1b5267;font-size:.8rem;font-weight:800}
+.xp-gallery-thumbs .xp-thumb[aria-current="true"]{background:#15536b;color:#fff;border-color:#15536b}
+.xp-preview-gallery [data-preview-index]{display:grid;place-items:center;width:45px;height:40px;border:1px solid #b9d5dc;border-radius:8px;background:#fff;color:#1b5267;font-size:.8rem;font-weight:800}
+.xp-preview-gallery [data-preview-index][aria-pressed="true"]{background:#15536b;color:#fff;border-color:#15536b}
+.enh-studio-gallery{display:flex;gap:8px;margin-top:11px}
+.enh-studio-gallery[hidden]{display:none!important}
+.enh-studio-gallery button{width:auto;min-height:39px;padding:0 15px;border:1px solid #c6dbe3;border-radius:999px;background:#fff;color:#24445a;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.enh-studio-gallery button[aria-pressed="true"]{border-color:#14849a;background:#e1f6f8;color:#0e5c72}
+.enh-scene{height:clamp(310px,37vw,490px);background:#c9e6ed}
+.enh-scene-photo{object-fit:cover!important;padding:0!important}
+.enh-scene[data-type="piscina-jacuzzi"].has-heat .enh-product-layer .enh-overlay--heat,.enh-scene[data-type="piscina-jacuzzi"].has-robot .enh-product-layer .enh-overlay--robot{opacity:1!important;transform:translateY(0) scale(1)}
+.enh-scene[data-type="piscina-jacuzzi"] .enh-overlay--robot{left:54%;bottom:37%}
+.enh-scene[data-type="piscina-jacuzzi"] .enh-overlay--heat{right:2%;bottom:8%}
+.enh-scene[data-type="sauna"] .enh-scene-photo{object-fit:cover!important}
+.enh-scene:not([data-type="piscina"]):not([data-type="piscina-jacuzzi"]) .enh-overlay--robot{opacity:0!important}
+.enh-scene[data-type="tinaja"] .enh-overlay,.enh-scene[data-type="sauna"] .enh-overlay{opacity:0!important}
+.enh-studio-summary p{max-width:62ch}
+@media(max-width:720px){.market-catalog-title{align-items:start;flex-direction:column;gap:14px}.market-catalog-title h1{font-size:clamp(2.2rem,9vw,3.2rem)}.market-shipping{border-radius:14px;align-items:start;line-height:1.4}.enh-scene{height:290px}.enh-scene[data-type="piscina-jacuzzi"] .enh-overlay--robot{left:54%;bottom:37%;width:72px!important}}
+@media(prefers-reduced-motion:reduce){.market-header-cta,.view[data-view="tienda"] .catalog-card{transition:none}.market-header-cta:hover,.view[data-view="tienda"] .catalog-card:hover{transform:none}}

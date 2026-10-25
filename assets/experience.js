@@ -82,7 +82,7 @@
   const routeVisuals = {
     'piscinas/romanas':'pool-roman',
     'piscinas/rectangulares':'pool-hero',
-    'piscinas/con-jacuzzi':'assets/pools-real/jacuzzi-rectangular.jpeg',
+    'piscinas/con-jacuzzi':'assets/jechman-products/pool-jacuzzi-clean-ai.png',
     'piscinas/configurar':'assets/catalog/piscina-rectangular.jpg',
     'piscinas/filtracion':'assets/catalog/bomba-filtro.webp',
     'piscinas/climatizacion':'assets/catalog/bomba-calor.webp',
@@ -112,7 +112,7 @@
   const accessoryEntry=entries.find(entry=>entry.route==='piscinas/accesorios');
   accessoryEntry.gallery=[
     photo('assets/catalog/zuipy-300.png','Robot limpiafondos Vulcano ZUIPY 300'),
-    photo('assets/photography/solar-install.jpg','Paneles solares, fotografía de referencia'),
+    photo('assets/photography/route-solar.jpg','Paneles solares, fotografía de referencia'),
     photo('assets/catalog/bomba-calor.webp','Bomba de calor de referencia'),
     photo('assets/catalog/bomba-filtro.webp','Bomba y filtro de piscina de referencia')
   ];
@@ -184,14 +184,15 @@
     return `<section class="xp-hero xp-hero--${escape(entry.parent)}"><div class="wrap xp-hero-grid"><div class="xp-hero-copy"><nav class="xp-breadcrumb" aria-label="Ruta de navegación"><a href="#/">Inicio</a><span aria-hidden="true">/</span><a href="#/${entry.parent}">${escape(parentTitles[entry.parent])}</a><span aria-hidden="true">/</span><span aria-current="page">${escape(entry.title)}</span></nav><span class="xp-status xp-status--${entry.status}">${escape(statusLabels[entry.status])}</span><h1>${escape(entry.headline)}</h1><p>${escape(entry.description)}</p><div class="xp-hero-actions"><button type="button" class="btn xp-primary" data-xp-scroll>${entry.type==='modelos'?'Ver modelos':entry.type==='catalog'?'Ver productos':'Configurar y cotizar'}</button><a class="xp-text-link" href="#/${entry.parent}">Volver a ${escape(parentTitles[entry.parent])}</a></div></div><div class="xp-hero-media"><img src="${escape(image.src)}" alt="${escape(image.alt)}" width="1200" height="800"><span>${escape(image.credit)}</span></div></div></section>`;
   }
   function makeGallery(entry) {
-    const photos=entry.gallery; if (photos.length<2) return '';
-    const buttons=photos.map((item,index)=>`<button type="button" class="xp-thumb" data-gallery-index="${index}" aria-label="Mostrar imagen ${index+1}: ${escape(item.alt)}" aria-current="${index===0}"><img src="${escape(item.src)}" alt="" loading="lazy" width="100" height="75"></button>`).join('');
+    if(!['modelos','catalog','service'].includes(entry.type))return '';
+    const photos=entry.gallery.slice(1); if (!photos.length) return '';
+    const buttons=photos.map((item,index)=>`<button type="button" class="xp-thumb" data-gallery-index="${index}" aria-label="Mostrar imagen ${index+1}: ${escape(item.alt)}" aria-current="${index===0}">${String(index+1).padStart(2,'0')}</button>`).join('');
     return `<section class="xp-gallery-section"><div class="wrap"><div class="xp-section-heading"><h2>Observa los detalles</h2><p>Renders editoriales y fotografías publicadas por JECHMAN. Cada medida, acabado y solución se confirma al cotizar.</p></div><div class="xp-gallery" tabindex="0" aria-label="Galería de ${escape(entry.title)}"><figure class="xp-gallery-main"><img src="${escape(photos[0].src)}" alt="${escape(photos[0].alt)}" loading="lazy" width="1200" height="800"><figcaption>${escape(photos[0].credit)}</figcaption></figure><div class="xp-gallery-bottom"><button type="button" class="xp-gallery-arrow" data-gallery-direction="-1" aria-label="Imagen anterior">←</button><div class="xp-gallery-thumbs" role="group" aria-label="Elegir imagen">${buttons}</div><button type="button" class="xp-gallery-arrow" data-gallery-direction="1" aria-label="Imagen siguiente">→</button></div></div></div></section>`;
   }
   function bindGallery(entry) {
-    const root=$('.xp-gallery',view); if (!root) return; let index=0;
+    const root=$('.xp-gallery',view); if (!root) return; let index=0; const photos=entry.gallery.slice(1);
     function show(next) {
-      index=(next+entry.gallery.length)%entry.gallery.length; const item=entry.gallery[index], img=$('.xp-gallery-main img',root);
+      index=(next+photos.length)%photos.length; const item=photos[index], img=$('.xp-gallery-main img',root);
       img.classList.remove('xp-image-enter');img.src=item.src;img.alt=item.alt;responsiveImage(img);
       if (!reduced()) requestAnimationFrame(()=>img.classList.add('xp-image-enter'));
       $('.xp-gallery-main figcaption',root).textContent=item.credit;
@@ -202,13 +203,26 @@
     let start=0;root.addEventListener('touchstart',event=>{start=event.changedTouches[0].screenX},{passive:true});root.addEventListener('touchend',event=>{const delta=event.changedTouches[0].screenX-start;if(Math.abs(delta)>50)show(index+(delta<0?1:-1))},{passive:true});
   }
   function related(entry) {
+    const relatedPhoto={
+      'piscinas/configurar':'assets/photography/home-pool-8134747.jpg',
+      'piscinas/filtracion':'assets/jechman-products/bomba-reynolds.jpg',
+      'piscinas/iluminacion':'assets/photography/pool-lighting-6957108.jpg',
+      'piscinas/climatizacion':'assets/photography/heat-pump-cutout.png',
+      'electricidad/instalaciones':'assets/photography/electrician-panel-27928760.jpg',
+      'electricidad/tableros':'assets/jechman-products/tablero-digital.jpg',
+      'electricidad/domotica':'assets/photography/smart-home.jpg',
+      'electricidad/eficiencia-energetica':'assets/photography/solar-farm.jpg',
+      'tienda/iluminacion':'assets/photography/led-ceiling-36344746.jpg',
+      'tienda/hidraulica':'assets/photography/pipework-29274530.jpg',
+      'comercial/electricidad':'assets/photography/electrical-breakers-38171184.jpg'
+    };
     let routes=[];
     if(entry.parent==='piscinas')routes=['piscinas/configurar','piscinas/filtracion','piscinas/iluminacion','piscinas/climatizacion'];
     else if(entry.parent==='electricidad')routes=['electricidad/instalaciones','electricidad/tableros','electricidad/domotica','electricidad/eficiencia-energetica'];
     else if(entry.parent==='tinajas'||entry.parent==='jacuzzis')routes=['piscinas/climatizacion','piscinas/iluminacion','piscinas/filtracion'];
     else routes=['tienda/iluminacion','tienda/hidraulica','comercial/electricidad'];
-    routes=routes.filter(route=>route!==entry.route).slice(0,3);
-     return `<section class="xp-related"><div class="wrap"><div class="xp-section-heading"><h2>Soluciones que acompañan tu proyecto</h2><p>Consulta por separado cada complemento que te interese.</p></div><div class="xp-related-grid">${routes.map(route=>{const item=byRoute.get(route);return `<article class="xp-related-card xp-spotlight"><img src="${escape(item.gallery[0].src)}" alt="" loading="lazy" width="420" height="220"><div><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><div class="xp-related-actions"><a href="#/${route}">Explorar</a><button type="button" data-related-add="${escape(route)}">Agregar a mi proyecto</button></div></div></article>`}).join('')}</div></div></section>`;
+    routes=routes.filter(route=>route!==entry.route && !(entry.route==='comercial/iluminacion' && route==='tienda/iluminacion') && !(entry.route==='comercial/automatizacion' && route==='comercial/electricidad')).slice(0,3);
+     return `<section class="xp-related"><div class="wrap"><div class="xp-section-heading"><h2>Soluciones que acompañan tu proyecto</h2><p>Consulta por separado cada complemento que te interese.</p></div><div class="xp-related-grid">${routes.map(route=>{const item=byRoute.get(route);return `<article class="xp-related-card xp-spotlight"><img src="${escape(relatedPhoto[route]||item.gallery[0].src)}" alt="${escape(item.title)}" loading="lazy" width="420" height="220"><div><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p><div class="xp-related-actions"><a href="#/${route}">Explorar</a><button type="button" data-related-add="${escape(route)}">Agregar a mi proyecto</button></div></div></article>`}).join('')}</div></div></section>`;
   }
   function quotePanel(entry) {
     return `<div class="xp-quote-panel"><div><h3>¿Lo conversamos?</h3><p>Tu selección se prepara en WhatsApp. JECHMAN confirma alcance y compatibilidad antes de cotizar.</p></div><a class="btn" id="xp-simple-quote" href="#">Cotizar ${escape(entry.title.toLowerCase())}</a><button type="button" class="btn outline" id="xp-simple-add">Agregar a mi proyecto</button></div>`;
@@ -220,7 +234,7 @@
   function renderModelList(entry) {
     const family=entry.route.endsWith('romanas')?'Romana':entry.route.endsWith('con-jacuzzi')?'Con jacuzzi':'Rectangular';
     const selected=models.filter(item=>family==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family);
-    const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><img class="xp-model-photo" src="${family==='Con jacuzzi'?'assets/pools-real/jacuzzi-rectangular.jpeg':family==='Romana'?'assets/pools-real/modelos-romanos.jpeg':'assets/pools-real/modelos-grandes.jpeg'}" alt="Piscina de fibra de la familia ${escape(family)}, fotografía aportada por JECHMAN" loading="lazy" width="800" height="500"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p>${item[4]==='por-confirmar'?'<p>Medida por confirmar con JECHMAN</p>':''}<a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
+      const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p>${item[4]==='por-confirmar'?'<p>Medida por confirmar con JECHMAN</p>':''}<a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
     return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>Modelos para comparar</h2><p>Medidas del listado actual de JECHMAN. Verifica el espacio disponible y la instalación antes de decidir.</p></div><div class="xp-model-grid">${rows}</div><div class="xp-comparison" hidden role="status" aria-live="polite"></div><p class="xp-note">Las imágenes muestran proyectos o ambientes de referencia; no identifican visualmente cada medida.</p>${quotePanel(entry)}</div></section>`;
   }
   function bindModelComparison(entry){
@@ -293,23 +307,25 @@
   }
   function renderConfig(entry) {
     const steps=configDefinition(entry);
+    const previewPhotos=entry.gallery.length>1?entry.gallery.slice(1):entry.gallery;
     const visualClass=entry.type==='domotica'?'xp-house-scene':entry.type==='inmotica'?'xp-building-scene':'';
     const concept=visualClass?`<div class="xp-concept ${visualClass}" aria-hidden="true"><div class="xp-concept-architecture"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="xp-concept-light"></div></div>`:'';
      const finishMarkup='<div class="xp-preview-finish" hidden><span class="xp-preview-swatch"></span><strong></strong><small>Acabado solicitado; la fotografía no cambia con la selección.</small></div>';
-     const previewGallery=entry.gallery.length>1?`<div class="xp-preview-gallery" aria-label="Fotografías de referencia"><button type="button" class="xp-preview-arrow" data-preview-step="-1" aria-label="Fotografía anterior">←</button>${entry.gallery.map((item,index)=>`<button type="button" data-preview-index="${index}" aria-label="Ver fotografía ${index+1}: ${escape(item.alt)}" aria-pressed="${index===0}"><img src="${escape(item.src)}" alt="" loading="lazy" width="84" height="64"></button>`).join('')}<button type="button" class="xp-preview-arrow" data-preview-step="1" aria-label="Fotografía siguiente">→</button><button type="button" class="xp-preview-zoom" aria-label="Ampliar fotografía">Ampliar</button></div>`:'';
+     const previewGallery=previewPhotos.length>1?`<div class="xp-preview-gallery" aria-label="Fotografías de referencia"><button type="button" class="xp-preview-arrow" data-preview-step="-1" aria-label="Fotografía anterior">←</button>${previewPhotos.map((item,index)=>`<button type="button" data-preview-index="${index}" aria-label="Ver fotografía ${index+1}: ${escape(item.alt)}" aria-pressed="${index===0}">${String(index+1).padStart(2,'0')}</button>`).join('')}<button type="button" class="xp-preview-arrow" data-preview-step="1" aria-label="Fotografía siguiente">→</button><button type="button" class="xp-preview-zoom" aria-label="Ampliar fotografía">Ampliar</button></div>`:'';
     const sim=entry.type==='domotica'?`<div class="xp-simulator"><h3>Prueba una escena conceptual</h3><p>Demostración visual; no hay equipos conectados ni mediciones reales.</p><div class="xp-sim-actions"><button type="button" data-scene="day" aria-pressed="true">Día</button><button type="button" data-scene="night" aria-pressed="false">Noche</button><button type="button" data-scene="away" aria-pressed="false">Ausencia</button></div></div>`:entry.type==='inmotica'?`<div class="xp-simulator"><h3>Explora zonas del edificio</h3><p>Representación conceptual de áreas a revisar por ingeniería.</p><div class="xp-sim-actions"><button type="button" data-zone="Planta baja" aria-pressed="true">Planta baja</button><button type="button" data-zone="Oficinas" aria-pressed="false">Oficinas</button><button type="button" data-zone="Servicios" aria-pressed="false">Servicios</button></div><p class="xp-zone-status" role="status">Zona: Planta baja</p></div>`:'';
     const calculation=entry.type==='energy'?'<div class="xp-energy-result" role="status">Ingresa potencia, cantidad y horas para ver un consumo diario teórico.</div>':'';
-    return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>${escape(entry.title)}</h2><p>Tu selección se actualiza mientras avanzas. Podrás revisarla antes de abrir WhatsApp.</p></div><div class="xp-config-layout"><div class="xp-preview xp-spotlight"><div class="xp-preview-image"><img src="${escape(entry.gallery[0].src)}" alt="${escape(entry.gallery[0].alt)}" loading="lazy" width="1000" height="750">${concept}${finishMarkup}<span class="xp-preview-label">${visualClass?'Simulación conceptual':escape(entry.gallery[0].credit)}</span></div>${previewGallery}${sim}<div class="xp-preview-summary"><h3>Tu selección</h3><dl id="xp-summary" aria-live="polite"></dl>${calculation}</div></div><div class="xp-config-form"><div class="xp-progress"><span id="xp-step-count">Paso 1 de ${steps.length}</span><div class="xp-progress-track"><span id="xp-progress-fill"></span></div></div><form id="xp-form" novalidate>${steps.map((step,index)=>`<fieldset class="xp-step" data-step="${index}" ${index?'hidden':''}><legend>${escape(step.title)}</legend>${step.fields.map(control).join('')}</fieldset>`).join('')}</form><div class="xp-config-nav"><button type="button" class="btn outline" id="xp-prev" disabled>Anterior</button><button type="button" class="btn" id="xp-next">Continuar</button></div><div class="xp-config-actions"><a class="btn xp-quote" id="xp-quote" href="#">Cotizar esta configuración</a><button type="button" class="btn outline" id="xp-add">Agregar a mi proyecto</button><button type="button" class="xp-reset" id="xp-reset">Reiniciar selección</button></div><p class="xp-note">No se envía información hasta que revises el mensaje y pulses Enviar en WhatsApp. La configuración final depende de JECHMAN.</p></div></div></div></section>`;
+    return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>${escape(entry.title)}</h2><p>Tu selección se actualiza mientras avanzas. Podrás revisarla antes de abrir WhatsApp.</p></div><div class="xp-config-layout"><div class="xp-preview xp-spotlight"><div class="xp-preview-image"><img src="${escape(previewPhotos[0].src)}" alt="${escape(previewPhotos[0].alt)}" loading="lazy" width="1000" height="750">${concept}${finishMarkup}<span class="xp-preview-label">${visualClass?'Simulación conceptual':escape(previewPhotos[0].credit)}</span></div>${previewGallery}${sim}<div class="xp-preview-summary"><h3>Tu selección</h3><dl id="xp-summary" aria-live="polite"></dl>${calculation}</div></div><div class="xp-config-form"><div class="xp-progress"><span id="xp-step-count">Paso 1 de ${steps.length}</span><div class="xp-progress-track"><span id="xp-progress-fill"></span></div></div><form id="xp-form" novalidate>${steps.map((step,index)=>`<fieldset class="xp-step" data-step="${index}" ${index?'hidden':''}><legend>${escape(step.title)}</legend>${step.fields.map(control).join('')}</fieldset>`).join('')}</form><div class="xp-config-nav"><button type="button" class="btn outline" id="xp-prev" disabled>Anterior</button><button type="button" class="btn" id="xp-next">Continuar</button></div><div class="xp-config-actions"><a class="btn xp-quote" id="xp-quote" href="#">Cotizar esta configuración</a><button type="button" class="btn outline" id="xp-add">Agregar a mi proyecto</button><button type="button" class="xp-reset" id="xp-reset">Reiniciar selección</button></div><p class="xp-note">No se envía información hasta que revises el mensaje y pulses Enviar en WhatsApp. La configuración final depende de JECHMAN.</p></div></div></div></section>`;
   }
   function bindConfig(entry) {
     const root=$('#xp-config',view), form=$('#xp-form',root), steps=$$('.xp-step',form), definitions=configDefinition(entry);let step=0;
+    const previewPhotos=entry.gallery.length>1?entry.gallery.slice(1):entry.gallery;
      const draftId=new URLSearchParams((location.hash.split('?')[1]||'')).get('editar')||'';
      const draft=project.find(item=>item.id===draftId&&item.route==='#/'+entry.route);
      if(draft?.config){for(const [name,saved] of Object.entries(draft.config)){if(typeof name!=='string'||name.length>40)continue;const inputs=$$('[name]',form).filter(input=>input.name===name);for(const input of inputs){if(input.type==='checkbox'||input.type==='radio')input.checked=Array.isArray(saved)?saved.includes(input.value):saved===input.value;else if(typeof saved==='string')input.value=saved.slice(0,200);}}}
      const previewButtons=$$('[data-preview-index]',root),previewImage=$('.xp-preview-image>img',root),previewLabel=$('.xp-preview-label',root);
-     function setPreview(index){const item=entry.gallery[index];if(!item)return;previewImage.src=item.src;previewImage.alt=item.alt;responsiveImage(previewImage);previewLabel.textContent=item.credit;previewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
+     function setPreview(index){const item=previewPhotos[index];if(!item)return;previewImage.src=item.src;previewImage.alt=item.alt;responsiveImage(previewImage);previewLabel.textContent=item.credit;previewButtons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
      previewButtons.forEach(button=>button.addEventListener('click',()=>setPreview(Number(button.dataset.previewIndex))));
-     $$('[data-preview-step]',root).forEach(button=>button.addEventListener('click',()=>{const current=previewButtons.findIndex(item=>item.getAttribute('aria-pressed')==='true');setPreview((current+Number(button.dataset.previewStep)+entry.gallery.length)%entry.gallery.length);}));
+     $$('[data-preview-step]',root).forEach(button=>button.addEventListener('click',()=>{const current=previewButtons.findIndex(item=>item.getAttribute('aria-pressed')==='true');setPreview((current+Number(button.dataset.previewStep)+previewPhotos.length)%previewPhotos.length);}));
      const zoom=$('.xp-preview-zoom',root);
      if(zoom){const dialog=document.createElement('dialog');dialog.className='xp-lightbox';dialog.innerHTML='<button type="button" aria-label="Cerrar imagen">Cerrar ×</button><img alt=""><p></p>';root.append(dialog);zoom.addEventListener('click',()=>{const img=$('img',dialog);img.src=previewImage.src;img.alt=previewImage.alt;$('p',dialog).textContent=previewLabel.textContent;dialog.showModal();});$('button',dialog).addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});}
     const family=$('#xp-family',form), model=$('#xp-model',form);

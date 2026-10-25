@@ -33,10 +33,8 @@
       store.insertBefore(template.content, existingCatalog);
       existingCatalog.id = 'catalogo';
       initThermal();
-      initProducts();
       initTrust();
       initSticky();
-      $('#jx-catalog-scroll').addEventListener('click',() => existingCatalog.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'}));
     })
     .catch(() => { /* The original catalog remains available if the optional module cannot load. */ });
 
