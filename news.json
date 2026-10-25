@@ -4,7 +4,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Piscinas de fibra de vidrio",
     "description": "Explora modelos y consulta fabricación e instalación según tu espacio.",
-    "image": "assets/pools-real/modelos-grandes.jpeg",
+    "image": "assets/projects/pool-installed.webp",
     "link": "#/piscinas"
   },
   {
@@ -12,7 +12,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Jacuzzis y tinajas",
     "description": "Formas de disfrutar el agua con opciones de equipamiento a revisar en tu proyecto.",
-    "image": "assets/pools-real/jacuzzi-rectangular.jpeg",
+    "image": "assets/pools-real/jacuzzi-redondo.jpeg",
     "link": "#/jacuzzis"
   },
   {
@@ -28,7 +28,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Tableros y materiales eléctricos",
     "description": "Reúne componentes, canalización y tableros para preparar tu lista de materiales.",
-    "image": "assets/photography/electric-install.jpg",
+    "image": "assets/areas/electricidad.webp",
     "link": "#/electricidad/tableros"
   },
   {
@@ -36,7 +36,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Automatización y control",
     "description": "Explora sistemas de control y plantea los requerimientos de tu instalación.",
-    "image": "assets/photography/smart-home.jpg",
+    "image": "assets/photography/access-control.jpg",
     "link": "#/electricidad/automatizacion"
   },
   {
@@ -52,7 +52,7 @@
     "status": "Propuesta a evaluar",
     "title": "Inmótica para edificios",
     "description": "Consulta cómo integrar iluminación, control y monitoreo de espacios compartidos.",
-    "image": "assets/photography/access-control.jpg",
+    "image": "assets/editorial/inmotica-1600.webp",
     "link": "#/electricidad/inmotica"
   },
   {
@@ -68,7 +68,7 @@
     "status": "Consulta técnica",
     "title": "Iluminación para tus espacios",
     "description": "Elige el ambiente que quieres crear y consulta materiales, montaje y control.",
-    "image": "assets/areas/iluminacion-pexels.jpeg",
+    "image": "assets/catalog/iluminacion.webp",
     "link": "#/electricidad/iluminacion"
   }
 ]

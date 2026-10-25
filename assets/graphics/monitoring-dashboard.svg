@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Panel de monitoreo eléctrico</title>
+  <desc id="desc">Interfaz conceptual con curvas de consumo y estados de circuitos.</desc>
+  <rect width="1200" height="800" fill="#0b1b2a"/>
+  <path d="M0 160H1200M0 320H1200M0 480H1200M0 640H1200M200 0V800M400 0V800M600 0V800M800 0V800M1000 0V800" stroke="#294457" opacity=".5"/>
+  <rect x="112" y="96" width="976" height="608" rx="22" fill="#102d40" stroke="#427185" stroke-width="2"/>
+  <text x="168" y="163" fill="#eef8f9" font-family="Arial,sans-serif" font-size="32" font-weight="700">Monitoreo de instalación</text>
+  <circle cx="1009" cy="144" r="10" fill="#45d5b9"/>
+  <text x="780" y="154" fill="#a8d3d9" font-family="Arial,sans-serif" font-size="22">Sistema en línea</text>
+  <rect x="168" y="208" width="600" height="338" rx="14" fill="#0b2334" stroke="#31586c"/>
+  <path d="M198 471H738M198 389H738M198 307H738" stroke="#31566a" stroke-width="2" stroke-dasharray="8 10"/>
+  <path d="M210 426C268 422 286 335 342 348S427 460 484 386 557 309 602 354 694 432 731 278" fill="none" stroke="#22b8d2" stroke-width="9" stroke-linecap="round"/>
+  <path d="M210 468C273 443 290 484 347 439S428 421 492 450 568 411 628 433 693 394 731 411" fill="none" stroke="#f5b947" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+  <rect x="796" y="208" width="240" height="145" rx="14" fill="#183c50"/>
+  <text x="823" y="252" fill="#a8d3d9" font-family="Arial,sans-serif" font-size="19">Circuitos activos</text>
+  <text x="823" y="318" fill="#fff" font-family="Arial,sans-serif" font-size="56" font-weight="700">08</text>
+  <rect x="796" y="372" width="240" height="174" rx="14" fill="#183c50"/>
+  <text x="823" y="416" fill="#a8d3d9" font-family="Arial,sans-serif" font-size="19">Estado</text>
+  <circle cx="835" cy="475" r="13" fill="#45d5b9"/>
+  <text x="864" y="483" fill="#fff" font-family="Arial,sans-serif" font-size="27">Normal</text>
+  <path d="M168 598H1036" stroke="#31586c" stroke-width="2"/>
+  <text x="168" y="650" fill="#a8d3d9" font-family="Arial,sans-serif" font-size="20">Visual conceptual · alcance sujeto a evaluación técnica</text>
+</svg>

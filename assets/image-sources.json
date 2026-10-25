@@ -260,5 +260,69 @@
     "license": "Composición conceptual; no identifica modelo comercial",
     "role": "Composición conceptual interactiva, no ficha técnica",
     "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/work-installation.jpg",
+    "sourcePage": "https://www.pexels.com/photo/electrician-by-fuse-box-17842832/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Instalaciones eléctricas",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/work-panel.jpg",
+    "sourcePage": "https://www.pexels.com/photo/a-man-is-working-on-an-electrical-panel-27928760/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Tableros eléctricos",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/work-automation.jpg",
+    "sourcePage": "https://www.pexels.com/photo/industrial-automation-equipment-with-control-panel-36564992/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Automatización y control",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/route-installation.jpg",
+    "sourcePage": "https://www.pexels.com/photo/electrician-in-helmet-working-with-cables-21812146/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Vista de instalaciones eléctricas",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/route-panel.jpg",
+    "sourcePage": "https://www.pexels.com/photo/electrician-fixing-an-opened-switchboard-257736/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Vista de tableros eléctricos",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/route-domotica.jpg",
+    "sourcePage": "https://www.pexels.com/photo/smart-home-control-16423104/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Control domótico de vivienda",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/route-viviendas.jpg",
+    "sourcePage": "https://www.pexels.com/photo/modern-living-room-with-digital-devices-and-tv-29606737/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Dispositivos conectados en vivienda",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/route-solar.jpg",
+    "sourcePage": "https://www.pexels.com/photo/a-male-solar-technician-installing-a-solar-panel-14613940/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Instalación fotovoltaica",
+    "addedOn": "2026-10-25"
   }
 ]

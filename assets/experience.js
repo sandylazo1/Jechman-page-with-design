@@ -83,18 +83,25 @@
     'piscinas/romanas':'pool-roman',
     'piscinas/rectangulares':'pool-hero',
     'piscinas/con-jacuzzi':'assets/pools-real/jacuzzi-rectangular.jpeg',
-    'electricidad/domotica':'assets/photography/smart-home.jpg',
-    'electricidad/inmotica':'assets/photography/access-control.jpg',
-    'electricidad/eficiencia-energetica':'assets/photography/solar-farm.jpg',
-    'electricidad/paneles-solares':'assets/photography/solar-install.jpg',
+    'piscinas/configurar':'assets/catalog/piscina-rectangular.jpg',
+    'piscinas/filtracion':'assets/catalog/bomba-filtro.webp',
+    'piscinas/climatizacion':'assets/catalog/bomba-calor.webp',
+    'piscinas/iluminacion':'assets/catalog/foco-piscina.webp',
+    'piscinas/spa':'assets/editorial/jacuzzi-1600.webp',
+    'electricidad/domotica':'assets/photography/route-domotica.jpg',
+    'electricidad/inmotica':'assets/editorial/inmotica-1600.webp',
+    'electricidad/eficiencia-energetica':'assets/editorial/energy-1600.webp',
+    'electricidad/paneles-solares':'assets/photography/route-solar.jpg',
     'electricidad/control-accesos':'assets/photography/access-control.jpg',
-    'electricidad/monitoreo':'assets/photography/smart-home.jpg',
-    'electricidad/viviendas':'assets/photography/smart-home.jpg',
+    'electricidad/monitoreo':'assets/graphics/monitoring-dashboard.svg',
+    'electricidad/viviendas':'assets/photography/route-viviendas.jpg',
     'electricidad/empresas':'assets/photography/solar-farm.jpg',
-    'electricidad/instalaciones':'assets/photography/electric-install.jpg',
-    'electricidad/tableros':'assets/areas/electricidad.webp',
-    'electricidad/proyectos':'assets/photography/electric-install.jpg',
+    'electricidad/instalaciones':'assets/photography/route-installation.jpg',
+    'electricidad/tableros':'assets/photography/route-panel.jpg',
+    'electricidad/proyectos':'assets/editorial/electric-1600.webp',
     'electricidad/automatizacion':'assets/areas/electricidad.webp',
+    'electricidad/iluminacion':'assets/areas/iluminacion-pexels.jpeg',
+    'electricidad/bombeo':'assets/catalog/bomba-filtro.webp',
     'piscinas/mantencion':'assets/photography/pool-care.jpg',
     'piscinas/sauna':'assets/photography/sauna-real.jpg'
   };
@@ -164,6 +171,10 @@
       }
       const anchor=$('.enh-mast',target)||$('.page-hero',target);
       anchor.insertAdjacentElement('afterend',section);
+      if(parent==='electricidad') {
+        const smartDemo=$('.enh-smart-demo',target);
+        if(smartDemo)section.insertAdjacentElement('afterend',smartDemo);
+      }
     }
   }
   insertDiscovery();

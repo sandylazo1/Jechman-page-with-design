@@ -1,0 +1,38 @@
+/* Shared graphic language: restrained technical linework and tactile 180 ms controls. */
+.view[data-view="electricidad"] .xp-discovery--electricidad{position:relative;overflow:hidden;background:#f6fafb}
+.view[data-view="electricidad"] .xp-discovery--electricidad::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:linear-gradient(#90bac11d 1px,transparent 1px),linear-gradient(90deg,#90bac11d 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent 10%,#000 100%)}
+.view[data-view="electricidad"] .xp-discovery--electricidad>.wrap{position:relative}
+.view[data-view="electricidad"] .xp-discovery-heading h2,.view[data-view="electricidad"] .enh-smart-demo h2{position:relative;width:fit-content}
+.view[data-view="electricidad"] .xp-discovery-heading h2::after,.view[data-view="electricidad"] .enh-smart-demo h2::after{content:"";display:block;width:34%;height:3px;margin-top:13px;background:#0c8eaf;animation:ref-line-breathe 5s ease-in-out infinite alternate}
+@keyframes ref-line-breathe{to{width:73%}}
+.ref-work-grid{gap:18px}
+.ref-work-card{padding:0!important;overflow:hidden;border:1px solid #d4e3e9!important;border-radius:15px!important;background:#fff!important;box-shadow:0 13px 31px #12384c12;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.ref-work-card:hover,.ref-work-card:focus-within{transform:translateY(-4px);border-color:#67a9b9!important;box-shadow:0 21px 39px #12384c21}
+.ref-work-card>img{display:block;width:100%;height:215px;object-fit:cover;transition:transform .4s ease}
+.ref-work-card:hover>img,.ref-work-card:focus-within>img{transform:scale(1.045)}
+.ref-work-card .ref-work-copy{padding:25px 27px 27px;display:flex;flex-direction:column;min-height:220px}
+.ref-work-card h3{margin:0 0 10px;font-size:clamp(1.5rem,2vw,1.95rem)}
+.ref-work-card p{margin:0 0 24px;color:#4c6674;line-height:1.55}
+.ref-work-card a{margin-top:auto;color:#0d526a;font-weight:750;text-decoration:none;align-self:flex-start;border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .18s ease,letter-spacing .18s ease}
+.ref-work-card a:hover,.ref-work-card a:focus-visible{color:#087d9b;letter-spacing:.015em}
+.enh-smart-stage{isolation:isolate}
+.enh-smart-stage::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#ffffff0c 1px,transparent 1px),linear-gradient(#ffffff0c 1px,transparent 1px);background-size:48px 48px;opacity:.5;animation:ref-grid-drift 24s linear infinite}
+@keyframes ref-grid-drift{to{background-position:48px 48px}}
+.enh-smart-readout{z-index:2}
+.enh-smart-toggle:hover,.enh-smart-toggle:focus-visible{background:#16556f}
+.enh-electric-options button,.enh-service-visuals button,.xp-discovery-card,.model-card,.news-card{transition-duration:.18s}
+.enh-electric-options button:focus-visible,.enh-service-visuals button:focus-visible,.xp-discovery-card:focus-visible,.ref-work-card a:focus-visible{outline:3px solid #f0b941;outline-offset:3px}
+/* Keep the photo portion of supplied composite JPEGs; measures are rendered as text below. */
+.model-card .pool-photo-frame,.xp-model-card .pool-photo-frame{position:relative;isolation:isolate}
+.model-card .pool-photo-frame img.ref-pool-source,.xp-model-card .pool-photo-frame img.ref-pool-source{width:100%;height:auto;min-height:0;object-fit:unset;object-position:top;transform:scale(1.72)!important;transform-origin:top center}
+.news-card>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;flex:none}
+.news-track{align-items:stretch}
+.news-card{height:auto}
+.news-card .ref-pool-media{position:relative;display:block;width:100%;height:auto;aspect-ratio:16/10;overflow:hidden;flex:none;background:#b1dce8}
+.news-card .ref-pool-media img{position:absolute;top:0;left:50%;display:block;width:185%;max-width:none;height:auto;aspect-ratio:auto;object-fit:unset;transform:translateX(-50%);transition:transform .3s ease}
+.news-card:hover .ref-pool-media img{transform:translateX(-50%) scale(1.025)}
+.official-project-photo img[src*="pools-real"]{width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(1.55);transform-origin:top center}
+.xp-hero-media img[src*="pools-real"],.xp-gallery-main img[src*="pools-real"],.xp-preview-image img[src*="pools-real"]{transform:scale(1.68);transform-origin:top center;object-position:center top}
+.enh-mast-media img[src*="pools-real"],.enh-card img[src*="pools-real"]{transform:scale(1.7);transform-origin:top center;object-position:center top}
+@media(max-width:760px){.ref-work-grid{grid-template-columns:1fr}.ref-work-card>img{height:200px}.ref-work-card .ref-work-copy{min-height:0}.view[data-view="electricidad"] .xp-discovery--electricidad::before{background-size:42px 42px}}
+@media(prefers-reduced-motion:reduce){.view[data-view="electricidad"] .xp-discovery-heading h2::after,.view[data-view="electricidad"] .enh-smart-demo h2::after,.enh-smart-stage::before{animation:none}.ref-work-card,.ref-work-card>img,.ref-work-card a,.news-card .ref-pool-media img{transition:none}.ref-work-card:hover,.ref-work-card:focus-within{transform:none}}
