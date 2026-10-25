@@ -188,5 +188,77 @@
     "license": "Uso en esta página solicitado por Sandy; no se declara licencia pública",
     "role": "Fotografía de piscina real; las medidas del panel original se presentan fuera de la imagen en la interfaz",
     "addedOn": "2026-10-22"
+  },
+  {
+    "file": "assets/photography/electric-install.jpg",
+    "sourcePage": "https://www.pexels.com/photo/electricians-at-work-10871585/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Profesionales trabajando en instalación eléctrica",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/pool-care.jpg",
+    "sourcePage": "https://www.pexels.com/photo/man-cleaning-swimming-pool-21327976/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Persona realizando limpieza de piscina",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/sauna-real.jpg",
+    "sourcePage": "https://www.pexels.com/photo/an-empty-wooden-sauna-7587466/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Interior de sauna",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/solar-install.jpg",
+    "sourcePage": "https://www.pexels.com/photo/man-wearing-safety-glasses-and-gloves-holding-solar-panels-on-the-roof-9875411/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Instalación de paneles solares",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/solar-farm.jpg",
+    "sourcePage": "https://www.pexels.com/photo/solar-panels-in-a-solar-farm-9229392/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Instalación fotovoltaica de referencia",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/smart-home.jpg",
+    "sourcePage": "https://www.pexels.com/photo/smart-home-control-16423103/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Control de vivienda inteligente",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/access-control.jpg",
+    "sourcePage": "https://www.pexels.com/photo/finger-scan-17155842/",
+    "platform": "Pexels",
+    "license": "Pexels License; fotografía de referencia, no proyecto JECHMAN",
+    "role": "Control biométrico de acceso",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/zuipy-300-cutout.png",
+    "sourcePage": "assets/catalog/zuipy-300.png",
+    "platform": "Recorte asistido por IA de imagen de catálogo existente",
+    "license": "Imagen base de catálogo; verificar autorización de uso de marca y producto",
+    "role": "Composición conceptual interactiva, no ficha técnica",
+    "addedOn": "2026-10-25"
+  },
+  {
+    "file": "assets/photography/heat-pump-cutout.png",
+    "sourcePage": "assets/catalog/bomba-calor.webp",
+    "platform": "Recorte asistido por IA de imagen de referencia existente",
+    "license": "Composición conceptual; no identifica modelo comercial",
+    "role": "Composición conceptual interactiva, no ficha técnica",
+    "addedOn": "2026-10-25"
   }
 ]

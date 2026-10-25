@@ -4,7 +4,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Piscinas de fibra de vidrio",
     "description": "Explora modelos y consulta fabricación e instalación según tu espacio.",
-    "image": "assets/editorial/pool-hero-800.webp",
+    "image": "assets/pools-real/modelos-grandes.jpeg",
     "link": "#/piscinas"
   },
   {
@@ -12,7 +12,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Jacuzzis y tinajas",
     "description": "Formas de disfrutar el agua con opciones de equipamiento a revisar en tu proyecto.",
-    "image": "assets/editorial/jacuzzi-800.webp",
+    "image": "assets/pools-real/jacuzzi-rectangular.jpeg",
     "link": "#/jacuzzis"
   },
   {
@@ -20,7 +20,7 @@
     "status": "Consulta técnica",
     "title": "Mantención de piscinas",
     "description": "Conversemos sobre limpieza, filtración, reparación y cuidado de tu piscina.",
-    "image": "assets/editorial/pool-hero-800.webp",
+    "image": "assets/photography/pool-care.jpg",
     "link": "#/piscinas"
   },
   {
@@ -28,7 +28,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Tableros y materiales eléctricos",
     "description": "Reúne componentes, canalización y tableros para preparar tu lista de materiales.",
-    "image": "assets/editorial/electric-800.webp",
+    "image": "assets/photography/electric-install.jpg",
     "link": "#/electricidad/tableros"
   },
   {
@@ -36,7 +36,7 @@
     "status": "Catálogo JECHMAN",
     "title": "Automatización y control",
     "description": "Explora sistemas de control y plantea los requerimientos de tu instalación.",
-    "image": "assets/editorial/domotica-800.webp",
+    "image": "assets/photography/smart-home.jpg",
     "link": "#/electricidad/automatizacion"
   },
   {
@@ -44,7 +44,7 @@
     "status": "Propuesta a evaluar",
     "title": "Domótica para el hogar",
     "description": "Imagina iluminación, escenas y dispositivos coordinados; revisemos la factibilidad de instalación.",
-    "image": "assets/editorial/domotica-800.webp",
+    "image": "assets/photography/smart-home.jpg",
     "link": "#/electricidad/domotica"
   },
   {
@@ -52,7 +52,7 @@
     "status": "Propuesta a evaluar",
     "title": "Inmótica para edificios",
     "description": "Consulta cómo integrar iluminación, control y monitoreo de espacios compartidos.",
-    "image": "assets/editorial/inmotica-800.webp",
+    "image": "assets/photography/access-control.jpg",
     "link": "#/electricidad/inmotica"
   },
   {
@@ -60,7 +60,7 @@
     "status": "Propuesta a evaluar",
     "title": "Paneles solares y energía",
     "description": "Cuéntanos tu consumo y el lugar de instalación para estudiar una solución fotovoltaica.",
-    "image": "assets/editorial/energy-800.webp",
+    "image": "assets/photography/solar-install.jpg",
     "link": "#/electricidad/paneles-solares"
   },
   {
@@ -68,7 +68,7 @@
     "status": "Consulta técnica",
     "title": "Iluminación para tus espacios",
     "description": "Elige el ambiente que quieres crear y consulta materiales, montaje y control.",
-    "image": "assets/editorial/electric-800.webp",
+    "image": "assets/areas/iluminacion-pexels.jpeg",
     "link": "#/electricidad/iluminacion"
   }
 ]

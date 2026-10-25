@@ -22,12 +22,12 @@
     pool: [photo('assets/editorial/pool-hero-1600.webp', 'Piscina rectangular en jardín contemporáneo'), photo('assets/projects/pool-installed.webp', 'Piscina publicada por JECHMAN', 'Fotografía JECHMAN', poolSource), photo('assets/editorial/pool-roman-1600.webp', 'Piscina romana en jardín'), photo('assets/projects/pool-work.webp', 'Piscina exterior publicada por JECHMAN', 'Fotografía JECHMAN', poolSource)],
     tinaja: [photo('assets/editorial/tinaja-1600.webp', 'Tinaja de madera en terraza natural'), photo('assets/projects/tinaja-official.webp', 'Tinaja publicada por JECHMAN', 'Fotografía JECHMAN', tinajaSource)],
     jacuzzi: [photo('assets/editorial/jacuzzi-1600.webp', 'Jacuzzi exterior en terraza'), photo('assets/catalog/jacuzzi.webp', 'Jacuzzi de fibra de vidrio de referencia')],
-    electric: [photo('assets/editorial/electric-1600.webp', 'Instalación eléctrica profesional'), photo('assets/editorial/domotica-1600.webp', 'Control inteligente del hogar'), photo('assets/editorial/inmotica-1600.webp', 'Control técnico de edificio'), photo('assets/editorial/energy-1600.webp', 'Sistema de energía solar')],
+    electric: [photo('assets/photography/electric-install.jpg', 'Profesionales trabajando en una instalación eléctrica, foto de referencia'), photo('assets/areas/electricidad.webp', 'Tablero eléctrico de referencia'), photo('assets/photography/smart-home.jpg', 'Control inteligente de una vivienda, foto de referencia'), photo('assets/photography/solar-install.jpg', 'Instalación de paneles solares, foto de referencia')],
     light: [photo('assets/areas/iluminacion-pexels.jpeg', 'Luminarias de interior de referencia', 'Anchornhaven / Pexels', 'https://www.pexels.com/photo/colorful-modern-pendant-lights-in-cozy-setting-35128229/'), photo('assets/catalog/iluminacion.webp', 'Iluminación de referencia')],
     commercial: [photo('assets/editorial/commercial-1600.webp', 'Suministros y herramientas de construcción'), photo('assets/catalog/herramientas.webp', 'Herramientas de referencia')],
     hydraulic: [photo('assets/catalog/hidraulica.webp', 'Conexiones hidráulicas de referencia'), photo('assets/catalog/bomba-filtro.webp', 'Bomba y filtro de referencia')],
     heating: [photo('assets/catalog/bomba-calor.webp', 'Equipo de climatización de referencia'), photo('assets/catalog/calefont.svg', 'Representación de calefont')],
-    sauna: [photo('assets/editorial/sauna-1600.webp', 'Sauna en espacio de bienestar')]
+    sauna: [photo('assets/photography/sauna-real.jpg', 'Sauna de madera, foto de referencia')]
   };
   const entries = [
     ['piscinas/rectangulares','Piscinas rectangulares','piscinas','pool','Modelos rectangulares','Compara las medidas existentes y prepara una solicitud con el espacio y el acabado que imaginas.','modelos','confirmed'],
@@ -82,17 +82,33 @@
   const routeVisuals = {
     'piscinas/romanas':'pool-roman',
     'piscinas/rectangulares':'pool-hero',
-    'piscinas/con-jacuzzi':'jacuzzi',
-    'electricidad/domotica':'domotica',
-    'electricidad/inmotica':'inmotica',
-    'electricidad/eficiencia-energetica':'energy',
-    'electricidad/paneles-solares':'energy',
-    'piscinas/sauna':'sauna'
+    'piscinas/con-jacuzzi':'assets/pools-real/jacuzzi-rectangular.jpeg',
+    'electricidad/domotica':'assets/photography/smart-home.jpg',
+    'electricidad/inmotica':'assets/photography/access-control.jpg',
+    'electricidad/eficiencia-energetica':'assets/photography/solar-farm.jpg',
+    'electricidad/paneles-solares':'assets/photography/solar-install.jpg',
+    'electricidad/control-accesos':'assets/photography/access-control.jpg',
+    'electricidad/monitoreo':'assets/photography/smart-home.jpg',
+    'electricidad/viviendas':'assets/photography/smart-home.jpg',
+    'electricidad/empresas':'assets/photography/solar-farm.jpg',
+    'electricidad/instalaciones':'assets/photography/electric-install.jpg',
+    'electricidad/tableros':'assets/areas/electricidad.webp',
+    'electricidad/proyectos':'assets/photography/electric-install.jpg',
+    'electricidad/automatizacion':'assets/areas/electricidad.webp',
+    'piscinas/mantencion':'assets/photography/pool-care.jpg',
+    'piscinas/sauna':'assets/photography/sauna-real.jpg'
   };
   entries.forEach(entry=>{
     const asset=routeVisuals[entry.route];
-    if(asset) entry.gallery=[photo(`assets/editorial/${asset}-1600.webp`,entry.title),...entry.gallery.filter(item=>!item.src.includes(`${asset}-1600.webp`))];
+    if(asset){const src=asset.startsWith('assets/')?asset:`assets/editorial/${asset}-1600.webp`;entry.gallery=[photo(src,entry.title),...entry.gallery.filter(item=>item.src!==src)];}
   });
+  const accessoryEntry=entries.find(entry=>entry.route==='piscinas/accesorios');
+  accessoryEntry.gallery=[
+    photo('assets/catalog/zuipy-300.png','Robot limpiafondos Vulcano ZUIPY 300'),
+    photo('assets/photography/solar-install.jpg','Paneles solares, fotografía de referencia'),
+    photo('assets/catalog/bomba-calor.webp','Bomba de calor de referencia'),
+    photo('assets/catalog/bomba-filtro.webp','Bomba y filtro de piscina de referencia')
+  ];
   const byRoute = new Map(entries.map(item => [item.route,item]));
   const parentTitles = {piscinas:'Piscinas y bienestar',tinajas:'Tinajas',jacuzzis:'Jacuzzis',electricidad:'Electricidad e ingeniería',comercial:'Comercializadora',tienda:'Tienda'};
   const statusLabels = {confirmed:'Opciones documentadas',evaluation:'Sujeto a evaluación técnica',proposal:'Propuesta en estudio · confirmar con JECHMAN'};
@@ -193,7 +209,7 @@
   function renderModelList(entry) {
     const family=entry.route.endsWith('romanas')?'Romana':entry.route.endsWith('con-jacuzzi')?'Con jacuzzi':'Rectangular';
     const selected=models.filter(item=>family==='Rectangular'?['Rectangular','Piscina'].includes(item[0]):item[0]===family);
-    const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><img class="xp-model-photo" src="assets/editorial/${family==='Romana'?'pool-roman':family==='Con jacuzzi'?'jacuzzi':'pool-hero'}-800.webp" alt="Ambiente de piscina de la familia ${escape(family)}" loading="lazy" width="800" height="500"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p>${item[4]==='por-confirmar'?'<p>Medida por confirmar con JECHMAN</p>':''}<a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
+    const rows=selected.map((item,index)=>`<article class="xp-model-card xp-spotlight"><img class="xp-model-photo" src="${family==='Con jacuzzi'?'assets/pools-real/jacuzzi-rectangular.jpeg':family==='Romana'?'assets/pools-real/modelos-romanos.jpeg':'assets/pools-real/modelos-grandes.jpeg'}" alt="Piscina de fibra de la familia ${escape(family)}, fotografía aportada por JECHMAN" loading="lazy" width="800" height="500"><span>Modelo ${String(index+1).padStart(2,'0')}</span><h3>${escape(item[1])} m</h3><p>Profundidad: ${escape(item[2])} m${item[3]?' · '+escape(item[3]):''}</p>${item[4]==='por-confirmar'?'<p>Medida por confirmar con JECHMAN</p>':''}<a href="#/piscinas/configurar?tipo=${encodeURIComponent(family)}&modelo=${encodeURIComponent(item[1])}">Elegir este modelo <span aria-hidden="true">↗</span></a><button type="button" class="xp-compare-toggle" data-model-index="${index}" aria-pressed="false">Comparar</button></article>`).join('');
     return `<section class="xp-content" id="xp-config"><div class="wrap"><div class="xp-section-heading"><h2>Modelos para comparar</h2><p>Medidas del listado actual de JECHMAN. Verifica el espacio disponible y la instalación antes de decidir.</p></div><div class="xp-model-grid">${rows}</div><div class="xp-comparison" hidden role="status" aria-live="polite"></div><p class="xp-note">Las imágenes muestran proyectos o ambientes de referencia; no identifican visualmente cada medida.</p>${quotePanel(entry)}</div></section>`;
   }
   function bindModelComparison(entry){
