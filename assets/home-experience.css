@@ -31,3 +31,72 @@
 @media(max-width:900px){.home-solutions-heading{grid-template-columns:1fr;gap:14px}.home-solutions-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-overview-images{inset:0 0 0 30%}}
 @media(max-width:680px){.hero-slide-overview h1{font-size:clamp(2.35rem,9vw,3.5rem)}.hero-overview-images{inset:0;opacity:.7}.hero-slide-overview:after{background:linear-gradient(90deg,#061a29ec,#061a29b3),linear-gradient(0deg,#061a29d4,transparent 70%)}.hero-ui{bottom:31px}.hero-pager{gap:5px}.hero-dot{width:21px}.hero-dot[aria-current="true"]{width:32px}.hero-arrows{gap:5px}.hero-arrows button{width:38px;height:38px}.hero-slide-inner{padding-bottom:135px}.home-solutions-grid{grid-template-columns:1fr}.home-solution{min-height:0}.home-solutions-cta{display:block;padding:23px}.home-solutions-cta .btn{margin-top:20px}}
 @media(prefers-reduced-motion:reduce){.home-solution{transition:none}.home-solution:hover{transform:none}}
+
+/* ============================================================
+   Notebook / Laptop Responsive Excellence (1024px - 1440px y pantallas bajas)
+   ============================================================ */
+@media (max-width: 1440px) and (min-width: 901px) {
+  .site-header .header-inner { min-height: 72px; }
+  .site-header .brand { min-width: 200px; gap: 10px; }
+  .site-header .brand img { width: 44px; height: 44px; }
+  .site-header .brand strong { font-size: 1.2rem; }
+  .site-header .brand small { font-size: 0.52rem; }
+  .nav { gap: 14px; }
+  .nav a { font-size: 0.88rem; }
+  .nav .nav-quote { min-height: 42px; padding: 8px 16px; }
+
+  /* Hero carousel adaptado para notebooks: cabe completo sin desbordar */
+  .hero-carousel { min-height: clamp(480px, 62vh, 600px); }
+  .hero-slide { min-height: clamp(480px, 62vh, 600px); }
+  .hero-slide-inner { padding: 40px 0 70px; }
+  .hero-slide-overview .hero-copy, .hero-copy { max-width: 580px; }
+  
+  .hero-slide-overview h1, .hero-carousel h1, .hero-carousel h2 {
+    font-size: clamp(2.2rem, 3.2vw, 3.2rem) !important;
+    line-height: 1.08 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.04em !important;
+  }
+  .hero-slide-overview p, .hero-carousel p {
+    font-size: 1.02rem !important;
+    line-height: 1.5 !important;
+    max-width: 520px !important;
+    margin-bottom: 18px !important;
+  }
+  .hero-action { margin-top: 20px; }
+  .hero-action .btn { min-height: 46px; padding: 10px 22px; font-size: 0.95rem; }
+
+  /* Mosaico de imagenes en notebook: espacio limpio entre texto y fotos */
+  .hero-overview-images {
+    inset: 0 0 0 48% !important;
+    gap: 4px !important;
+  }
+  .hero-slide-overview:after {
+    background: linear-gradient(90deg, #061a29 0%, #061a29f2 42%, #061a2990 68%, #061a2930 100%), linear-gradient(0deg, #061a2980, transparent 40%) !important;
+  }
+  .hero-ui { bottom: 18px; }
+  .hero-kicker { font-size: 0.82rem; padding: 6px 12px; margin-bottom: 16px; }
+
+  /* Tarjetas de áreas principales en notebook */
+  .area-section .area-card { min-height: 430px; }
+  .area-section .area-photo { height: 180px; }
+  .area-section .area-card .body { min-height: 220px; padding: 18px 18px 16px; }
+  .area-section .area-card h3 { font-size: 1.45rem; margin-bottom: 12px; }
+  .area-section .area-card p { font-size: 13px; line-height: 1.5; margin-bottom: 16px; }
+
+  /* Seccion Nosotros y Soluciones */
+  .about-section { padding: 64px 0 72px; }
+  .about-content h2 { font-size: clamp(2.2rem, 3.6vw, 3.2rem); }
+  .about-copy { font-size: 1rem; line-height: 1.6; margin: 20px 0 22px; }
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .hero-carousel { min-height: clamp(440px, 58vh, 540px) !important; }
+  .hero-slide { min-height: clamp(440px, 58vh, 540px) !important; }
+  .hero-slide-inner { padding: 30px 0 55px !important; }
+  .hero-slide-overview h1, .hero-carousel h1 { font-size: 2.35rem !important; line-height: 1.08 !important; margin-bottom: 12px !important; }
+  .hero-slide-overview p, .hero-carousel p { font-size: 0.98rem !important; line-height: 1.45 !important; margin-bottom: 14px !important; }
+  .hero-action { margin-top: 14px !important; }
+  .hero-ui { bottom: 14px !important; }
+  .intro-line { padding: 14px 0 !important; }
+}
