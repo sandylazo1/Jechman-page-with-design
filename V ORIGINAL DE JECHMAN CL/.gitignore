@@ -1,0 +1,7 @@
+private-backups/
+*.sql
+*.sql.gz
+*.wpress
+*.zip
+*.tar
+*.tar.gz

@@ -1,5 +1,7 @@
 # JECHMAN · Portal de cotizaciones
 
+> **Rama de archivo:** la captura pública del sitio WordPress original está en [V ORIGINAL DE JECHMAN CL](<V ORIGINAL DE JECHMAN CL/README.md>). Esta rama no se usa para GitHub Pages; la página de diseño permanece en `main`.
+
 Sitio HTML de JECHMAN para orientar consultas sobre piscinas y bienestar, electricidad e ingeniería, y comercializadora. La tienda funciona como catálogo de cotización: no muestra precios, stock ni compra en línea.
 
 - `index.html`: entrada de GitHub Pages con las vistas completas del portal.
