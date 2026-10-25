@@ -1,4 +1,4 @@
-/* JECHMAN interactive subsections. Static, framework-free and safe under GitHub Pages hash routes. */
+﻿/* JECHMAN interactive subsections. Static, framework-free and safe under GitHub Pages hash routes. */
 (() => {
   'use strict';
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -26,7 +26,7 @@
     light: [photo('assets/areas/iluminacion-pexels.jpeg', 'Luminarias de interior de referencia', 'Anchornhaven / Pexels', 'https://www.pexels.com/photo/colorful-modern-pendant-lights-in-cozy-setting-35128229/'), photo('assets/catalog/iluminacion.webp', 'Iluminación de referencia')],
     commercial: [photo('assets/editorial/commercial-1600.webp', 'Suministros y herramientas de construcción'), photo('assets/catalog/herramientas.webp', 'Herramientas de referencia')],
     hydraulic: [photo('assets/catalog/hidraulica.webp', 'Conexiones hidráulicas de referencia'), photo('assets/catalog/bomba-filtro.webp', 'Bomba y filtro de referencia')],
-    heating: [photo('assets/catalog/bomba-calor.webp', 'Equipo de climatización de referencia'), photo('assets/catalog/calefont.svg', 'Representación de calefont')],
+    heating: [photo('assets/catalog/bomba-calor.webp', 'Equipo de climatización de referencia'), photo('assets/photography/water-heater-9551366.jpg', 'Calefactor y sistema térmico de referencia')],
     sauna: [photo('assets/photography/sauna-real.jpg', 'Sauna de madera, foto de referencia')]
   };
   const entries = [

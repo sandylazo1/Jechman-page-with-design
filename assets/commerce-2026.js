@@ -1,4 +1,4 @@
-/* JECHMAN commerce modules: static, local and quote-first for GitHub Pages. */
+﻿/* JECHMAN commerce modules: static, local and quote-first for GitHub Pages. */
 (() => {
   'use strict';
   const store = document.querySelector('.view[data-view="tienda"]');
@@ -13,7 +13,7 @@
 
   const families = [
     {id:'calor',category:'Bombas de calor',name:'Climatización para piscinas',image:'assets/catalog/bomba-calor.webp',alt:'Equipo de climatización de referencia',intro:'Consulta potencia, rendimiento e integración hidráulica según tu piscina.',variants:['9 kW de referencia','13 kW de referencia','19 kW de referencia'],specs:['Potencia objetivo','COP real','Ruido / alimentación'],notes:['Según equipo confirmado','Confirmar ficha técnica','Confirmar ficha técnica']},
-    {id:'manta',category:'Mantas térmicas',name:'Cobertor térmico a medida',image:'assets/catalog/manta-termica.svg',alt:'Esquema de una manta térmica sobre una piscina rectangular',intro:'La medida y el borde se revisan con tu piscina antes de fabricar o elegir.',variants:['3 × 2 m de referencia','4 × 2,5 m de referencia','A medida'],specs:['Superficie requerida','Material / espesor','Ajuste'],notes:['Según medidas finales','Confirmar opción','Confirmar instalación']},
+    {id:'manta',category:'Mantas térmicas',name:'Cobertor térmico a medida',image:'assets/photography/thermal-cover-concept-v2.png',alt:'Esquema de una manta térmica sobre una piscina rectangular',intro:'La medida y el borde se revisan con tu piscina antes de fabricar o elegir.',variants:['3 × 2 m de referencia','4 × 2,5 m de referencia','A medida'],specs:['Superficie requerida','Material / espesor','Ajuste'],notes:['Según medidas finales','Confirmar opción','Confirmar instalación']},
     {id:'filtrado',category:'Bombas de filtrado',name:'Bombeo y filtración',image:'assets/catalog/bomba-filtro.webp',alt:'Bomba y filtro de piscina de referencia',intro:'El caudal y la compatibilidad dependen del volumen y de la instalación existente.',variants:['Piscina pequeña','Piscina mediana','Proyecto especial'],specs:['Caudal requerido','Filtro compatible','Alimentación'],notes:['Validación hidráulica','Validación hidráulica','Confirmar ficha técnica']},
     {id:'tablero',category:'Tableros y automatización',name:'Tablero y control eléctrico',image:'assets/catalog/tablero-electrico.webp',alt:'Tablero eléctrico de referencia',intro:'Protecciones, conductores y automatización se dimensionan para cada carga.',variants:['Control de piscina','Tablero residencial','Control industrial'],specs:['Cargas / circuitos','Protecciones','Alimentación'],notes:['Según proyecto','Según proyecto','Según proyecto']}
   ];

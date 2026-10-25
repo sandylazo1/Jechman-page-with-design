@@ -1,4 +1,4 @@
-/* Internal-view enhancements. No analytics, network requests, or stored configuration. */
+﻿/* Internal-view enhancements. No analytics, network requests, or stored configuration. */
 (() => {
   const pool = document.querySelector('.view[data-view="piscinas"]');
   const electric = document.querySelector('.view[data-view="electricidad"]');
@@ -42,7 +42,7 @@
       if (image.complete && image.naturalWidth) media.classList.remove('is-loading');
       description.textContent = slide.description;
       panel.querySelector('.enh-mast-benefit').textContent = slide.benefit;
-      const explore=panel.querySelector('.enh-mast-explore');explore.href=slide.href;explore.textContent=slide.cta;
+      const explore=panel.querySelector('.enh-mast-explore');explore.href=slide.href;explore.textContent=slide.cta;explore.onclick=(e)=>{if(slide.href&&slide.href.startsWith('#/')){e.preventDefault();location.hash=slide.href;}};
       quote(panel.querySelector('.enh-mast-quote'),`Hola JECHMAN, quisiera cotizar ${slide.quote}. ¿Podemos revisar opciones, disponibilidad y alcance de instalación?`);
       credit.replaceChildren();
       credit.append(document.createTextNode(slide.credit));
@@ -77,7 +77,7 @@
 
   createCarousel(pool, [
     {src:'assets/photography/backyard-pool-38495442.jpg',alt:'Piscina en jardín residencial',benefit:'Más tiempo para disfrutar en casa.',description:'Imagina tardes de agua, luz y descanso con un diseño que se revisa para tu espacio.',href:'#/piscinas/configurar',cta:'Diseñar mi piscina',quote:'una piscina con iluminación',credit:'Fotografía de referencia'},
-    {src:'assets/photography/backyard-pool-36777960.jpg',alt:'Piscina junto a vivienda',benefit:'Un lugar para reunirse y desconectar.',description:'Compara tamaños y conversa sobre instalación y cuidado para que el proyecto sea más sencillo.',href:'#/piscinas',cta:'Ver modelos',quote:'una piscina y su instalación',credit:'Fotografía de referencia'}
+    {src:'assets/photography/backyard-pool-36777960.jpg',alt:'Piscina junto a vivienda',benefit:'Un lugar para reunirse y desconectar.',description:'Compara tamaños y conversa sobre instalación y cuidado para que el proyecto sea más sencillo.',href:'#/piscinas/configurar',cta:'Ver modelos',quote:'una piscina y su instalación',credit:'Fotografía de referencia'}
   ], 'Ideas para disfrutar el agua');
   createCarousel(electric, [
     {src:'assets/photography/electric-install.jpg',alt:'Técnicos trabajando en una instalación eléctrica de referencia',benefit:'Más tranquilidad para cada espacio.',description:'Organiza la instalación desde las necesidades reales de tu casa o proyecto.',href:'#/electricidad/instalaciones',cta:'Explorar instalaciones',quote:'una instalación eléctrica',credit:'Fotografía de referencia / Pexels',url:'https://www.pexels.com/photo/electricians-at-work-10871585/'},

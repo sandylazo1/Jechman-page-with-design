@@ -12,11 +12,14 @@
   new MutationObserver(repairLinks).observe(document.documentElement, {childList:true,subtree:true,attributes:true,attributeFilter:['href']});
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
-    const fragment = link?.getAttribute('href');
-    if (fragment?.startsWith('#/')) {
-      event.preventDefault();
-      location.hash = fragment;
-      repairLinks();
+    const href = link?.getAttribute('href');
+    if (href) {
+      const hashIndex = href.indexOf('#/');
+      if (hashIndex !== -1) {
+        event.preventDefault();
+        location.hash = href.slice(hashIndex);
+        repairLinks();
+      }
     }
   }, true);
 })();
