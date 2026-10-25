@@ -26,7 +26,7 @@
 .home-solution-media{display:block;position:relative;height:186px;overflow:hidden;background:#e9f0f2}
 .home-solution-media:after{content:"";position:absolute;inset:auto 0 0;height:36px;background:linear-gradient(transparent,#152e4038)}
 .home-solution-media img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
-.home-solution--care .home-solution-media img{object-fit:contain;background:#e3f2f2;padding:7px}
+.home-solution--care .home-solution-media img{object-fit:cover;object-position:center 60%;background:#e3f2f2;padding:0}
 .home-solution:hover .home-solution-media img{transform:scale(1.04)}
 .home-solution-body{display:flex;flex:1;flex-direction:column;padding:22px 23px 24px}
 .home-solution h3{font-size:1.43rem;margin:0 0 10px}

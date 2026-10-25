@@ -54,7 +54,7 @@
   const wrap = catalog.querySelector('.wrap');
   const header = document.createElement('div');
   header.className = 'market-catalog-header';
-  header.innerHTML = '<p class="market-kicker">Productos y soluciones · cotización personalizada</p><div class="market-catalog-title"><div><h1>Catálogo JECHMAN</h1><p>Piscinas, bienestar, electricidad y construcción. Elige lo que necesitas y cotiza directamente con nuestro equipo.</p></div><a class="market-header-cta" href="#/contacto?area=Tienda">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a></div><p class="market-shipping"><span aria-hidden="true">✦</span> Enviamos a todo Chile. Cobertura, plazo y costo de despacho se confirman al cotizar.</p>';
+  header.innerHTML = '<p class="market-kicker">Productos y soluciones · cotización personalizada</p><div class="market-catalog-title"><div><h1>Catálogo JECHMAN</h1><p>Piscinas, bienestar, electricidad y construcción. Elige lo que necesitas y cotiza directamente con nuestro equipo.</p></div><a class="market-header-cta" href="#/contacto?area=Tienda">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a></div><p class="market-shipping">Enviamos a todo Chile. Cobertura, plazo y costo de despacho se confirman al cotizar.</p>';
   wrap.prepend(header);
 
   const first = () => { if (store.firstElementChild !== catalog) store.prepend(catalog); };

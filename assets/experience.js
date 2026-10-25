@@ -93,7 +93,7 @@
     'electricidad/eficiencia-energetica':'assets/editorial/energy-1600.webp',
     'electricidad/paneles-solares':'assets/photography/route-solar.jpg',
     'electricidad/control-accesos':'assets/photography/access-control.jpg',
-    'electricidad/monitoreo':'assets/graphics/monitoring-dashboard.svg',
+    'electricidad/monitoreo':'assets/photography/monitoring-control-room-32529341.jpg',
     'electricidad/viviendas':'assets/photography/route-viviendas.jpg',
     'electricidad/empresas':'assets/photography/solar-farm.jpg',
     'electricidad/instalaciones':'assets/photography/route-installation.jpg',

@@ -12,6 +12,8 @@ Los archivos nuevos de `assets/jechman-products/` —bombas, filtros, focos, pis
 
 Las fotografías nuevas de `assets/photography/` cuyo nombre termina en un número corresponden al identificador de foto de Pexels. La página de origen se puede abrir con `https://www.pexels.com/photo/IDENTIFICADOR/`; por ejemplo, [foto 6436202](https://www.pexels.com/photo/6436202/) para mantenimiento de piscinas y [foto 31092892](https://www.pexels.com/photo/31092892/) para sauna. La licencia aplicable es la [licencia de Pexels](https://www.pexels.com/license/). Se usan como escenas de referencia del servicio o entorno, no como inventario exacto.
 
+`monitoring-control-room-32529341.jpg` procede de la [foto 32529341 de Pexels](https://www.pexels.com/photo/advanced-control-room-in-el-agustino-lima-32529341/). Muestra una sala de control de una entidad ajena a JECHMAN; solo ilustra el concepto de monitoreo, sin atribuir ese proyecto a la empresa.
+
 ## Imagen conceptual
 
 `assets/photography/thermal-cover-concept-v2.png` es una composición generativa para ilustrar un cobertor térmico. La ficha visible declara expresamente que es una imagen conceptual y que no corresponde a un modelo publicado. Las capas transparentes de robot y bomba de calor del configurador ilustran combinaciones sujetas a evaluación técnica.

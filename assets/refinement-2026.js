@@ -16,7 +16,7 @@
   useImage('.division-card--pool img', 'assets/areas/piscinas.webp', 'Piscina exterior fotografiada para la sección de bienestar');
   useImage('.division-card--electric img', 'assets/catalog/tablero-electrico.webp', 'Tablero y protecciones eléctricas');
   useImage('.division-card--commercial img', 'assets/areas/comercial.webp', 'Materiales y suministros para construcción');
-  useImage('.home-solution--care img', 'assets/catalog/robot-limpiafondos.svg', 'Robot limpiafondos, esquema de producto');
+  useImage('.home-solution--care img', 'assets/photography/pool-care.jpg', 'Persona realizando la limpieza de una piscina');
   const electric = document.querySelector('.view[data-view="electricidad"]');
   if (!electric) return;
 
