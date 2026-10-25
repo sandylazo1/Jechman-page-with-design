@@ -12,7 +12,7 @@ $packageRoot = Join-Path $distRoot 'jechman-portal'
 if (Test-Path -LiteralPath $packageRoot) {
     $resolvedPackage = [System.IO.Path]::GetFullPath($packageRoot)
     if (-not $resolvedPackage.StartsWith($distRoot + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)) {
-        throw 'La carpeta que se limpiará está fuera de dist.'
+        throw 'La carpeta que se limpiara esta fuera de dist.'
     }
     Remove-Item -LiteralPath $packageRoot -Recurse -Force
 }
@@ -23,6 +23,10 @@ Copy-Item -LiteralPath (Join-Path $repoRoot 'wordpress\jechman-portal\portal-tem
 Copy-Item -LiteralPath (Join-Path $repoRoot 'wordpress\jechman-portal\route-bridge.js') -Destination $packageRoot
 Copy-Item -LiteralPath (Join-Path $repoRoot 'index.html') -Destination (Join-Path $packageRoot 'site')
 Copy-Item -LiteralPath (Join-Path $repoRoot 'news.json') -Destination (Join-Path $packageRoot 'site')
+Copy-Item -LiteralPath (Join-Path $repoRoot 'glassindex.html') -Destination (Join-Path $packageRoot 'site')
+if (Test-Path -LiteralPath (Join-Path $repoRoot '404.html')) {
+    Copy-Item -LiteralPath (Join-Path $repoRoot '404.html') -Destination (Join-Path $packageRoot 'site')
+}
 Copy-Item -LiteralPath (Join-Path $repoRoot 'assets') -Destination (Join-Path $packageRoot 'site') -Recurse
 
 $outputAbsolute = [System.IO.Path]::GetFullPath($OutputZip)
