@@ -24,7 +24,8 @@
 .enh-electric-options button:focus-visible,.enh-service-visuals button:focus-visible,.xp-discovery-card:focus-visible,.ref-work-card a:focus-visible{outline:3px solid #f0b941;outline-offset:3px}
 /* Keep the photo portion of supplied composite JPEGs; measures are rendered as text below. */
 .model-card .pool-photo-frame,.xp-model-card .pool-photo-frame{position:relative;isolation:isolate}
-.model-card .pool-photo-frame img.ref-pool-source,.xp-model-card .pool-photo-frame img.ref-pool-source{width:100%;height:auto;min-height:0;object-fit:unset;object-position:top;transform:scale(1.72)!important;transform-origin:top center}
+.model-card .pool-photo-frame img.ref-pool-source,.xp-model-card .pool-photo-frame img.ref-pool-source{width:100%;height:auto;min-height:0;object-fit:unset;object-position:top;transform:none!important}
+.model-card .pool-photo-frame img.ref-pool-source[src*="jacuzzi-rectangular"],.xp-model-card .pool-photo-frame img.ref-pool-source[src*="jacuzzi-rectangular"]{transform:scale(1.45)!important;transform-origin:top center}
 .news-card>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;flex:none}
 .news-track{align-items:stretch}
 .news-card{height:auto}
