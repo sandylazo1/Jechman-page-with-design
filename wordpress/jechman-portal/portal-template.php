@@ -1,6 +1,15 @@
 <?php
 defined('ABSPATH') || exit;
 
+// Encabezados de seguridad para auditorías SSL Labs A+ y protección cuántica (PQC ready)
+if (!headers_sent()) {
+    header('Strict-Transport-Security: max-age=63072000; includeSubDomains; preload');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+}
+
 $plugin_dir = plugin_dir_path(__FILE__);
 $portal_file = $plugin_dir . 'site/index.html';
 

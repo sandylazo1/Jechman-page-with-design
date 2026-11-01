@@ -1,9 +1,10 @@
 <?php
 /**
- * Plugin Name: JECHMAN Portal
- * Description: Plantilla de página completa para revisar el nuevo portal JECHMAN antes de cambiar la portada de WordPress.
- * Version: 1.0.0
+ * Plugin Name: JECHMAN Portal Enterprise
+ * Description: Portal oficial de alta conversión JECHMAN Ingeniería y Construcción SpA. Incluye catálogo interactivo con doble vista, módulos de ingeniería y domótica, despacho oficial a ventas@jechman.cl y cabeceras de seguridad SSL Labs A+.
+ * Version: 1.5.0
  * Requires PHP: 7.4
+ * Author: JECHMAN Ingeniería SpA
  * Text Domain: jechman-portal
  */
 

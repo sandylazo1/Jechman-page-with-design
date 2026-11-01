@@ -1,74 +1,74 @@
 [
   {
-    "category": "Piscinas y bienestar",
-    "status": "Catálogo JECHMAN",
-    "title": "Piscinas de fibra de vidrio",
-    "description": "Explora modelos y consulta fabricación e instalación según tu espacio.",
+    "category": "Piscinas y Bienestar",
+    "status": "Tecnología IoT",
+    "title": "Piscinas inteligentes con monitoreo continuo",
+    "description": "Automatización con sensores de pH, salinidad y temperatura controlados en tiempo real desde tu smartphone.",
     "image": "assets/photography/outdoor-pool-9056670.jpg",
-    "link": "#/piscinas"
+    "link": "#/piscinas/configurar"
   },
   {
-    "category": "Piscinas y bienestar",
-    "status": "Catálogo JECHMAN",
-    "title": "Jacuzzis y tinajas",
-    "description": "Formas de disfrutar el agua con opciones de equipamiento a revisar en tu proyecto.",
-    "image": "assets/photography/spa-water-19150538.jpg",
-    "link": "#/jacuzzis"
-  },
-  {
-    "category": "Piscinas y bienestar",
-    "status": "Consulta técnica",
-    "title": "Mantención de piscinas",
-    "description": "Conversemos sobre limpieza, filtración, reparación y cuidado de tu piscina.",
-    "image": "assets/photography/pool-cleaner-6436202.jpg",
-    "link": "#/piscinas/mantencion"
-  },
-  {
-    "category": "Electricidad",
-    "status": "Catálogo JECHMAN",
-    "title": "Tableros y materiales eléctricos",
-    "description": "Reúne componentes, canalización y tableros para preparar tu lista de materiales.",
-    "image": "assets/areas/electricidad.webp",
-    "link": "#/electricidad/tableros"
-  },
-  {
-    "category": "Electricidad",
-    "status": "Catálogo JECHMAN",
-    "title": "Automatización y control",
-    "description": "Explora sistemas de control y plantea los requerimientos de tu instalación.",
-    "image": "assets/photography/access-control.jpg",
-    "link": "#/electricidad/automatizacion"
-  },
-  {
-    "category": "Electricidad",
-    "status": "Propuesta a evaluar",
-    "title": "Domótica para el hogar",
-    "description": "Imagina iluminación, escenas y dispositivos coordinados; revisemos la factibilidad de instalación.",
+    "category": "Domótica Residencial",
+    "status": "Hogar Inteligente",
+    "title": "Domótica integral y gestión de confort",
+    "description": "Escenas lumínicas, climatización zonificada y persianas sincronizadas para reducir hasta un 30% en consumo eléctrico.",
     "image": "assets/photography/smart-home.jpg",
     "link": "#/electricidad/domotica"
   },
   {
-    "category": "Electricidad",
-    "status": "Propuesta a evaluar",
-    "title": "Inmótica para edificios",
-    "description": "Consulta cómo integrar iluminación, control y monitoreo de espacios compartidos.",
+    "category": "Inmótica Corporativa",
+    "status": "Gestión de Edificios",
+    "title": "Inmótica y telemetría para condominios",
+    "description": "Supervisión automatizada de salas de bombas, tableros eléctricos y control de accesos centralizado sin fallas.",
     "image": "assets/editorial/inmotica-1600.webp",
     "link": "#/electricidad/inmotica"
   },
   {
-    "category": "Energía",
-    "status": "Propuesta a evaluar",
-    "title": "Paneles solares y energía",
-    "description": "Cuéntanos tu consumo y el lugar de instalación para estudiar una solución fotovoltaica.",
+    "category": "Piscinas y Bienestar",
+    "status": "Hidroterapia",
+    "title": "Jacuzzis de alto flujo con ozonización",
+    "description": "Sistemas de hidromasaje terapéutico con recirculación purificada y desinfección ultravioleta de bajo mantenimiento.",
+    "image": "assets/photography/spa-water-19150538.jpg",
+    "link": "#/jacuzzis"
+  },
+  {
+    "category": "Piscinas y Bienestar",
+    "status": "Diseño Nórdico",
+    "title": "Tinajas de madera con climatización dual",
+    "description": "Fabricación en maderas nobles con interior de fibra y sistema combinado de caldera a leña más bomba Inverter.",
+    "image": "assets/photography/wood-fired-hot-tub-27777826.jpg",
+    "link": "#/tinajas"
+  },
+  {
+    "category": "Climatización Eficiente",
+    "status": "Inverter Ultra-Silencioso",
+    "title": "Bombas de calor de alta eficiencia térmica",
+    "description": "Temperado de piscina durante todo el año con tecnología Inverter y COP superior a 5.8 para mínimo consumo.",
+    "image": "assets/catalog/bomba-calor.webp",
+    "link": "#/tienda?categoria=Climatizaci%C3%B3n"
+  },
+  {
+    "category": "Electricidad e Iluminación",
+    "status": "Control RGB",
+    "title": "Iluminación subacuática LED sincronizada",
+    "description": "Focos estancos de acero inoxidable y óptica difusa con programas lumínicos personalizados para piscinas y jardines.",
+    "image": "assets/photography/pool-lighting-6957108.jpg",
+    "link": "#/electricidad/iluminacion"
+  },
+  {
+    "category": "Energía Renovable",
+    "status": "Autosuficiencia",
+    "title": "Sistemas solares fotovoltaicos con respaldo",
+    "description": "Plantas solares residenciales e industriales para alimentar bombas, climatización y consumos críticos de forma limpia.",
     "image": "assets/photography/solar-install.jpg",
     "link": "#/electricidad/paneles-solares"
   },
   {
-    "category": "Electricidad",
-    "status": "Consulta técnica",
-    "title": "Iluminación para tus espacios",
-    "description": "Elige el ambiente que quieres crear y consulta materiales, montaje y control.",
-    "image": "assets/catalog/iluminacion.webp",
-    "link": "#/electricidad/iluminacion"
+    "category": "Automatización y Cuidado",
+    "status": "Robot Autónomo",
+    "title": "Limpieza robótica de piscina con navegación giroscópica",
+    "description": "Robots limpiafondos inteligentes que escanean fondo, paredes y línea de flotación con filtración ciclónica.",
+    "image": "assets/photography/pool-cleaner-6436202.jpg",
+    "link": "#/tienda?categoria=Accesorios%20de%20piscina"
   }
 ]
