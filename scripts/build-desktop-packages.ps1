@@ -7,6 +7,8 @@ $desktop = [System.IO.Path]::Combine($env:USERPROFILE, 'Desktop')
 
 $liteZipPath = [System.IO.Path]::Combine($desktop, 'JECHMAN-WordPress-portal-instalable.zip')
 $fullZipPath = [System.IO.Path]::Combine($desktop, 'JECHMAN-WordPress-portal-completo.zip')
+$versionLiteZipPath = [System.IO.Path]::Combine($desktop, 'JECHMAN-WordPress-portal-v1.5.0.zip')
+$versionFullZipPath = [System.IO.Path]::Combine($desktop, 'JECHMAN-WordPress-portal-v1.5.0-completo.zip')
 $unpackedDir = [System.IO.Path]::Combine($desktop, 'JECHMAN-WordPress-portal')
 
 # 1. Preparar staging temporal
@@ -69,9 +71,13 @@ Create-CleanZip -SourceDirectory (Join-Path $distRoot 'lite') -ZipFilePath $lite
 Write-Host "Generando paquete completo para respaldo..."
 Create-CleanZip -SourceDirectory (Join-Path $distRoot 'full') -ZipFilePath $fullZipPath
 
+# Generar copias con el nombre de la versión v1.5.0
+Copy-Item $liteZipPath $versionLiteZipPath -Force
+Copy-Item $fullZipPath $versionFullZipPath -Force
+
 # Actualizar carpeta descomprimida en Desktop
 if (Test-Path $unpackedDir) { Remove-Item $unpackedDir -Recurse -Force }
 Copy-Item (Join-Path $distRoot 'lite/jechman-portal') $unpackedDir -Recurse -Force
 
 Write-Host "Paquetes creados exitosamente en Desktop:"
-Get-Item $liteZipPath, $fullZipPath | Select-Object Name, Length, LastWriteTime | Format-Table -AutoSize
+Get-Item $versionLiteZipPath, $versionFullZipPath | Select-Object Name, Length, LastWriteTime | Format-Table -AutoSize
